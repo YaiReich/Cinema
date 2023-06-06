@@ -1,0 +1,16 @@
+        *************** Beginning of data ************************************* 
+0001.00 FDMENU     CF   E             WORKSTN                                   
+0002.00 C*                                                                      
+0003.00 C                   EXFMT     MENU                                      
+0004.00 C     *IN03         DOWEQ     *OFF                                      
+0005.00 C     OP            IFEQ      '1'                                       
+0006.00 C                   EXSR      SUBMENU                                   
+0007.00 C                   ENDIF                                               
+0008.00 C                   EXFMT     MENU                                      
+0009.00 C                   ENDDO                                               
+0010.00 C                   SETON                                        LR     
+0011.00 C*                                                                      
+0012.00 C     SUBMENU       BEGSR                                               
+0013.00 C                   CALL      'RSUB'                                    
+0014.00 C                   ENDSR                                               
+        ****************** End of data **************************************** 
