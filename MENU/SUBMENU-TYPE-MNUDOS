@@ -1,0 +1,43 @@
+        *************** Beginning of data ************************************* 
+0000.01      A* Free Form Menu: SUBMENU                                         
+0000.10      A*%%TS  SD  20230606  143822  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3           
+0000.40      A                                             27 132 *DS4)         
+0000.50      A                                      CHGINPDFT                   
+0000.60      A                                      INDARA                      
+0000.70      A                                      PRINT(*LIBL/QSYSPRT)        
+0000.80      A          R SUBMENU                                               
+0000.90      A*%%TS  SD  20230606  143822  JBLTD10     REL-V7R5M0  5770-WDS     
+0001.00      A                                      DSPMOD(*DS3)                
+0001.10      A                                      LOCK                        
+0001.20      A                                      SLNO(01)                    
+0001.30      A                                      CLRL(*ALL)                  
+0001.40      A                                      ALWROL                      
+0001.50      A                                      CF03  
+0001.60      A                                      HELP                        
+0001.70      A                                      HOME                        
+0001.80      A                                      HLPRTN                      
+0001.90      A                                  1  2'SUBMENU'                   
+0002.00      A                                      COLOR(BLU)                  
+0002.10      A                                  1 36'MAIN Menu'                 
+0002.20      A                                      DSPATR(HI)                  
+0002.30      A                                  3  2'Select one of the followin 
+0002.40      A                                      COLOR(BLU)   
+0002.50      A                                  5  7'1.'                
+0002.60      A                                  6  7'2.'                
+0002.70      A                                  7  7'3.'                
+0002.80      A                                  8  7'4.'                
+0002.90      A                                  9  7'5.'                
+0003.00      A                                 10  7'6.'                
+0003.10      A                                 11  7'7.'                
+0003.20      A                                 12  7'8.'                
+0003.30      A                                 13  7'9.'   
+0003.40      A                                 14  6'10.'                      
+0003.50      A* CMDPROMPT  Do not delete this DDS spec.                        
+0003.51      A                                019  2'Selection or command      
+0003.60      A                                          '                      
+0003.70      A                                  5 10'Subscription system.'     
+0003.80      A                                  1 71DATE                       
+0003.90      A                                      EDTCDE(Y)                  
+        ****************** End of data ****************************************
