@@ -1,0 +1,9 @@
+        *************** Beginning of data ************************************* 
+0001.00 PGM                                                                     
+0002.00       CHGCURLIB  CURLIB(SUB10)                                          
+0002.01       MONMSG     MSGID(CPF0000)                                         
+0005.00       ADDLIBLE   LIB(SUBD10)                                            
+0006.00       MONMSG     MSGID(CPF0000)                                         
+0008.00 ENDPGM                                                                  
+        ****************** End of data **************************************** 
+                                                                                
