@@ -1,0 +1,29 @@
+        *************** Beginning of data ************************************* 
+0000.10      A*%%TS  SD  20230605  194907  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A          R MENU                                                  
+0000.60      A*%%TS  SD  20230605  194907  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.70      A                                  1 39'MENU'                      
+0000.80      A                                      DSPATR(RI)                  
+0000.90      A                                      COLOR(BLU)                  
+0001.00      A                                  3 26'Choose one of the next opt 
+0001.10      A                                      DSPATR(UL)                  
+0001.20      A                                      COLOR(WHT)                  
+0001.30      A                                  5 25'1.Subscription system'     
+0001.40      A                                      COLOR(WHT)                  
+0001.50      A                                 12 24'Please enter your choice:' 
+0001.60      A                                      COLOR(WHT)     
+0001.70      A                                 18 25'F3 - EXIT'                 
+0001.80      A                                      COLOR(BLU)                  
+0001.90      A                                 17 20'-------------------------- 
+0002.00      A                                      -------'                    
+0002.10      A                                      COLOR(BLU)                  
+0002.20      A            OP             1A  I 12 50COLOR(WHT)                  
+0002.30      A                                  1 67'DATE:'                     
+0002.40      A                                      COLOR(BLU)                  
+0002.50      A                                  1 73DATE                        
+0002.60      A                                      EDTCDE(Y)                   
+0002.70      A                                      COLOR(BLU)                  
+        ****************** End of data **************************************** 
