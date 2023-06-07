@@ -1,0 +1,61 @@
+        *************** Beginning of data ************************************* 
+0000.10      A*%%TS  SD  20230607  095206  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A          R TOP                                                   
+0000.60      A*%%TS  SD  20230606  124355  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.70      A                                  1 65'DATE'                      
+0000.80      A                                      COLOR(GRN)                  
+0000.90      A                                  1 70DATE                        
+0001.00      A                                      EDTWRD('  /  /  ')          
+0001.10      A                                      COLOR(GRN)                  
+0001.20      A                                  3 33'SUBS MANAGEMENT'           
+0001.30      A                                      DSPATR(UL)                  
+0001.40      A          R BOT                                                   
+0001.50      A                                      OVERLAY                     
+0001.60      A                                 20  2'-------------------------- 
+0001.70      A                                      --------------------------- 
+0001.80      A                                      --------'                   
+0001.90      A                                 21  3'F3-EXIT'                   
+0002.00      A                                 21 14'F6-NEW'                    
+0002.10      A                                 23  3'2-UPDATE'                  
+0002.20      A                                 23 14'4-UPDATE STATUS'           
+0002.30      A                                 21 24'F8-MORE'                   
+0002.40      A          R SFLR                      SFL                         
+0002.50      A*%%TS  SD  20230606  124835  JBLTD10     REL-V7R5M0  5770-WDS     
+0002.60      A            SUBID     R        O  8 14REFFLD(RSUB/SUBID SUBD10/SUBPF) 
+0002.70      A            SUBSTAS   R        O  8 25REFFLD(RSUB/SUBSTAS SUBD10/SUBPF)
+0002.80      A            SUBNAME   R        O  8 35REFFLD(RSUB/SUBNAME SUBD10/SUBPF)
+0002.90      A            SUBTEL    R        O  8 58REFFLD(RSUB/SUBTEL SUBD10/SUBPF)
+0003.00      A            OP             1A  B  8 10                            
+0003.10      A                                  9 13'LAST DIGITS OF CC:'        
+0003.20      A                                      DSPATR(UL) 
+0003.30      A            SUBCC4    R        O  9 32REFFLD(RSUB/SUBCC4 SUBD10/SUBPF)
+0003.40      A                                  9 38'EMAIL:'                   
+0003.50      A                                      DSPATR(UL)                 
+0003.60      A            SUBEMAIL  R        O  9 45REFFLD(RSUB/SUBEMAIL SUBD10/SUBPF)
+0003.70      A*--------------------------------------------------------------- 
+0003.80      A          R SFLCTL                    SFLCTL(SFLR)               
+0003.90      A*%%TS  SD  20230607  095206  JBLTD10     REL-V7R5M0  5770-WDS    
+0004.00      A                                      PAGEDOWN(72)               
+0004.10      A                                      OVERLAY                    
+0004.20      A  31                                  SFLDSP                     
+0004.30      A  32                                  SFLDSPCTL                  
+0004.40      A  34                                  SFLCLR                     
+0004.50      A  33                                  SFLEND(*MORE)              
+0004.60      A                                      SFLDROP(CF08)              
+0004.70      A                                      SFLSIZ(0099)               
+0004.80      A                                      SFLPAG(0006)     
+0004.90      A            POS            4S 0H      SFLRCDNBR                   
+0005.00      A                                  7 10'OP'                        
+0005.10      A                                      DSPATR(UL)                  
+0005.20      A                                  7 14'ID'                        
+0005.30      A                                      DSPATR(UL)                  
+0005.40      A                                  7 25'STATUS'                    
+0005.50      A                                      DSPATR(UL)                  
+0005.60      A                                  7 35'NAME'                      
+0005.70      A                                      DSPATR(UL)                  
+0005.80      A                                  7 58'TEL NUM'                   
+0005.90      A                                      DSPATR(UL)                  
+        ****************** End of data **************************************** 
