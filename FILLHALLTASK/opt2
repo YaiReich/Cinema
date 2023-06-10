@@ -1,0 +1,51 @@
+        *************** Beginning of data *************************************
+0001.00   DCL-F FILLHALL WORKSTN SFILE(SFLR:RRN);                              
+0002.00   DCL-S RRN INT(3);                                                    
+0003.00   DCL-S COUNT INT(3);                                                  
+0004.00   DCL-S FILLO INT(3);                                                  
+0005.00   DCL-DS LINEU;                                                        
+0006.00      C1;                                                               
+0007.00      C2;                                                               
+0008.00      C3;                                                               
+0009.00      C4;                                                               
+0010.00      C5;                                                               
+0011.00      C6;                                                               
+0012.00      C7;                                                               
+0013.00      C8;                                                               
+0014.00      C9;                                                               
+0015.00      C10;                                                              
+0016.00      LINEARR LIKE(C1) DIM(10) POS(1);    
+0017.00   END-DS;                                 
+0018.00                                           
+0019.00   EXSR FILLSFL;                           
+0020.00   EXFMT SFLCTL;                           
+0021.00   DOW NOT(*IN03);                         
+0022.00   EXSR UPDATESFL;                         
+0023.00   EXFMT SFLCTL;                           
+0024.00   ENDDO;                                  
+0025.00   *INLR=*ON;                              
+0026.00                                           
+0027.00   BEGSR FILLSFL;                          
+0028.00   *IN32=*ON;                              
+0029.00   WRITE SFLCTL;                           
+0030.00   RRN = 0;                                
+0031.00   FOR FILLO = 1 BY 1 TO 10;               
+0032.00      LINEARR(FILLO) = 'O';    
+0033.00   ENDFOR;                      
+0034.00   FOR COUNT = 1 BY 1 TO 10;    
+0035.00   RRN+=1;                      
+0036.00   LINE = COUNT;                
+0037.00   WRITE SFLR;                  
+0038.00   ENDFOR;                      
+0039.00   *IN31=*ON;                   
+0040.00   ENDSR;                       
+0041.00                                
+0042.00   BEGSR UPDATESFL;             
+0043.00   CHAIN LINE SFLR;             
+0044.00   IF %FOUND;                   
+0045.00      LINEARR(POSITION) = 'X';  
+0046.00      UPDATE SFLR;              
+0047.00   ENDIF;                       
+0048.00   ENDSR;          
+****************** End of data **************************************** 
+                                                                        
