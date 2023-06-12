@@ -1,0 +1,48 @@
+0000.01   dcl-f moviepf disk keyed usage(*input);                             
+0001.00   dcl-f choosemv workstn sfile(movsfl:rrn);                           
+0002.00   dcl-s rrn int(3);                                                   
+0016.00                                                                       
+0016.02   dow not(*in03);                                                     
+0016.03     write top;                                                        
+0016.04     write bot;                                                        
+0016.05     exfmt main;                                                       
+0016.06     if *in04;                                                         
+0016.07       exsr optmovie;                                                  
+0016.08     endif;                                                            
+0021.00   enddo;                                                              
+0022.00   *inlr=*on;                                                          
+0023.00                                                                       
+0038.00   begsr optmovie;                                                     
+0038.01    *in34=*on;                                                         
+0038.02    *in32=*on;             
+0038.03    write movctl;          
+0038.04    *in34=*off;            
+0038.05    rrn=0;                 
+0038.06    setll *loval rmovie;   
+0038.07    read rmovie;           
+0038.08    dow not(%eof(moviepf));
+0038.09      op=*blanks;          
+0038.10      rrn+=1;              
+0038.11      write movsfl;        
+0038.12      read rmovie;         
+0038.13    enddo;                 
+0038.14                           
+0038.15    if rrn > 0;            
+0038.16      *in31=*on;           
+0038.17      *in33=*on;           
+0038.18      pos=1;                                                            
+0038.19      exfmt movctl;                                                     
+0038.20      mvname=*blanks;                                                   
+0038.21      if not(*in12);                                                    
+0038.22         readc movsfl;                                                  
+0038.23         dow not(OP='Y') and                                            
+0038.24             not(%eof(choosemv));                                       
+0038.25             op = ' ';                                                  
+0038.26             update movsfl;                                             
+0038.27             mvname=*blanks;                                            
+0038.28             readc movsfl;                                              
+0038.29         enddo;                                                         
+0038.33      endif;                                                            
+0038.37    endif;                                                              
+0038.38   endsr;                                                               
+        ****************** End of data ****************************************
