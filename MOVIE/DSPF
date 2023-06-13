@@ -1,0 +1,54 @@
+        *************** Beginning of data ************************************* 
+0000.10      A*%%TS  SD  20230613  101118  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A                                      CF04(04 'MOVIE')            
+0000.60      A          R TOP                                                   
+0000.70      A*%%TS  SD  20230612  124847  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.80      A                                      OVERLAY                     
+0000.90      A                                  2 30'Movie selection screen'    
+0001.00      A                                      COLOR(BLU)                  
+0001.10      A                                      DSPATR(RI)                  
+0001.20      A          R BOT                                                   
+0001.30      A*%%TS  SD  20230613  101118  JBLTD10     REL-V7R5M0  5770-WDS     
+0001.40      A                                      OVERLAY                     
+0001.50      A                                 21  9'-------------------------- 
+0001.60      A                                      --------------------'       
+0001.70      A                                      COLOR(WHT)                
+0001.80      A                                 22 10'F3-EXIT'                 
+0001.90      A                                      COLOR(BLU)                
+0002.00      A                                 22 20'F4-CHOOSE MOVIE'         
+0002.10      A                                      COLOR(BLU)                
+0002.20      A          R MOVSFL                    SFL                       
+0002.30      A*%%TS  SD  20230612  161055  JBLTD10     REL-V7R5M0  5770-WDS   
+0002.40      A            MVNAME        30A  O  4 19                          
+0002.50      A            OP             1   B  4 15                          
+0002.60      A          R MOVCTL                    SFLCTL(MOVSFL)            
+0002.70      A*%%TS  SD  20230612  170454  JBLTD10     REL-V7R5M0  5770-WDS   
+0002.80      A                                      SFLSIZ(0099)              
+0002.90      A                                      SFLPAG(0007)              
+0003.00      A                                      WINDOW(7 7 14 50)         
+0003.10      A                                      CA12(12 'BACK')           
+0003.20      A  31                                  SFLDSP                    
+0003.30      A  32                                  SFLDSPCTL                   
+0003.40      A  34                                  SFLCLR                      
+0003.50      A  33                                  SFLEND                      
+0003.60      A            POS            4S 0H      SFLRCDNBR                   
+0003.70      A                                  1  4'*** ENTER Y TO CHOOSE ***' 
+0003.80      A                                      DSPATR(UL)                  
+0003.90      A                                  3 15'OP'                        
+0004.00      A                                      DSPATR(UL)                  
+0004.10      A                                  3 19'Movie name'                
+0004.20      A                                      DSPATR(UL)                  
+0004.30      A          R MAIN                                                  
+0004.40      A*%%TS  SD  20230612  124847  JBLTD10     REL-V7R5M0  5770-WDS     
+0004.50      A                                      OVERLAY                     
+0004.60      A                                  4 18'Please press F4 for movie  
+0004.70      A                                      n.'                         
+0004.80      A                                      COLOR(WHT)                  
+0004.90      A                                  7  8'Movie name:'               
+0005.00      A                                      COLOR(BLU)                  
+0005.10      A                                      DSPATR(UL)                  
+0005.20      A            MVNAME        30A  O  7 20COLOR(BLU)                  
+        ****************** End of data **************************************** 
