@@ -1,0 +1,92 @@
+0000.10      A*%%TS  SD  20230614  205857  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A                                      CF06(06 'ADD')              
+0000.60      A          R TOP                                                   
+0000.70      A                                  1 32'MOVIES MANAGEMENT'         
+0000.80      A                                      DSPATR(UL)                  
+0000.90      A                                      COLOR(WHT)                  
+0001.00      A          R BOT                                                   
+0001.10      A*%%TS  SD  20230614  205857  JBLTD10     REL-V7R5M0  5770-WDS     
+0001.20      A                                      OVERLAY                     
+0001.30      A                                 20  4'-------------------------- 
+0001.40      A                                      --------------------------- 
+0001.50      A                                      --'                         
+0001.60      A                                      COLOR(BLU)  
+0001.70      A                                 21  5'F3 - EXIT'                 
+0001.80      A                                      COLOR(BLU)                  
+0001.90      A                                 21 18'F6-ADD'                    
+0002.00      A                                      COLOR(BLU)                  
+0002.10      A                                 21 18'F4-COMMIT'                 
+0002.20      A                                      COLOR(TRQ)                  
+0002.30      A                                 21 29'F12-CANCEL'                
+0002.40      A                                      COLOR(BLU)                  
+0002.50      A                                 23  6'4-DELETE'                  
+0002.60      A                                      COLOR(BLU)                  
+0002.70      A*****************************************************             
+0002.80      A          R SFLR                      SFL                         
+0002.90      A*%%TS  SD  20230614  202249  JBLTD10     REL-V7R5M0  5770-WDS     
+0003.00      A            OP             1A  B  5  3                            
+0003.10      A                                      COLOR(WHT)                  
+0003.20      A            MVID      R        O  5  7REFFLD(RMOVIE/MVID SUBD10/MOVIEPF)
+0003.30      A                                      COLOR(WHT)                  
+0003.40      A            MVNAME    R        O  5 19REFFLD(RMOVIE/MVNAME SUBD10/MOVIEPF)
+0003.50      A                                      COLOR(WHT)                  
+0003.60      A            MVHOURS   R        O  5 52REFFLD(RMOVIE/MVHOURS SUBD10/MOVIEP-
+0003.70      A                                      F)                          
+0003.80      A                                      COLOR(WHT)                  
+0003.90      A******************************************************            
+0004.00      A          R SFLCTL                    SFLCTL(SFLR)                
+0004.10      A*%%TS  SD  20230614  190508  JBLTD10     REL-V7R5M0  5770-WDS     
+0004.20      A                                      OVERLAY                     
+0004.30      A  31                                  SFLDSP                      
+0004.40      A  32                                  SFLDSPCTL                   
+0004.50      A  34                                  SFLCLR                      
+0004.60      A  33                                  SFLEND(*MORE)               
+0004.70      A                                      SFLSIZ(0099)                
+0004.80      A                                      SFLPAG(0006)    
+0004.90      A                                      PAGEDOWN(72)         
+0005.00      A            POS            4S 0H      SFLRCDNBR            
+0005.10      A                                  4  3'OP'                 
+0005.20      A                                      DSPATR(UL)           
+0005.30      A                                      COLOR(TRQ)           
+0005.40      A                                  4  7'ID'                 
+0005.50      A                                      DSPATR(UL)           
+0005.60      A                                      COLOR(TRQ)           
+0005.70      A                                  4 19'MOVIE NAME'         
+0005.80      A                                      DSPATR(UL)           
+0005.90      A                                      COLOR(TRQ)           
+0006.00      A                                  4 50'HOURS'              
+0006.10      A                                      DSPATR(UL)           
+0006.20      A                                      COLOR(TRQ)           
+0006.30      A********************************************************   
+0006.40      A          R ADDSCRN                     
+0006.50      A                                      CF04(04 'COMMIT')          
+0006.60      A                                      CA12(12 'BACK')            
+0006.70      A                                      OVERLAY                    
+0006.80      A                                  3  4'ADD NEW MOVIE:'           
+0006.90      A                                      DSPATR(UL)                 
+0007.00      A                                  5  4'NAME:'                    
+0007.10      A                                  7  4'HOURS:'                   
+0007.20      A            MVNAME    R        B  5 12REFFLD(RMOVIE/MVNAME +     
+0007.30      A                                              SUBD10/MOVIEPF)    
+0007.40      A            MVHOURS   R        B  7 12REFFLD(RMOVIE/MVHOURS +    
+0007.50      A                                             SUBD10/MOVIEPF)     
+0007.60      A**************************************************************** 
+0007.70      A          R DLTSCRN                                              
+0007.80      A                                      CF04(04 'COMMIT')          
+0007.90      A                                      CA12(12 'BACK')            
+0008.00      A                                      OVERLAY     
+0008.10      A                                  3  4'DELETE MOVIE:'             
+0008.20      A                                      DSPATR(UL)                  
+0008.30      A                                  7  4'NAME:'                     
+0008.40      A            MVNAME    R        O  7 11REFFLD(RMOVIE/MVNAME +      
+0008.50      A                                              SUBD10/MOVIEPF)     
+0008.60      A                                  9  4'HOURS:'                    
+0008.70      A            MVHOURS   R        O  9 11REFFLD(RMOVIE/MVHOURS +     
+0008.80      A                                             SUBD10/MOVIEPF)      
+0008.90      A                                  5  4'ID:'                       
+0009.00      A            MVID      R        O  5 11REFFLD(RMOVIE/MVID +        
+0009.10      A                                             SUBD10/MOVIEPF)      
+        ****************** End of data **************************************** 
