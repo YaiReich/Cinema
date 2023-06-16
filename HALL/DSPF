@@ -24,10 +24,8 @@
 0002.30      A                                             SUBD10/HALLPF)       
 0002.40      A            HLNAME    R        O  7 19REFFLD(RHALL/HLNAME +       
 0002.50      A                                             SUBD10/HALLPF)       
-0002.60      A            HLLINES   R        O  7 37REFFLD(RHALL/HLLINES +      
-0002.70      A                                             SUBD10/HALLPF)       
-0002.80      A            HLCHAIRS  R        O  7 41REFFLD(RHALL/HLCHAIRS +     
-0002.90      A                                             SUBD10/HALLPF)       
+0002.60      A            HLLINES   R        O  7 37REFFLD(RHALL/HLLINES SUBD10/HALLPF)       
+0002.80      A            HLCHAIRS  R        O  7 44REFFLD(RHALL/HLCHAIRS SUBD10/HALLPF)       
 0003.00      A          R SFLCTL                    SFLCTL(SFLR)                
 0003.10      A*%%TS  SD  20230611  154101  JBLTD11     REL-V7R5M0  5770-WDS     
 0003.20      A                                      SFLSIZ(0099)
