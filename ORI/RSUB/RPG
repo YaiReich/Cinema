@@ -39,7 +39,7 @@
 0038.00      EXFMT SFLCTL;       
 0039.00      *IN50=*OFF;         
 0040.00      IF *IN06;           
-0041.00         EXSR ADD1;       
+0041.00         EXSR ADD;       
 0042.00         *IN41=*ON;       
 0043.00      ELSE;               
 0044.00         EXSR TIPUL;      
@@ -115,7 +115,7 @@
 0114.00     READC SFLR;          
 0115.00     DOW NOT (%EOF(DSUB));
 0116.00        IF OP='2';        
-0117.00           EXSR UPDATE1;  
+0117.00           EXSR UPDATE;  
 0118.00           *IN41=*ON;     
 0119.00        ENDIF;            
 0120.00        IF OP='4';        
@@ -130,7 +130,7 @@
 0133.00     ENDDO;        
 0134.00   ENDSR;    
 0135.00
-0136.00   BEGSR ADD1;                                           
+0136.00   BEGSR ADD;                                           
 0137.00   WRITE TOP;                                            
 0138.00   WRITE BOT;                                            
 0139.00   EXSR EMPTY;                                           
@@ -156,7 +156,7 @@
 0159.00   *IN04=*OFF;                                   
 0160.00   ENDSR;                                        
 0161.00                                                 
-0162.00   BEGSR UPDATE1;                                
+0162.00   BEGSR UPDATE;                                
 0163.00   WRITE TOP;                                    
 0164.00   WRITE BOT;                                    
 0165.00   TELEPHONE= %DEC(%SUBST(SUBTEL:5):7:0);        
@@ -165,7 +165,8 @@
 0168.00      CHAIN SUBID RSUB;       
 0169.00      EXFMT UPDATESCRN;                                  
 0170.00      IF *IN08;                                          
-0171.00         SUBPSW='PASSWORD';                              
+0171.00         SUBPSW='PASSWORD';    
+0171.01         UPDATE RSUB;
 0172.00      ENDIF;                                             
 0173.00      IF *IN09;                                          
 0174.00         EXSR PREFIXSFL;                                 
