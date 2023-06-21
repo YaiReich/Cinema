@@ -1,0 +1,4 @@
+0000.01 FCHOOSEMV  CF   E             WORKSTN                       
+0000.02 F                                     SFILE(MOVSFL:RRN)     
+0000.03 F                                     SFILE(DATESFL:DRRN)   
+0000.05  /free                                                      
