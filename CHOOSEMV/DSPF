@@ -1,0 +1,85 @@
+        *************** Beginning of data *************************************
+0000.10      A*%%TS  SD  20230620  141315  JBLTD10     REL-V7R5M0  5770-WDS    
+0000.20      A*%%EC                                                            
+0000.30      A                                      DSPSIZ(24 80 *DS3)         
+0000.40      A                                      CA03(03 'EXIT')            
+0000.50      A                                      CF04(04 'MOVIE')           
+0000.60      A                                      CF05(05 'DATE')            
+0000.70      A          R TOP                                                  
+0000.80      A*%%TS  SD  20230612  124847  JBLTD10     REL-V7R5M0  5770-WDS    
+0001.00      A                                  2 30'Movie selection screen'   
+0001.10      A                                      COLOR(BLU)                 
+0001.20      A                                      DSPATR(RI)                 
+0001.30      A          R BOT                                                  
+0001.40      A*%%TS  SD  20230620  135134  JBLTD10     REL-V7R5M0  5770-WDS    
+0001.50      A                                      OVERLAY                    
+0001.60      A                                 21  9'--------------------------
+0001.70      A                                      --------------------'    
+          0001.80      A                                      COLOR(WHT)              
+0001.90      A                                 22 10'F3-EXIT'               
+0002.00      A                                      COLOR(BLU)              
+0002.10      A                                 22 19'F4-CHOOSE MOVIE'       
+0002.20      A                                      COLOR(BLU)              
+0002.30      A                                 22 36'F5-CHOOSE DATE'        
+0002.40      A                                      COLOR(BLU)              
+0002.50      A          R MAIN                                              
+0002.60      A*%%TS  SD  20230612  124847  JBLTD10     REL-V7R5M0  5770-WDS 
+0002.70      A                                      OVERLAY                 
+0003.10      A                                  7  8'Movie name:'           
+0003.20      A                                      COLOR(BLU)              
+0003.30      A                                      DSPATR(UL)              
+0003.50      A            MVNAME        30A  B  7 20COLOR(BLU)              
+0003.51      A                                      DSPATR(PR)              
+0003.60      A                                  9  8'Movie DATE:'  
+          0003.70      A                                      COLOR(BLU)              
+0003.80      A                                      DSPATR(UL)              
+0004.00      A            MVDATE        10A  B  9 20COLOR(BLU)              
+0004.01      A                                      DSPATR(PR)              
+0004.10      A          R MOVSFL                    SFL                     
+0004.20      A*%%TS  SD  20230614  145330  JBLTD10     REL-V7R5M0  5770-WDS 
+0004.30      A            MVNAME        30A  O  4 10                        
+0004.40      A            OP             1A  B  4  7                        
+0004.50      A            MVHOURS        1  0O  4 42                        
+0004.60      A          R MOVCTL                    SFLCTL(MOVSFL)          
+0004.70      A*%%TS  SD  20230614  150917  JBLTD10     REL-V7R5M0  5770-WDS 
+0004.80      A                                      SFLSIZ(0099)            
+0004.90      A                                      SFLPAG(0007)            
+0005.00      A                                      WINDOW(7 7 14 50)       
+0005.10      A                                      OVERLAY                 
+0005.20      A                                      CA12(12 'BACK')       
+          0005.30      A  31                                  SFLDSP                      
+0005.40      A  32                                  SFLDSPCTL                   
+0005.50      A  34                                  SFLCLR                      
+0005.60      A  33                                  SFLEND                      
+0005.70      A            POS            4S 0H      SFLRCDNBR                   
+0005.80      A                                  1  4'*** ENTER Y TO CHOOSE ***' 
+0005.90      A                                      DSPATR(UL)                  
+0006.00      A                                  3  6'OP'                        
+0006.10      A                                      DSPATR(UL)                  
+0006.20      A                                  3 10'Movie name'                
+0006.30      A                                      DSPATR(UL)                  
+0006.40      A                                  3 40'HOURS'                     
+0006.50      A                                      DSPATR(UL)                  
+0006.60      A                                  1 43'F12-BACK'                  
+0006.70      A          R DATESFL                   SFL                         
+0006.80      A*%%TS  SD  20230620  141315  JBLTD10     REL-V7R5M0  5770-WDS     
+          0006.90      A            OP             1A  B  5  3                       
+0007.00      A            DATE          10A  O  5  7                       
+0007.10      A          R DATECTL                   SFLCTL(DATESFL)        
+0007.20      A*%%TS  SD  20230620  141315  JBLTD10     REL-V7R5M0  5770-WDS
+0007.30      A                                      SFLSIZ(0099)           
+0007.40      A                                      SFLPAG(0007)           
+0007.50      A                                      WINDOW(3 7 16 23)      
+0007.60      A                                      CA12(12 'BACK')        
+0007.70      A                                      OVERLAY                
+0007.80      A  31                                  SFLDSP                 
+0007.90      A  32                                  SFLDSPCTL              
+0008.00      A  34                                  SFLCLR                 
+0008.10      A            POS            4S 0H      SFLRCDNBR              
+0008.20      A                                  4  3'OP'                   
+0008.30      A                                      DSPATR(UL)             
+0008.40      A                                  4  7'DATE'       
+0008.50      A                                      DSPATR(UL)                  
+0008.60      A                                  2  4'ENTER Y TO CHOOSE'         
+0008.70      A                                      DSPATR(UL)                  
+        ****************** End of data **************************************** 
