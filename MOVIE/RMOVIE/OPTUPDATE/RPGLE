@@ -5,12 +5,12 @@
 0003.00 F                                     SFILE(SFLR:RRN)                
 0004.00 C*                                                                   
 0004.02 C     *IN03         DOWEQ     *OFF                                   
-0004.03 C                   SETON                                        50  
+0004.03 C                   SETON                                        35  
 0004.04 C                   WRITE     TOP                                    
 0004.11 C                   WRITE     BOT                                    
 0004.12 C                   EXSR      FILLSFL                                
 0004.13 C                   EXFMT     SFLCTL                                 
-0004.14 C                   SETOFF                                       50  
+0004.14 C                   SETOFF                                       35  
 0004.17 C*                                                                   
 0004.18 C     *IN06         IFEQ      *ON                                    
 0004.19 C                   EXSR      ADD      
@@ -68,7 +68,7 @@
 0006.16 C                   UPDATE    RMVNUM                                  
 0006.17 C                   WRITE     RMOVIE                                  
 0006.18 C                   ELSE                                              
-0006.19 C                   SETON                                        44   
+0006.19 C                   SETON                                        24   
 0006.20 C                   SETOFF                                       04   
 0006.21 C                   ENDIF                                             
 0006.22 C                   ENDDO                                             
@@ -82,9 +82,9 @@
 0007.06 C                   WRITE     BOT                                       
 0007.07 C                   EXFMT     DLTSCRN                                   
 0007.08 C   04              DO                                                  
-0007.09 C     MVID          SETLL     RSHOW                                  45 
-0007.10 C  N45MVID          CHAIN     RMOVIE                             4545   
-0007.11 C  N45              DELETE    RMOVIE                                    
+0007.09 C     MVID          SETLL     RSHOW                                  25 
+0007.10 C  N25MVID          CHAIN     RMOVIE                             2525   
+0007.11 C  N25              DELETE    RMOVIE                                    
 0007.12 C                   ENDDO                                               
 0007.13 C                   ENDSR                                               
 0008.00 C*                                                                      
