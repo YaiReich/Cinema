@@ -16,13 +16,13 @@
 0001.50      A                                      COLOR(BLU)                 
 0001.60      A                                 21  5'F3 - EXIT'                
 0001.70      A                                      COLOR(BLU)      
-0001.80      A  50                             21 18'F6-ADD'        
+0001.80      A  35                             21 18'F6-ADD'        
 0001.90      A                                      COLOR(BLU)      
-0002.00      A N50                             21 18'F4-COMMIT'     
+0002.00      A N35                             21 18'F4-COMMIT'     
 0002.10      A                                      COLOR(BLU)      
-0002.20      A N50                             21 29'F12-CANCEL'    
+0002.20      A N35                             21 29'F12-CANCEL'    
 0002.30      A                                      COLOR(BLU)      
-0002.40      A  50                             23  6'4-DELETE'      
+0002.40      A  35                             23  6'4-DELETE'      
 0002.50      A                                      COLOR(BLU)      
 0002.60      A***************************************************** 
 0002.70      A          R SFLR                      SFL                         
@@ -74,7 +74,7 @@
 0007.22      A            MVHOURS   R        B  7 12REFFLD(RMOVIE/MVHOURS +    
 0007.23      A                                             SUBD10/MOVIEPF)     
 0007.24      A                                      COLOR(BLU)                 
-0007.81      A  44                                  ERRMSG('ERROR VALID' 44)   
+0007.81      A  24                                  ERRMSG('ERROR VALID' 24)   
 0007.90      A**************************************************************** 
 0008.00      A          R DLTSCRN                                              
 0008.10      A*%%TS  SD  20230615  105907  JBLTD10     REL-V7R5M0  5770-WDS    
@@ -96,6 +96,6 @@
 0009.70      A                                  5  4'ID:'                       
 0009.80      A                                      COLOR(BLU)                  
 0009.90      A            MVID      R        O  5 11REFFLD(RMOVIE/MVID SUBD10/MOVIEPF) 
-0010.00      A  45                                  ERRMSG('MOVIE HAS SHOW' 45) 
+0010.00      A  25                                  ERRMSG('MOVIE HAS SHOW' 25) 
 0010.10      A                                      COLOR(BLU)                  
         ****************** End of data **************************************** 
