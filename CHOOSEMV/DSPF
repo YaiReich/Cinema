@@ -15,7 +15,7 @@
 0001.50      A                                      OVERLAY                    
 0001.60      A                                 21  9'--------------------------
 0001.70      A                                      --------------------'    
-          0001.80      A                                      COLOR(WHT)              
+0001.80      A                                      COLOR(WHT)              
 0001.90      A                                 22 10'F3-EXIT'               
 0002.00      A                                      COLOR(BLU)              
 0002.10      A                                 22 19'F4-CHOOSE MOVIE'       
@@ -31,7 +31,7 @@
 0003.50      A            MVNAME        30A  B  7 20COLOR(BLU)              
 0003.51      A                                      DSPATR(PR)              
 0003.60      A                                  9  8'Movie DATE:'  
-          0003.70      A                                      COLOR(BLU)              
+0003.70      A                                      COLOR(BLU)              
 0003.80      A                                      DSPATR(UL)              
 0004.00      A            MVDATE        10A  B  9 20COLOR(BLU)              
 0004.01      A                                      DSPATR(PR)              
@@ -47,7 +47,7 @@
 0005.00      A                                      WINDOW(7 7 14 50)       
 0005.10      A                                      OVERLAY                 
 0005.20      A                                      CA12(12 'BACK')       
-          0005.30      A  31                                  SFLDSP                      
+0005.30      A  31                                  SFLDSP                      
 0005.40      A  32                                  SFLDSPCTL                   
 0005.50      A  34                                  SFLCLR                      
 0005.60      A  33                                  SFLEND                      
@@ -63,7 +63,7 @@
 0006.60      A                                  1 43'F12-BACK'                  
 0006.70      A          R DATESFL                   SFL                         
 0006.80      A*%%TS  SD  20230620  141315  JBLTD10     REL-V7R5M0  5770-WDS     
-          0006.90      A            OP             1A  B  5  3                       
+0006.90      A            OP             1A  B  5  3                       
 0007.00      A            DATE          10A  O  5  7                       
 0007.10      A          R DATECTL                   SFLCTL(DATESFL)        
 0007.20      A*%%TS  SD  20230620  141315  JBLTD10     REL-V7R5M0  5770-WDS
