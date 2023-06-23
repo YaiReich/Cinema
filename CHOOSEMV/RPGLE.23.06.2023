@@ -56,7 +56,7 @@
 0038.17      *in33=*on;                 
 0038.18      pos=1;                     
 0038.19      exfmt movctl;              
-0038.20      clear *all rmovie;        
+0038.20      clear *all rmovie;       // MVID=*BLANKS; MVNAME=0; MVHOURS=0 // 
 0038.22      if not(*in12);             
 0038.23         readc movsfl;           
 0038.24                                 
