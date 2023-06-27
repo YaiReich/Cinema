@@ -1,0 +1,163 @@
+        *************** Beginning of data *********************************
+0000.05  /free                                                             
+0000.06   dcl-f choosemv  workstn sfile(movsfl:mrrn)  sfile(datesfl:drrn)  
+0000.07                                                sfile(showsfl:srrn);
+0000.08   dcl-f moviepf   disk keyed usage(*input);                        
+0000.09   dcl-f hallpf    disk keyed usage(*input);                        
+0000.10   dcl-f showlf02       keyed;                                      
+0002.00   dcl-s mrrn int(3);                                               
+0002.01   dcl-s drrn int(3);                                               
+0002.02   dcl-s srrn int(3);                                               
+0016.00   dcl-s curdat int(10);                                            
+0016.01                                                                    
+0016.02   dcl-ds date1;                                                    
+0016.03          y1 char(4);                                               
+0016.04          m1 char(2);                                               
+0016.05          d1 char(2);                                               
+0016.06   end-ds;       
+0016.07   dcl-ds date2;                     
+0016.08          d2 char(2);                
+0016.09          s1 char(1) inz('/');       
+0016.10          m2 char(2);                
+0016.11          s2 char(1) inz('/');       
+0016.12          y2 char(4);                
+0016.13   end-ds;                           
+0016.14                                     
+0016.15   curdat = %dec(%date());           
+0016.17   dow not(*in03);                   
+0016.18     write top;                      
+0016.19     write bot;                      
+0016.20     if shdate<>0 and selmv<>*blanks;
+0016.21       write main;                   
+0016.22       exsr showshows;               
+0016.23     else;                           
+0016.24       exfmt main;         
+0016.25     endif;                
+0016.26     if *in04;               
+0016.27     exsr optmovie;      
+0016.29     endif;  
+0016.24     if *in05;                
+0016.25       exsr optdate;  
+0016.33     endif;                
+0021.00   enddo;                  
+0022.00   *inlr=*on;              
+0023.00                           
+0038.00   begsr optmovie;         
+0038.01    if not(selmv =*blanks);
+0038.03      mvdate=*blanks;      
+0038.05    endif;                 
+0038.06    *in34=*on;             
+0038.07    *in32=*on;              
+0038.08    write movctl;           
+0038.09    *in34=*off;             
+0038.10    mrrn=0;                 
+0038.11    setll *loval rmovie;    
+0038.12    read rmovie;            
+0038.13    dow not(%eof(moviepf)); 
+0038.14      op=*blanks;           
+0038.15      mrrn+=1;              
+0038.16      write movsfl;         
+0038.17      read rmovie;          
+0038.18    enddo;                  
+0038.19                            
+0038.20    if mrrn > 0;            
+0038.21      *in31=*on;            
+0038.22      *in33=*on;            
+0038.23      pos=1;                    
+0038.24      exfmt movctl;             
+0038.25      clear *all rmovie;        
+0038.26      if not(*in12);            
+0038.29        readc movsfl;           
+0038.30                                
+0038.31        dow not(%eof(choosemv));
+0038.33           if op='Y';           
+0038.34             selmv = mvname;    
+0038.35             leave;             
+0038.36           endif;               
+0038.37           op = ' ';            
+0038.38           update movsfl;       
+0038.39           selmv=*blanks;       
+0038.40           readc movsfl;        
+0038.44        enddo;                  
+0038.45      endif;                     
+0038.48    endif;                       
+0038.49   endsr;                        
+0038.50                                 
+0039.00   begsr optdate;                
+0040.00    *in34=*on;                   
+0041.00    *in32=*on;                   
+0042.00    write datectl;               
+0043.00    *in34=*off;                  
+0044.00    drrn=0;                      
+0045.00    setll (mvid:curdat) showlf02;
+0046.00    reade mvid showlf02;         
+0047.00    dow not(%eof(showlf02));     
+0048.00      op=*blanks;                
+0049.00      drrn+=1;                   
+0049.01      exsr datemove;             
+0050.00      write datesfl;         
+0051.00      reade mvid showlf02;   
+0052.00    enddo;                   
+0053.00                             
+0054.00    if drrn > 0;             
+0055.00      *in31=*on;             
+0056.00      *in33=*on;             
+0057.00      pos=1;                 
+0058.00      exfmt datectl;         
+0058.01      clear *all rshow;      
+0060.00      if *in12;              
+0060.01         clear *all rmovie;  
+0060.02      else;                  
+0061.00         readc datesfl;      
+0061.01                             
+0063.00         dow not(%eof(choosemv));  
+0063.01          if op='Y';               
+0063.02             mvdate=date;          
+0063.03             leave;                
+0063.04          endif;                   
+0064.00             op = ' ';             
+0065.00             update datesfl;       
+0065.01             mvdate=*blanKs;       
+0067.00             readc datesfl;        
+0068.00         enddo;                    
+0069.00      endif;                       
+0070.00    endif;                         
+0071.00   endsr;                          
+0072.00                                   
+0073.00   begsr datemove;                 
+0074.00     date1 = %editc(shdate:'X');  
+0075.00     y2=y1;                       
+0076.00     m2=m1;                       
+0077.00     d2=d1;                       
+0078.00     date = date2;                
+0079.00   endsr;                         
+0079.01                                  
+0079.02   begsr showshows;               
+0079.03    *in34=*on;                    
+0079.04    *in32=*on;                    
+0079.05    write showctl;                
+0079.06    *in34=*off;                   
+0079.07    srrn=0;                       
+0079.08    setll (mvid:shdate) showlf02; 
+0079.09    reade (mvid:shdate) showlf02; 
+0079.10                                  
+0079.11    dow not(%eof(showlf02));      
+0079.12      chain shhlid rhall;         
+0079.13      IF %FOUND;                  
+0079.14        op=*blanks;               
+0079.15        srrn+=1;                  
+0079.16        write showsfl;            
+0079.17      endif;                      
+0079.18    reade (mvid:shdate) showlf02; 
+0079.20    enddo;                        
+0079.21                                  
+0079.22    if srrn > 0;                  
+0079.23      *in31=*on;                  
+0079.24      *in33=*on;                  
+0079.25      pos=1;                      
+0079.26      exfmt showctl;              
+0079.27    endif;                        
+0079.42   endsr;                         
+0080.00                                                                     
+0081.00  /end-free                                                          
+        ****************** End of data *************************************
