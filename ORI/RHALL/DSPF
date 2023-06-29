@@ -1,0 +1,80 @@
+0000.10      A*%%TS  SD  20230616  124511  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A                                      CF06(06 'ADD')              
+0000.60      A          R TOP                                                   
+0000.70      A*%%TS  SD  20230612  172513  JBLTD11     REL-V7R5M0  5770-WDS     
+0000.80      A                                  1 29'HALLS MANAGEMENT'          
+0000.90      A                                      DSPATR(UL)                  
+0001.00      A          R BOT                                                   
+0001.10      A                                      OVERLAY                     
+0001.20      A                                 20  2'-------------------------- 
+0001.30      A                                      --------------------------- 
+0001.40      A                                      --------'                   
+0001.50      A                                 21  3'F3-EXIT'                   
+0001.60      A  50                             21 15'F6-NEW'  
+0001.70      A  50                             23  3'4-DELETE'                
+0001.80      A N50                             21 15'F4-COMMIT'               
+0001.90      A N50                             21 30'F12-CANCEL'              
+0002.00      A          R SFLR                      SFL                       
+0002.10      A*%%TS  SD  20230616  124511  JBLTD10     REL-V7R5M0  5770-WDS   
+0002.20      A            OP             1A  B  7  2                          
+0002.30      A            HLID      R        O  7  6REFFLD(RHALL/HLID SUBD10/HALLPF)
+0002.40      A            HLNAME    R        O  7 19REFFLD(RHALL/HLNAME SUBD10/HALLPF)
+0002.50      A            HLLINES   R        O  7 37REFFLD(RHALL/HLLINES SUBD10/HALLPF)
+0002.60      A            HLCHAIRS  R        O  7 44REFFLD(RHALL/HLCHAIRS SUBD10/HALLPF)
+0002.70      A          R SFLCTL                    SFLCTL(SFLR)              
+0002.80      A*%%TS  SD  20230616  124511  JBLTD10     REL-V7R5M0  5770-WDS   
+0002.90      A                                      SFLSIZ(0099)              
+0003.00      A                                      SFLPAG(0006)              
+0003.10      A                                      PAGEDOWN(72)              
+0003.20      A                                      OVERLAY              
+0003.30      A  31                                  SFLDSP         
+0003.40      A  32                                  SFLDSPCTL      
+0003.50      A  34                                  SFLCLR         
+0003.60      A  33                                  SFLEND         
+0003.70      A            POS            4S 0H      SFLRCDNBR      
+0003.80      A                                  6  2'OP'           
+0003.90      A                                      DSPATR(UL)     
+0004.00      A                                  6  6'ID'           
+0004.10      A                                      DSPATR(UL)     
+0004.20      A                                  6 19'NAME'         
+0004.30      A                                      DSPATR(UL)     
+0004.40      A                                  6 37'LINES'        
+0004.50      A                                      DSPATR(UL)     
+0004.60      A                                  6 44'CHAIRS'       
+0004.70      A                                      DSPATR(UL)     
+0004.80      A          R ADDSCRN                                
+0004.90      A                                      CF04(04 'COMMIT')           
+0005.00      A                                      CA12(12 'BACK')             
+0005.10      A                                      OVERLAY                     
+0005.20      A                                  4  5'ADD HALL:'                 
+0005.30      A                                      DSPATR(UL)                  
+0005.40      A                                  6  5'NAME:'                     
+0005.50      A            HLNAME    R        B  6 13REFFLD(RHALL/HLNAME SUBD10/HALLPF) 
+0005.51      A  45                                   ERRMSG('NO NAME WAS GIVEN' 45)
+0005.60      A                                  8  5'LINES:'                    
+0005.70      A            HLLINES   R        B  8 13REFFLD(RHALL/HLLINES SUBD10/HALLPF) 
+0005.80      A                                      RANGE(1 30)                 
+0005.90      A                                 10  5'CHAIRS:'                   
+0006.00      A            HLCHAIRS  R        B 10 13REFFLD(RHALL/HLCHAIRS SUBD10/HALLPF) 
+0006.20      A                                      RANGE(1 60)                 
+0006.30      A          R DLTSCRN                               
+0006.40      A*%%TS  SD  20230615  122017  JBLTD10     REL-V7R5M0  5770-WDS     
+0006.50      A                                      CF04(04 'COMMIT')           
+0006.60      A                                      CA12(12 'BACK')             
+0006.70      A                                      OVERLAY                     
+0006.80      A                                  4  5'DELETE MOVIE:'             
+0006.90      A                                      DSPATR(UL)                  
+0007.00      A                                  6  5'ID:'                       
+0007.10      A            HLID      R        O  6 13REFFLD(RHALL/HLID SUBD10/HALLPF)  
+0007.20      A  44                                  ERRMSG('THERE ARE SHOWS FOR THIS HALL 
+0007.30      A                                      LL' 44)                        
+0007.40      A                                  8  5'NAME:'                     
+0007.50      A            HLNAME    R        O  8 13REFFLD(RHALL/HLNAME SUBD10/HALLPF)  
+0007.60      A                                 10  5'LINES:'                    
+0007.70      A            HLLINES   R        O 10 13REFFLD(RHALL/HLLINES SUBD10/HALLPF)  
+0007.80      A                                 12  5'CHAIRS:'                   
+0007.90      A            HLCHAIRS  R        O 12 13REFFLD(RHALL/HLCHAIRS SUBD10/HALLPF) 
+        ****************** End of data **************************************** 
