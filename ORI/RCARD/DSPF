@@ -1,0 +1,184 @@
+0000.30      A                                      DSPSIZ(24 80 *DS3)         
+0000.40      A                                      CA03(03 'EXIT')            
+0000.50      A          R TOP                                                  
+0000.60      A                                  1 29'CARDS MANAGEMENT'         
+0000.70      A                                      DSPATR(UL)                 
+0000.80      A  51                              2 29'SUB:'                     
+0000.90      A  51        SUBNAME   R        O  2 35REFFLD(RSUB/SUBNAME PROJECT
+0001.00      A                                      F)                         
+0001.10      A          R BOT                                                  
+0001.20      A                                      OVERLAY                    
+0001.30      A                                 20  2'--------------------------
+0001.40      A                                      ---------------------------
+0001.50      A                                      --------'                  
+0001.60      A  50                             21  3'4-CHANGE STATUS'     
+0001.70      A                                 23  3'F3-EXIT'                   
+0001.80      A  50 51                          23 15'F6-NEW'                    
+0001.90      A  50 51 52                       23 24'F12-BACK TO ALL'           
+0002.00      A  50N51                          23 15'F7-SHOW BY SUB PHONE'      
+0002.10      A  50N51                          23 37'F8-LESS'                   
+0002.20      A N50                             23 13'F4-COMMIT'                 
+0002.30      A N50                             23 24'F12-BACK'                  
+0002.40      A          R ALLSFLR                   SFL                         
+0002.50      A*%%TS  SD  20230607  132015  JBLTD11     REL-V7R5M0  5770-WDS     
+0002.60      A            OP             1A  B  5  2                            
+0002.70      A            SUBNAME   R        O  5  6REFFLD(RSUB/SUBNAME PROJECTD11/SUBP- 
+0002.80      A                                      F)                          
+0002.90      A            CRDSTS    R        O  5 27REFFLD(RCARD/CRDSTS PROJECTD11/SUB- 
+0003.00      A                                      PF)                         
+0003.10      A            CRDID     R        O  5 35REFFLD(RCARD/CRDID PROJECTD11/SUBP- 
+0003.20      A                                      F)           
+0003.30      A            BALANCE        2S 0O  5 47                           
+0003.40      A                                  5 50'('                        
+0003.50      A            CRDQTY    R        O  5 52REFFLD(RCARD/CRDQTY PROJECTD11/CARD-
+0003.60      A                                      PF)                        
+0003.70      A                                  5 55'-'                        
+0003.80      A            CRDUSED   R        O  5 57REFFLD(RCARD/CRDUSED PROJECTD11/CAR-
+0003.90      A                                      DPF)                       
+0004.00      A                                  5 60')'                        
+0004.10      A                                  6  6'SUB ID:'                  
+0004.20      A            SUBID     R        O  6 14REFFLD(RSUB/SUBID PROJECTD11/SUBPF)
+0004.30      A                                  6 27'PRICE:'                   
+0004.40      A            CRDSUM    R        O  6 35REFFLD(RCARD/CRDSUM PROJECTD11/CARD-
+0004.50      A                                      PF)                        
+0004.60      A                                  6 47'DATE:'                    
+0004.70      A            DATE          10A     6 54                           
+0004.80      A          R ALLSFLCTL                 SFLCTL(ALLSFLR)    
+0004.90      A*%%TS  SD  20230629  103706  JBLTD11     REL-V7R5M0  5770-WDS    
+0005.00      A                                      SFLSIZ(0099)               
+0005.10      A                                      SFLPAG(0006)               
+0005.20      A                                      CF07(07 'SEARCH BY PHONE') 
+0005.30      A                                      PAGEDOWN(72)               
+0005.40      A                                      OVERLAY                    
+0005.50      A  31                                  SFLDSP                     
+0005.60      A  32                                  SFLDSPCTL                  
+0005.70      A  34                                  SFLCLR                     
+0005.80      A  33                                  SFLEND                     
+0005.90      A  08                                  SFLDROP(CF08)              
+0006.00      A            POS            4S 0H      SFLRCDNBR                  
+0006.10      A                                  4  2'OP'                       
+0006.20      A                                      DSPATR(UL)                 
+0006.30      A                                  4  6'SUB NAME'                 
+0006.40      A                                      DSPATR(UL)     
+0006.50      A                                  3 27'CARD'                      
+0006.60      A                                  4 27'STATUS'                    
+0006.70      A                                      DSPATR(UL)                  
+0006.80      A                                  4 35'CARD ID'                   
+0006.90      A                                      DSPATR(UL)                  
+0007.00      A                                  4 47'BALANCE'                   
+0007.10      A                                      DSPATR(UL)                  
+0007.50      A          R ONESFLR                   SFL                         
+0007.60      A*%%TS  SD  20230608  135951  JBLTD11     REL-V7R5M0  5770-WDS     
+0007.70      A            OP             1A  B  6  2                            
+0007.80      A            CRDSTS    R        O  6  6REFFLD(RCARD/CRDSTS PROJECTD11/CARD 
+0007.90      A                                      PF)                         
+0008.00      A            CRDID     R        O  6 13REFFLD(RCARD/CRDID PROJECTD11/CARDP- 
+0008.10      A                                      F)                          
+0008.20      A            BALANCE        2S 0O  6 25                            
+0008.30      A            CRDQTY    R        O  6 30REFFLD(RCARD/CRDQTY PROJECTD11/CARD- 
+0008.40      A                                      PF)                        
+0008.50      A                                  6 33'-'                        
+0008.60      A            CRDUSED   R        O  6 35REFFLD(RCARD/CRDUSED PROJECTD11/CAR-
+0008.70      A                                      DPF)                       
+0008.80      A                                  6 38')'                        
+0008.90      A            CRDSUM    R        O  6 41REFFLD(RCARD/CRDSUM PROJECTD11/CARD-
+0009.00      A                                      PF)                        
+0009.10      A            DATE          10A  O  6 50                           
+0009.20      A                                  6 28'('                        
+0009.30      A          R ONESFLCTL                 SFLCTL(ONESFLR)            
+0009.40      A*%%TS  SD  20230608  135951  JBLTD11     REL-V7R5M0  5770-WDS    
+0009.50      A                                      CF06(06 'ADD')             
+0009.60      A                                      CA12(12 'BACK TO ALL')     
+0009.70      A                                      SFLSIZ(0099)               
+0009.80      A                                      SFLPAG(0006)               
+0009.90      A                                      PAGEDOWN(72)        
+0010.00      A                                      OVERLAY            
+0010.10      A  31                                  SFLDSP             
+0010.20      A  32                                  SFLDSPCTL          
+0010.30      A  34                                  SFLCLR             
+0010.40      A  33                                  SFLEND             
+0010.50      A            POS            4S 0H      SFLRCDNBR          
+0010.60      A                                  5  2'OP'               
+0010.70      A                                      DSPATR(UL)         
+0010.80      A                                  4  6'CARD'             
+0010.90      A                                  5 13'CARD ID'          
+0011.00      A                                      DSPATR(UL)         
+0011.10      A                                  5 25'BALANCE'          
+0011.20      A                                      DSPATR(UL)         
+0011.30      A                                  5  6'STATUS'           
+0011.40      A                                      DSPATR(UL)         
+0011.50      A                                  5 41'PRICE'         
+0011.60      A                                      DSPATR(UL)                 
+0011.70      A                                  5 50'DATE'                     
+0011.80      A                                      DSPATR(UL)                 
+0012.30      A          R CHGSTATUS                                            
+0012.40      A*%%TS  SD  20230608  082632  JBLTD11     REL-V7R5M0  5770-WDS    
+0012.50      A                                      CF04(04 'COMMIT')          
+0012.60      A                                      CA12(12 'BACK')            
+0012.70      A                                      OVERLAY                    
+0012.80      A                                  3  4'CHANGE STATUS'            
+0012.90      A                                      DSPATR(UL)                 
+0013.00      A                                  5  4'ID:'                      
+0013.10      A            CRDID     R        O  5 15REFFLD(RCARD/CRDID PROJECTD11/CARDP-
+0013.20      A                                      F)                         
+0013.30      A  44                                  ERRMSG('CARD NOT FOUND' 44)
+0013.40      A                                  7  4'STATUS:'                  
+0013.50      A            CRDSTS    R        O  7 15REFFLD(RCARD/CRDSTS PROJECTD11/CARD-
+0013.60      A                                      PF)                         
+0013.70      A                                  9  4'SUB NAME:'                 
+0013.80      A            SUBNAME   R        O  9 15REFFLD(RSUB/SUBNAME PROJECTD11/SUBP- 
+0013.90      A                                      F)                          
+0014.00      A                                 11  4'BALANCE:'                  
+0014.10      A            BALANCE        2S 0O 11 15                            
+0014.20      A                                 11 18'('                         
+0014.30      A            CRDQTY    R        O 11 20REFFLD(RCARD/CRDQTY PROJECTD11/CARD- 
+0014.40      A                                      PF)                         
+0014.50      A                                 11 23'-'                         
+0014.60      A            CRDUSED   R        O 11 25REFFLD(RCARD/CRDUSED PROJECTD11/CAR- 
+0014.70      A                                      DPF)                        
+0014.80      A                                 11 28')'                         
+0014.90      A                                 13  4'PRICE:'                    
+0015.00      A            CRDSUM    R        O 13 15REFFLD(RCARD/CRDSUM PROJECTD11/CARD- 
+0015.10      A                                      PF)                         
+0015.20      A          R ADDSCRN                                               
+0015.30      A*%%TS  SD  20230608  132629  JBLTD11     REL-V7R5M0  5770-WDS     
+0015.40      A                                      CF04(04 'COMMIT')           
+0015.50      A                                      CA12(12 'BACK')             
+0015.60      A                                      OVERLAY                     
+0015.70      A                                  3  4'ADD CARD:'                 
+0015.80      A                                      DSPATR(UL)                  
+0015.90      A                                  5  4'SUB NAME:'                 
+0016.00      A            SUBID     R        O  5 15REFFLD(RSUB/SUBID PROJECTD11/SUBPF) 
+0016.10      A  44                                  ERRMSG('SUBSCRIBER NOT FOUND' 44) 
+0016.20      A                                  7  4'SUB NAME:'                 
+0016.30      A            SUBNAME   R        O  7 15REFFLD(RSUB/SUBNAME PROJECTD11/SUBP-
+0016.40      A                                      F)                          
+0016.50      A                                  9  4'QUANTITY:'                 
+0016.60      A            CRDQTY    R        B  9 15REFFLD(RCARD/CRDQTY PROJECTD11/CARD-
+0016.70      A                                      PF)    
+0016.80      A  45                                  ERRMSG('QTY MUST BE ABOVE 0' 45) 
+0016.90      A          R STATUSMSG                                             
+0017.00      A*%%TS  SD  20230608  083500  JBLTD11     REL-V7R5M0  5770-WDS     
+0017.10      A                                      WINDOW(7 7 5 50)            
+0017.20      A                                      OVERLAY                     
+0017.30      A                                  3  2'NOTE:'                     
+0017.40      A            BALANCE        2S 0O  3  9                            
+0017.50      A  66                              3 12'TICKETS WILL BE REFUNDED.  PRICE:'
+0017.60      A  66        CRDSUM    R        O  3 46REFFLD(RCARD/CRDSUM PROJECTD11/CARD-
+0017.70      A                                      PF)                         
+0017.80      A N66                              3 12'TICKETS WILL BE ABLE TO BE USED'
+0017.90      A          R TELSEARCH                                             
+0018.00      A*%%TS  SD  20230612  083407  JBLTD11     REL-V7R5M0  5770-WDS     
+0018.10      A                                      WINDOW(7 7 7 50)            
+0018.20      A                                      CF04(04 'COMMIT')           
+0018.30      A                                      CA12(12 'BACK')  
+0018.40      A                                      OVERLAY                     
+0018.50      A                                  2 15'SEARCH SUB BY PHONE:'      
+0018.60      A                                      DSPATR(UL)                  
+0018.70      A            PREFIX         3S 0I  4 17                            
+0018.80      A                                  4 22'-'                         
+0018.90      A            TELEPHONE      7S 0I  4 25                            
+0019.00      A  44                                  ERRMSG('TELEPHONE DOESNT EXISTS' 44) 
+0019.10      A                                  6 15'F12-CANCEL'                
+0019.20      A                                  6 29'F4-COMMIT'                 
+        ****************** End of data **************************************** 
