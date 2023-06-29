@@ -1,0 +1,112 @@
+0001.00 FHALLPF    UF A E           K DISK                                  
+0001.01 FSHOWLF01  IF   E           K DISK                                  
+0001.02 FTBHLNUM   UF   E             DISK                                  
+0002.00 FDHALL     CF   E             WORKSTN                               
+0003.00 F                                     SFILE(SFLR:RRN)
+0005.02 C*    INDICATORS:                                       
+0005.03 C*    F3- EXIT                                          
+0005.04 C*    F4- COMMIT                                        
+0005.05 C*    F6- ADD                                           
+0005.06 C*    F12- CANCEL                                       
+0005.07 C*    31- DISPALY SFL                                   
+0005.08 C*    32- DISPALY SFLCTL                                
+0005.09 C*    33- DISPALY SFL END                               
+0005.10 C*    34- CLEAR SFL                                     
+0005.11 C*    44- ERROR: THERE ARE SHOWS FOR THIS HALL          
+0005.12 C*    45- ERROR: NO HALL NAME                           
+0005.13 C*    50- DISPLAY BOT WITH COMMANDS FOR THE MAIN PAGE   
+0004.00 C*                                       
+0004.01 C                   WRITE     TOP                                   
+0004.02 C     *IN03         DOWEQ     *OFF                                  
+0004.03 C                   SETON                                        50 
+0004.11 C                   WRITE     BOT                                   
+0004.12 C                   EXSR      FILLSFL                               
+0004.13 C                   EXFMT     SFLCTL                                
+0004.14 C                   SETOFF                                       50 
+0004.17 C*                                                                  
+0004.18 C     *IN06         IFEQ      *ON                                   
+0004.19 C                   EXSR      ADD                                   
+0004.20 C                   ELSE                                            
+0004.23 C                   EXSR      TIPUL                                 
+0004.25 C                   ENDIF                                           
+0004.27 C                   ENDDO                                           
+0004.36 C                   SETON                                        LR 
+0004.37 C*                       
+ THIS SR FILLS THE SFL WITH ALL THE HALLS IN THE PF 
+0004.38 C     FILLSFL       BEGSR                                               
+0004.39 C                   SETON                                        34     
+0004.40 C                   WRITE     SFLCTL                                    
+0004.41 C                   SETOFF                                       34     
+0004.42 C                   Z-ADD     0             RRN               4 0       
+0004.43 C     *LOVAL        SETLL     RHALL                              9999   
+0004.44 C                   READ      RHALL                                9999 
+0004.45 C     *IN99         DOWEQ     *OFF                                      
+0004.46 C                   MOVE      *BLANKS       OP                          
+0004.47 C                   ADD       1             RRN                         
+0004.48 C                   WRITE     SFLR                                      
+0004.49 C                   READ      RHALL                                9999 
+0004.50 C                   ENDDO                                             
+0004.51 C*                                                                      
+0004.52 C     RRN           IFGT      0                                         
+0004.53 C                   SETON                                        313233 
+0004.54 C                   Z-ADD     1             POS                         
+0004.55 C                   ELSE                                                
+0004.56 C                   SETOFF                                       313233 
+0004.57 C                   ENDIF                                               
+0004.58 C                   ENDSR                                               
+0005.00 C*               
+THIS SR ITERATES OVER THE SFL AND GO TO THE PAGE THAT WAS  
+SELECTED IN THE OP                                         
+0005.01 C     TIPUL         BEGSR                                               
+0005.02 C                   READC     SFLR                                 9999 
+0005.03 C     *IN99         DOWEQ     *OFF                                      
+0005.04 C     OP            IFEQ      '4'                                       
+0005.05 C                   EXSR      DELETE                                    
+0005.06 C                   ENDIF                                               
+0005.07 C                   READC     SFLR                                 9999 
+0005.08 C                   ENDDO                                               
+0005.13 C                   ENDSR                                               
+0005.14 C*                                
+0048.00 C*    THIS SR ADDS A HALL IF THE FIELDS ARE VALID     
+0049.00 C     ADD1          BEGSR                             
+0052.00 C                   WRITE     BOT                     
+0053.00 C                   MOVE      *BLANKS       HLNAME    
+0054.00 C                   Z-ADD     0             HLLINES   
+0055.00 C                   Z-ADD     0             HLCHAIRS  
+0056.00 C     *IN04         DOUEQ     *ON                     
+0057.00 C     *IN03         OREQ      *ON                     
+0058.00 C     *IN12         OREQ      *ON                     
+0058.01 C                   EXFMT     ADDSCRN                 
+0060.00 C   04              DO                                
+0061.00 C     HLNAME        IFNE      *BLANKS                 
+0062.02 C                   EXSR      UPDTBHLNUM              
+0068.00 C                   WRITE     RHALL                   
+0069.00 C                   ELSE  
+0070.00 C                   SETON                                        45 
+0071.00 C                   SETOFF                                       04 
+0072.00 C                   ENDIF                                           
+0073.00 C                   ENDDO                                           
+0074.00 C                   ENDDO                                           
+0076.00 C                   ENDSR                                           
+0076.01 C*                                                                  
+0076.02 C*    THIS SR INSERT THE CORRECT ID FOR THE HALL, AND INCREMENT THE 
+0076.03 C*    NUM OF HALLS BY 1                                             
+0076.04 C     UPDTBHLNUM    BEGSR                                           
+0076.05 C     *START        SETLL     TBHLNUM                               
+0076.06 C                   READ      TBHLNUM                               
+0076.07 C                   ADD       1             HLNUM                   
+0076.08 C                   Z-ADD     HLNUM         HLID                    
+0076.09 C                   UPDATE    RHLNUM                                
+0076.10 C                   ENDSR                          
+0077.00 C*                                                                      
+0077.01 C*    THIS SR DELETES A HALL IF THERE ARE NO SHOWS CONNECTED TO IT      
+0078.00 C     DELETE1       BEGSR                                               
+0081.00 C                   WRITE     BOT                                       
+0082.00 C                   EXFMT     DLTSCRN                                   
+0083.00 C   04              DO                                                  
+0084.00 C     HLID          SETLL     RSHOW                                  44 
+0085.00 C  N44HLID          CHAIN     RHALL                              4444   
+0086.00 C  N44              DELETE    RHALL                                     
+0087.00 C                   ENDDO                                               
+0089.00 C                   ENDSR                                               
+        ****************** End of data **************************************** 
