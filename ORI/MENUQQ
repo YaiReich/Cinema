@@ -1,0 +1,9 @@
+        *************** Beginning of data ************************************* 
+0000.01 MENUQQ,1                                                                
+0000.10 0001 CALL PGM(RSUB)                                                     
+0000.11 0002 CALL PGM(RCARD) PARM((0 (*INT 4 0)))                               
+0000.12 0003 CALL PGM(RMOVIE)                                                   
+0000.13 0004 CALL PGM(RHALL)                                                    
+0000.14 0005 CALL PGM(RSHOW)                                                    
+        ****************** End of data **************************************** 
+type = MNUCMD
