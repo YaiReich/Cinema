@@ -1,0 +1,19 @@
+        *************** Beginning of data *************************************
+0000.10      A*%%TS  SD  20230615  115240  JBLTD11     REL-V7R5M0  5770-WDS    
+0000.20      A*%%EC                                                            
+0000.30      A                                      DSPSIZ(24 80 *DS3)         
+0000.40      A                                      CA03(03 'EXIT')            
+0000.50      A          R MENU                                                 
+0000.60      A*%%TS  SD  20230615  115240  JBLTD11     REL-V7R5M0  5770-WDS    
+0000.70      A                                  1 33'CINEMA SYSTEM'            
+0000.80      A                                      DSPATR(UL)                 
+0000.90      A                                  4  3'CHOOSE ONE OF THE FOLLOWIN.'
+0001.00      A                                  6  3'1.SUBSCRIBERS'            
+0001.10      A                                  8  3'2.CARDS'                  
+0001.20      A            OP             1A  I 19 17                           
+0001.30      A                                 10  3'3.MOVIES'                 
+0001.40      A                                 12  3'4.HALLS'                  
+0001.50      A                                 14  3'5.SHOWS'                  
+0001.60      A                                 16  3'6.EXIT'    
+0001.70      A                                 19 10'ENTER:'                  
+        ****************** End of data ***************************************
