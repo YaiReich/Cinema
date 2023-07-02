@@ -6,3 +6,14 @@
 0005.00    dcl-f moviepf  disk keyed usage(*input);                            
 0006.00    dcl-f cardlf01 disk keyed usage(*update : *output);                 
 0007.00    dcl-f dshowtic workstn sfile(hlsfl:hrrn) sfile(cardsfl:crrn);       
+0008.00                                                                        
+0009.00    dcl-s hrrn packed(3);                                               
+0010.00    dcl-s crrn packed(3);                                               
+0011.00    dcl-s subidchar char(10);                                           
+0011.01    dcl-s shidchar  char(10);                                           
+0011.02    dcl-s countl packed(3);  //count lines                              
+0011.03    dcl-s countp packed(3);  //count selected chairs                    
+0012.00    dcl-s countcard packed(3); //count remainig in card                 
+0013.00    dcl-s countd packed(3);  //count used to delete in ds               
+0014.00    dcl-s countop packed(3);  //count to iterate op times               
+0015.00    dcl-s countr  packed(3);  //count reserved chairs                   
