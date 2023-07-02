@@ -1,0 +1,29 @@
+        *************** Beginning of data *************************************
+0000.10      A*%%TS  SD  20230702  125831  JBLTD10     REL-V7R5M0  5770-WDS    
+0000.20      A*%%EC                                                            
+0000.30      A                                      DSPSIZ(24 80 *DS3)         
+0000.40      A                                      CA03(03 'EXIT')            
+0000.50      A          R TOP                                                  
+0000.60      A*%%TS  SD  20230702  125434  JBLTD10     REL-V7R5M0  5770-WDS    
+0000.70      A                                  1 33'SELECT SEATS'             
+0000.80      A                                      DSPATR(UL)                 
+0000.90      A                                  3  4'SUB NAME:'                
+0001.00      A            SUBNAME   R        O  3 16REFFLD(RSUB/SUBNAME SUBD10/SUBPF)
+0001.10      A                                  5  4'MOVIE NAME:'              
+0001.20      A            MVNAME    R        O  5 16REFFLD(RMOVIE/MVNAME SUBD10/MOVIEPF)
+0001.30      A                                  3 48'HALL NAME:'               
+0001.40      A            HLNAME    R        O  3 60REFFLD(RHALL/HLNAME SUBD10/HALLPF)
+0001.50      A                                  5 48'TIME:'                    
+0001.60      A            DATE          10A  O  5 54                           
+0001.70      A            SHATRHR        2S 0O  5 67                           
+0001.80      A                                  5 70'-'                        
+0001.90      A            SHENDHR        2S 0O  5 72                           
+0002.00      A          R BOT                                                  
+0002.10      A*%%TS  SD  20230702  125831  JBLTD10     REL-V7R5M0  5770-WDS    
+0002.20      A                                      OVERLAY                    
+0002.30      A                                 21  2'-----------------------------------
+0002.40      A                                      ------------------------------------
+0002.50      A                                      ---------'                 
+0003.00      A                                 22  4'F3-EXIT'                  
+0004.00      A                                 22 14'F10-PAY'                  
+        ****************** End of data ****************************************
