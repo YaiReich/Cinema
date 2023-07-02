@@ -1,0 +1,8 @@
+        *************** Beginning of data *************************************
+0001.00    dcl-f ticpf    disk keyed usage(*update : *output);                 
+0002.00    dcl-f showlf03 disk keyed usage(*input);                            
+0003.00    dcl-f subpf    disk keyed usage(*input);                            
+0004.00    dcl-f hallpf   disk keyed usage(*input);                            
+0005.00    dcl-f moviepf  disk keyed usage(*input);                            
+0006.00    dcl-f cardlf01 disk keyed usage(*update : *output);                 
+0007.00    dcl-f dshowtic workstn sfile(hlsfl:hrrn) sfile(cardsfl:crrn);       
