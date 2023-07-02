@@ -17,3 +17,16 @@
 0013.00    dcl-s countd packed(3);  //count used to delete in ds               
 0014.00    dcl-s countop packed(3);  //count to iterate op times               
 0015.00    dcl-s countr  packed(3);  //count reserved chairs                   
+0016.00                                    
+0017.00    dcl-ds date1;                   
+0018.00      y1 char(4);                   
+0018.01      m1 char(2);                   
+0018.02      d1 char(2);                   
+0019.00    end-ds;                         
+0020.00    dcl-ds date2;                   
+0021.00      d2 char(2);                   
+0021.01      s1 char(1) inz('/');          
+0022.00      m2 char(2);                   
+0022.01      s2 char(1) inz('/');          
+0023.00      y2 char(4);                   
+0024.00    end-ds;                         
