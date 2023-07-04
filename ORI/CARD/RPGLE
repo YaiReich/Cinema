@@ -6,9 +6,9 @@
 0005.00   DCL-F TBCRDNUM DISK USAGE(*UPDATE: *OUTPUT);                         
 0006.00   DCL-F DCARD    WORKSTN SFILE(ALLSFLR:ARRN) SFILE(ONESFLR:ORRN);      
 0006.01                                                                        
-0007.00   DCL-S ARRN INT(3);                                                   
-0008.00   DCL-S ORRN INT(3);                                                   
-0009.00   DCL-S COUNT INT(3);                                                  
+0007.00   DCL-S ARRN PACKED(3);                                                   
+0008.00   DCL-S ORRN PACKED(3);                                                   
+0009.00   DCL-S COUNT PACKED(3);                                                  
 0010.00   DCL-S TEL CHAR(11);                                                  
 0010.01                                                                        
 0011.00   DCL-DS DATE1;                                                        
@@ -71,12 +71,15 @@
 0053.00      IF *IN06;                 
 0054.00         EXSR ADD1;             
 0055.00         *IN61=*ON;             
-0056.00      ELSE;                     
-0057.00         IF *IN07;              
-0058.00            EXSR TELSEARCH1;    
-0059.00         ELSE;                  
-0060.00            EXSR TIPUL;         
-0061.00         ENDIF;                 
+0056.00      ELSEIF *IN07;              
+0058.00         EXSR TELSEARCH1;   
+0058.01         *IN07=*OFF;             
+0059.00      ELSEIF *IN12 AND *IN52;  
+0059.01         *IN51=*OFF;
+0059.02         *IN52=*OFF;
+0059.03         *IN12=*OFF;
+0059.04      ELSE;
+0060.00            EXSR TIPUL;                  
 0062.00      ENDIF;                    
 0063.00   ENDDO;                       
 0064.00   *INLR=*ON;                
@@ -86,8 +89,8 @@
 0064.04   BEGSR CHECKPARAM;                                   
 0064.05      IF NOT(ID=0); //IT MEANS THERE IS A SUBID        
 0064.06         *IN51=*ON;                                    
-0064.07         CRDSUBID=ID;                                  
-0064.08         CHAIN CRDSUBID RSUB;                          
+0064.07         SUBID=ID;                                  
+0064.08         CHAIN SUBID RSUB;                          
 0064.09      ENDIF;                                           
 0064.10   ENDSR;                                              
 0064.11                                                       
