@@ -65,14 +65,14 @@
 0007.60      A          R ONESFLR                   SFL                         
 0007.70      A*%%TS  SD  20230608  135951  JBLTD11     REL-V7R5M0  5770-WDS     
 0007.80      A            OP             1A  B  6  2                            
-0007.90      A            CRDSTS    R        O  6  6REFFLD(RCARD/CRDSTS SUBD10/ 
-0008.10      A            CRDID     R        O  6 13REFFLD(RCARD/CRDID SUBD10/C 
+0007.90      A            CRDSTS    R        O  6  6REFFLD(RCARD/CRDSTS SUBD10/CARDPF) 
+0008.10      A            CRDID     R        O  6 13REFFLD(RCARD/CRDID SUBD10/CARDPF) 
 0008.30      A            BALANCE        2S 0O  6 25                            
-0008.40      A            CRDQTY    R        O  6 30REFFLD(RCARD/CRDQTY SUBD10/ 
+0008.40      A            CRDQTY    R        O  6 30REFFLD(RCARD/CRDQTY SUBD10/CARDPF)
 0008.60      A                                  6 33'-'                         
-0008.70      A            CRDUSED   R        O  6 35REFFLD(RCARD/CRDUSED SUBD10 
+0008.70      A            CRDUSED   R        O  6 35REFFLD(RCARD/CRDUSED SUBD10/CARDPF) 
 0008.90      A                                  6 38')'                         
-0009.00      A            CRDSUM    R        O  6 41REFFLD(RCARD/CRDSUM SUBD10/ 
+0009.00      A            CRDSUM    R        O  6 41REFFLD(RCARD/CRDSUM SUBD10/CARDPF) 
 0009.20      A            DATE          10A  O  6 50                            
 0009.30      A                                  6 28'('                         
 0009.40      A          R ONESFLCTL                 SFLCTL(ONESFLR)  
@@ -109,22 +109,22 @@
 0012.30      A                                  3  4'CHANGE STATUS'        
 0012.40      A                                      DSPATR(UL)     
 0012.50      A                                  5  4'ID:'                       
-0012.60      A            CRDID     R        O  5 15REFFLD(RCARD/CRDID SUBD10/C 
+0012.60      A            CRDID     R        O  5 15REFFLD(RCARD/CRDID SUBD10/CARDPF) 
 0012.61      A                                      EDTCDE(Z)                   
 0012.80      A  44                                  ERRMSG('CARD NOT FOUND' 44) 
 0012.90      A                                  7  4'STATUS:'                   
-0013.00      A            CRDSTS    R        O  7 15REFFLD(RCARD/CRDSTS SUBD10/ 
+0013.00      A            CRDSTS    R        O  7 15REFFLD(RCARD/CRDSTS SUBD10/CARDPF) 
 0013.20      A                                  9  4'SUB NAME:'                 
-0013.30      A            SUBNAME   R        O  9 15REFFLD(RSUB/SUBNAME SUBD/SU 
+0013.30      A            SUBNAME   R        O  9 15REFFLD(RSUB/SUBNAME SUBD10/SUBPF) 
 0013.50      A                                 11  4'BALANCE:'                  
 0013.60      A            BALANCE        2S 0O 11 15                            
 0013.70      A                                 11 18'('                         
-0013.80      A            CRDQTY    R        O 11 20REFFLD(RCARD/CRDQTY SUBD10/ 
+0013.80      A            CRDQTY    R        O 11 20REFFLD(RCARD/CRDQTY SUBD10/CARDPF)
 0014.00      A                                 11 23'-'                         
-0014.10      A            CRDUSED   R        O 11 25REFFLD(RCARD/CRDUSED SUBD10 
+0014.10      A            CRDUSED   R        O 11 25REFFLD(RCARD/CRDUSED SUBD10/CARDPF) 
 0014.30      A                                 11 28')'                         
 0014.40      A                                 13  4'PRICE:'
-0014.50      A            CRDSUM    R        O 13 15REFFLD(RCARD/CRDSUM SUBD10/ 
+0014.50      A            CRDSUM    R        O 13 15REFFLD(RCARD/CRDSUM SUBD10/CARDPF)
 0014.70      A          R ADDSCRN                                               
 0014.80      A*%%TS  SD  20230608  132629  JBLTD11     REL-V7R5M0  5770-WDS     
 0014.90      A                                      CF04(04 'ADD')              
