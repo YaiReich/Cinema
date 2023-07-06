@@ -94,7 +94,9 @@
 0064.09         enddo;                       
 0064.10      endif;  
 0065.00      *inlr=*on;                           
-0066.00                                           
+0066.00               
+
+//THIS SR CHECKS IF THE GIVEN PARAMTERES ARE VALID AND DOES COMMANDS THAT ARE NECCESARY FOR THE START OF THE PGM       
 0067.00    begsr pgmstart;                        
 0068.00      chain subid rsub;                    
 0069.00      if %found;                           
@@ -116,6 +118,8 @@
 0085.00      endif;                      
 0086.00    endsr;                        
 0087.00
+
+//THIS SFL WRITES AND DISPLAY THE SFL AT THE START OF THE PGM 
 0088.00    begsr fillsfl;                                                      
 0088.01     *in32=on;                                                          
 0088.02     write hallctl;                                                     
@@ -134,3 +138,17 @@
 0088.16     endfor;                                                            
 0088.17     *in31=*on; 
 0089.00    endsr;   
+0090.00 
+ //THIS SR FILL THE SFL LINE WITH 'O' 
+0091.00    begsr inzline;          
+0091.01       c1='O';              
+0091.02       c2='O';              
+0091.03       c3='O';              
+0091.04       c4='O';              
+0091.05       c5='O';              
+0091.06       c6='O';              
+0091.07       c7='O';              
+0091.08       c8='O';              
+0091.09       c9='O';              
+0091.10       c10='O';             
+0092.00    endsr;                  
