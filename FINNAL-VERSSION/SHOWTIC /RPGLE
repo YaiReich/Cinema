@@ -68,3 +68,14 @@
 0040.18       p10 char(2);                    
 0049.00       ticarr like(l1) dim(20) pos(1); 
 0050.00    end-ds;                            
+0051.00                                           
+0052.00    dcl-pi *n;                             
+0053.00       subid packed(10);                   
+0054.00       showid packed(10);                  
+0055.00    end-pi;                                
+0056.00                                           
+0057.00    dcl-pr printcl extpgm;                 
+0058.00       subidp char(10);                    
+0059.00       showidp char(10);                   
+0059.01       ticketsp likeds(tickets);           
+0060.00    end-pi;                                
