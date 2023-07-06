@@ -153,6 +153,7 @@
 0091.10       c10='O';             
 0092.00    endsr;  
 0093.00
+// THIS SR IS EXECUTED WHEN SELECTING A CHAIR, AND CHECKS IF THE GIVEN VALUES ARE VALID         
 0094.00    begsr selectchair;                        
 0094.01      if not(selpos = o) and not(selln = 0);  
 0094.02         if cancel = *blanks or cancel = 'Y'; 
@@ -175,4 +176,28 @@
 0094.19         endif;                                           
 0094.20      endif;                                              
 0095.00    endsr;                                                
-// THIS SR IS EXECUTED WHEN SELECTING A CHAIR, AND CHECKS IF THE GIVEN VALUES ARE VALID                                 
+0096.00                   
+/THIS SR SELECTS THE CHAIR IF ITS FREE, AND SEND AN ERROR IF NOT 
+0097.00    begsr doadd;                             
+0097.01      if linearr(selpos) = 'O';              
+0097.02         count += 1;                         
+0097.03         linerarr(selpos) = 'X';             
+0097.04         ticarr(countp*2 - 1) = %char(selln); 
+0097.05         ticarr(countp*2)= %char(selpos);    
+0097.06         update hlsfl;                       
+0097.07      else;                                  
+0097.08         *in46=*on;                          
+0097.09      endif;                                 
+0098.00    endsr;     
+0099.00               
+//THIS SR CANCELS THE CHAIR IF ITS SELECTED, AND SEND AN ERROR IF NOT 
+0100.00    begsr docancel;               
+0100.01      if linearr(selpos) = 'X';   
+0100.02         countp -=1;              
+0100.03         linearr(selpos) = 'O';   
+0100.04         exsr dltpurchase;        
+0100.05         update hlsfl;            
+0100.06      else;                       
+0100.07         *in44=*on;               
+0100.08      endif;                      
+0101.00    endsr;                        
