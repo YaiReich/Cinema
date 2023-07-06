@@ -1,0 +1,331 @@
+0001.00   DCL-F SUBPF    DISK KEYED USAGE(*UPDATE : *DELETE : *OUTPUT);  
+0002.00   DCL-F SUBLF01  DISK KEYED USAGE(*INPUT) RENAME(RSUB:RSUBL);    
+0003.00   DCL-F TBSUBNUM DISK USAGE(*UPDATE : *OUTPUT);                  
+0004.00   DCL-F TBPREFIX DISK USAGE(*INPUT);                             
+0005.00   DCL-F DSUB     WORKSTN SFILE(SFLR:RRN) SFILE(PFXSFL:PRRN);     
+0006.00   DCL-S RRN PACKED(3);                                           
+0007.00   DCL-S PRRN PACKED(3);                                          
+0008.00   DCL-S PREV CHAR(11);                                           
+0009.00   DCL-S COUNT PACKED(3);                                         
+0010.00   DCL-S TELSEARCH CHAR(11);                                      
+0010.01                                                                  
+0011.00   DCL-PR RCARD EXTPGM;                                           
+0012.00   ID PACKED(10) CONST;                                           
+0013.00   END-PR;                                                        
+0013.01                                                                  
+0013.02   DCL-PR RSEARCHSH EXTPGM;   
+0013.03   ID PACKED(10) CONST;            
+0013.04   END-PR;                         
+0014.00                                   
+0015.00   *IN61=*ON;                      
+0017.00   DOW NOT(*IN03);                 
+0017.01      WRITE TOP;                   
+0018.00      *IN50=*ON;                   
+0020.00      WRITE BOT;                   
+0020.01      *IN08=*On;                   
+0020.02      EXSR CHECKTEL;               
+0030.00      IF *IN72 OR *IN61;           
+0031.00         IF *IN62;                 
+0032.00            EXSR FILLSFLBYTEL;     
+0033.00            *IN62 = *OFF;          
+0034.00         ELSE;                     
+0035.00            EXSR FILLSFL;    
+0036.00         ENDIF;        
+0037.00      ENDIF;           
+0038.00      EXFMT SFLCTL;    
+0039.00      *IN50=*OFF;      
+0040.00      IF *IN06;        
+0041.00         EXSR ADD1;    
+0042.00         *IN61=*ON;    
+0043.00      ELSE;            
+0044.00         EXSR TIPUL;   
+0045.00      ENDIF;           
+0046.00   ENDDO;              
+0047.00   *INLR=*ON;   
+0047.01                                                                
+0047.02   BEGSR CHECKTEL;                                              
+0047.03      TELSEARCH= %EDITC(PFX:'X')+'-'+%EDITC(TEL:'X');           
+0047.04      IF NOT(TELSEARCH = PREV) AND NOT(TELSEARCH='000-0000000');
+0047.05         *IN61 = *ON;                                           
+0047.06         *IN62 = *ON;                                           
+0047.07         PREV = TELSEARCH;                                      
+0047.08      ENDIF;                                                    
+0047.09   ENDSR;                     
+// Overall, this subroutine takes the values of PFX and TEL, formats them as a string with 'X' characters, separated by a hyphen(-), 
+and checks if it differs from the previous value. If it does,it sets two indicators (*IN61 and *IN62) to *ON and updates the previous value with the 
+current value of TELSEARCH.
+//
+0049.00   BEGSR FILLSFL;                                            
+0051.00      COUNT=0;                                               
+0052.00      IF *IN61;                                              
+0052.01         EXSR NEWSFL;                                        
+0058.00         SETLL *LOVAL RSUB;                                  
+0059.00      ENDIF;                                                 
+0060.00      READ RSUB;                                             
+0061.00      DOW NOT(%EOF(SUBPF)) AND NOT(%ERROR) AND NOT(COUNT=6); 
+0062.00         OP=*BLANKS;                                         
+0063.00         RRN+=1;                                             
+0064.00         COUNT+=1;                                           
+0065.00         WRITE SFLR;                                         
+0066.00         IF NOT(COUNT =6);                                   
+0067.00            READ RSUB;                                       
+0068.00         ENDIF;                                              
+0069.00      ENDDO;               
+0069.01      EXSR CHECKDSPSFL;    
+0076.00      IF %EOF(SUBPF);   
+0077.00         *IN33=*ON;     
+0078.00      ENDIF;            
+0079.00   ENDSR;       
+// The combined conditions in the DOW loop ensure that the loop will continue executing as long as it's not the end of the file or subfile (%EOF is not true),
+there are no errors (%ERROR is not true), and the value of COUNT is not equal to 6. Once any of these conditions become true, 
+the loop will exit, and the program flow will continue after the DOW loop.
+0080.00                                                               
+0081.00   BEGSR FILLSFLBYTEL;                                         
+0083.00      COUNT=0;                                                 
+0084.00      IF *IN61;                                                
+0084.01         EXSR NEWSFL;                                          
+0090.00         SETLL TELSEARCH RSUBL;                                
+0091.00      ENDIF;                                                   
+0092.00      READ RSUBL;                                              
+0093.00      DOW NOT(%EOF(SUBLF01)) AND NOT(%ERROR) AND NOT(COUNT=6); 
+0094.00         OP=*BLANKS;                                           
+0095.00         RRN+=1;                                               
+0096.00         COUNT+=1;                                             
+0097.00         WRITE SFLR;                                           
+0098.00         IF NOT(COUNT =6);                                     
+0099.00           READ RSUBL;                                         
+0100.00         ENDIF;                                                
+0101.00      ENDDO; 
+0101.01      EXSR CHECKDSPSFL;  
+0108.00      IF %EOF(SUBLF01);  
+0109.00         *IN33=*ON;      
+0110.00      ENDIF;             
+0111.00   ENDSR;                
+0111.01
+0111.03   BEGSR NEWSFL;            
+0111.04      *IN61=*OFF;           
+0111.05      *IN34=*ON;            
+0111.06      WRITE SFLCTL;         
+0111.07      *IN34=*OFF;           
+0111.08      RRN=0;                
+0111.09   ENDSR;                   
+0111.10                            
+0111.12   BEGSR CHECKDSPSFL;       
+0111.13       IF RRN > 0;          
+0111.14          *IN31=*ON;        
+0111.15          *IN32=*ON;        
+0111.16          POS=RRN;          
+0111.17       ELSE;                
+0111.18          *IN31=*OFF;       
+0111.19          *IN32=*OFF;       
+0111.20       ENDIF;               
+0111.21   ENDSR;   
+0112.00                                             
+0113.00   BEGSR TIPUL;                              
+0114.00     READC SFLR;                             
+0115.00     DOW NOT (%EOF(DSUB)) AND NOT(%ERROR);   
+0116.00        IF OP='2';                           
+0117.00           EXSR UPDATE1;                     
+0118.00           *IN61=*ON;                        
+0119.00        ENDIF;                               
+0120.00        IF OP='4';                           
+0121.00           EXSR STATCHG;                     
+0122.00           *IN61=*ON;                        
+0123.00        ENDIF;                               
+0124.00        IF OP='7';                           
+0125.00           EXSR SENDCARD;                    
+0126.00           *IN61=*ON;                        
+0127.00        ENDIF;                               
+0127.01        IF OP='9' AND SUBSTAT='A';   
+0127.02           EXSR SENDSHOW;    
+0127.03           *IN61=*ON;        
+0127.04        ENDIF;               
+0132.00        READC SFLR;          
+0133.00     ENDDO;                  
+0134.00   ENDSR;   
+0135.00                                                          
+0136.00   BEGSR ADD1;                                            
+0136.01      *IN56 = *ON;                                        
+0138.00      WRITE BOT;                                          
+0139.00      EXSR EMPTY;                                         
+0139.01      EXFMT ADDSCRN;                                      
+0139.03      DOW NOT(*IN03) AND NOT(*IN04) AND NOT(*IN12);       
+0145.00         IF *IN04;                                        
+0146.00            EXSR CHECKFIELDS;                             
+0147.00            IF *IN45 OR *IN46 OR *IN47 OR *IN48 OR *IN49; 
+0148.00               *IN04=*OFF;                                
+0149.00            ELSE;                                         
+0150.00               EXSR UPDATETBSUBNUM;                       
+0151.00               SUBTEL= SPREFIX+'-'+%EDITC(TELEPHONE:'X'); 
+0152.00               SUBSTAT='A';                               
+0153.00               SUBPSW='PASSWORD';                         
+0154.00               WRITE RSUB;    
+0155.00            ENDIF;           
+0156.00         ENDIF;              
+0156.01         IF *IN09;           
+0156.02            EXSR PREFIXSFL;  
+0156.03         ENDIF;              
+0156.04         EXFMT ADDSCRN;      
+0157.00      ENDDO;                 
+0157.01      *IN56 = *OFF;          
+0160.00   ENDSR;  
+0161.00                                                              
+0162.00   BEGSR UPDATE1;                                             
+0162.01      *IN52 = *ON;                                            
+0164.00      WRITE BOT;                                              
+0166.01      CHAIN SUBID RSUB;                                       
+0166.02      IF %FOUND;                                              
+0166.03         TELEPHONE= %DEC(%SUBST(SUBTEL:5):7:0);               
+0166.04         SPREFIX= %SUBST(SUBTEL:1:3);                         
+0166.05         EXFMT UPDATESCRN;                                    
+0167.00         DOW NOT(*IN03) AND NOT(*IN04) AND NOT(*IN12);        
+0176.00            IF *IN04;                                         
+0178.00               EXSR CHECKFIELDS;                              
+0178.01               IF *IN45 OR *IN46 OR *IN47 OR *IN48 OR *IN49;  
+0178.02                  *IN04=*OFF;                                 
+0178.03               ELSE;                                          
+0182.00                  SUBTEL= SPREFIX+'-'+%EDITC(TELEPHONE:'X');  
+0183.00                  UPDATE RSUB;       
+0184.00               ENDIF;               
+0189.00            ENDIF;                  
+0189.01            IF *IN08;               
+0189.02               SUBPSW='PASSWORD';   
+0189.03               EXFMT WINPASS;       
+0189.04            ENDIF;                  
+0189.05            IF *IN09;               
+0189.06               EXSR PREFIXSFL;      
+0189.07            ENDIF;                  
+0189.08            EXFMT UPDATESCRN;       
+0190.00         ENDDO;                     
+0190.03      ENDIF;                        
+0192.01      *IN52=*OFF;                   
+0193.00   ENDSR;             
+//
+TELEPHONE = %DEC(%SUBST(SUBTEL:5):7:0);: If %FOUND is true (indicating that a record was found), this line assigns a value to the variable TELEPHONE.
+It uses %SUBST to extract a substring from the variable SUBTEL, starting from position 5 and extending for 7 characters.
+%DEC then converts that substring into a decimal number with no decimal places (0).
+//
+SPREFIX = %SUBST(SUBTEL:1:3);: This line assigns a value to the variable SPREFIX. It uses %SUBST to extract a substring from the variable SUBTEL, 
+starting from position 1 and extending for 3 characters. This substring represents the prefix portion of a telephone number.
+//
+In summary, if %FOUND is true (indicating that a record was found), the code assigns a portion of the SUBTEL variable to
+the TELEPHONE variable as a decimal number, extracts a prefix from SUBTEL and assigns it to the SPREFIX variable,
+and then performs an extended-format operation to display or update a screen format named UPDATESCRN.
+
+0195.00   BEGSR STATCHG;            
+0195.01      *IN54 = *ON;           
+0197.00      WRITE BOT;             
+0199.00      CHAIN SUBID RSUB;      
+0200.00      IF %FOUND;             
+0200.01         EXFMT CHGSTATUS;    
+0201.00         IF *IN04;           
+0202.00            IF SUBSTAT='A';  
+0203.00               SUBSTAT='D';  
+0204.00            ELSE;            
+0205.00               SUBSTAT='A';  
+0206.00            ENDIF;           
+0207.00            UPDATE RSUB;     
+0208.00         ENDIF;              
+0211.00      ENDIF;                 
+0211.01      *IN54 = *OFF;   
+0212.00   ENDSR;           
+0213.00                    
+0214.00   BEGSR SENDCARD;  
+0215.00      RCARD(SUBID); 
+0216.00   ENDSR;   
+0217.00                         
+0217.02   BEGSR SENDSHOW;       
+0217.03      RSEARCHSH(SUBID);  
+0217.04   ENDSR;                
+0217.05       
+0218.00   BEGSR PREFIXSFL;                            
+0219.00      *IN34=*ON;                               
+0221.00      WRITE PFXCTL;                            
+0222.00      *IN34=*OFF;                              
+0223.00      PRRN=0;                                  
+0224.00      SETLL *START TBPREFIX;                   
+0225.00      READ RPREFIX;                            
+0226.00      DOW NOT(%EOF(TBPREFIX)) AND NOT(%ERROR); 
+0227.00         OP=*BLANKS;                           
+0228.00         PRRN+=1;                              
+0229.00         WRITE PFXSFL;                         
+0230.00         READ RPREFIX;                         
+0231.00      ENDDO;                                   
+0232.00      IF PRRN > 0;                             
+0233.00      *IN31=*ON;                               
+0233.01      *IN32=*ON;                               
+0234.00      *IN33=*ON; 
+0235.00      POS=1;           
+0235.01      EXSR CHOOSEPFX;  
+0241.00   ENDIF;              
+0242.00   ENDSR; 
+0242.01
+0242.03   BEGSR CHOOSEPFX;                           
+0242.04      DOU *IN04 OR *IN12;                     
+0242.05         EXFMT PFXCTL;                        
+0242.06         READC PFXSFL;                        
+0242.07         IF *IN04;                            
+0242.08            IF OP = 'Y';                      
+0242.10               SPREFIX=%EDITC(PREFIX:'X');    
+0242.13            ELSE;                             
+0242.14               *IN04 = *OFF;                  
+0242.15            ENDIF;                            
+0242.16         ENDIF;                               
+0242.17      ENDDO;                                  
+0242.20   ENDSR;   
+0243.00                                                         
+0244.00   BEGSR CHECKFIELDS;                                    
+0245.00      IF SUBNAME=*BLANKS;                                
+0246.00         *IN45=*ON;                                      
+0247.00      ENDIF;                                             
+0248.00      IF SPREFIX=*BLANKS;                                
+0249.00         *IN46=*ON;                                      
+0250.00      ENDIF;                                             
+0251.00      IF TELEPHONE=0 OR NOT(%LEN(TELEPHONE) = 7);        
+0252.00         *IN47=*ON;                                      
+0253.00      ENDIF;                                             
+0254.00      IF %SCAN('@':SUBEMAIL) = 0;                        
+0255.00         *IN48=*ON;                                      
+0256.00      ENDIF;                                             
+0257.00      IF SUBCC4=0 OR NOT(%LEN(SUBCC4) = 4);              
+0258.00         *IN49=*ON;                                      
+0259.00      ENDIF;      
+0260.00   ENDSR;                      
+0261.00                               
+0262.00   BEGSR UPDATETBSUBNUM;       
+0263.00      SETLL *START TBSUBNUM;   
+0264.00      READ RSUBNUM;            
+0265.00      SUBID = SUBNUM +1;       
+0266.00      SUBNUM = SUBID;          
+0267.00      UPDATE RSUBNUM;          
+0268.00   ENDSR;      
+0270.00   BEGSR EMPTY;                                                          
+0271.00      SUBNAME=*BLANKS;                                                   
+0272.00      SUBSTAT=*BLANKS;                                                   
+0273.00      TELEPHONE=0;                                                       
+0274.00      SPREFIX=*BLANKS;                                                   
+0275.00      SUBEMAIL=*BLANKS;                                                  
+0276.00      SUBCC4=0;                                                          
+0277.00   ENDSR;                                                                
+        ****************** End of data **************************************** 
+   //INDICATORS:                      
+   //F3-EXIT                          
+   //F4-COMMIT                        
+   //F6-ADD                           
+   //F8-RESET PASSWORD/ SFLDROP       
+   //F9-PREFIXES                      
+   //F12-CANCEL                       
+   //31-DISPLAY SFL                   
+   //32-DISPLAY SFLCTL                
+   //33-DISPLAY SFL END               
+   //34-CLEAR SFL                     
+   //45-ERROR: NO NAME                
+   //46-ERROR: NO PREFIX              
+   //47-ERROR: PHONE NOT VALID        
+   //48-ERROR: EMAIL NOT VALID       
+   //49-ERROR: CC4 NOT VALID                  
+   //50-SHOW BOT WITH COMMANDS OF MAIN PAGE   
+   //52-SHOW BOT WITH COMMANDS OF UPDATE PAGE 
+   //61-WRITE THE SFL FROM ITS START          
+   //62-WRITE THE SFL BY TELEPHONE            
+   //72-PAGE DOWN                             
