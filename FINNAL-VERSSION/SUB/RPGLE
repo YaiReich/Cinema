@@ -189,7 +189,8 @@ the loop will exit, and the program flow will continue after the DOW loop.
 0184.00               ENDIF;               
 0189.00            ENDIF;                  
 0189.01            IF *IN08;               
-0189.02               SUBPSW='PASSWORD';   
+0189.02               SUBPSW='PASSWORD';
+                      UPDATE RSUB;      
 0189.03               EXFMT WINPASS;       
 0189.04            ENDIF;                  
 0189.05            IF *IN09;               
