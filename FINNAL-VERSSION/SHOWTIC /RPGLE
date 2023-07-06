@@ -151,4 +151,27 @@
 0091.08       c8='O';              
 0091.09       c9='O';              
 0091.10       c10='O';             
-0092.00    endsr;                  
+0092.00    endsr;  
+0093.00
+0094.00    begsr selectchair;                        
+0094.01      if not(selpos = o) and not(selln = 0);  
+0094.02         if cancel = *blanks or cancel = 'Y'; 
+0094.03            chain swlln hlsfl;                
+0094.04            if %found;                        
+0094.05               if cancel='Y';                 
+0094.06                  exsr docancel;              
+0094.07               else;                          
+0094.08                  if countp < 10 ;            
+0094.09                     exsr roadd;               
+0094.10                  else;                       
+0094.11                     *in49=*on;                
+0094.12                  endif;                      
+0094.13               endif;     
+0094.14            else;                                         
+0094.15               *in47=*on;                                 
+0094.16            endif;                                        
+0094.17         else;                                            
+0094.18           *in45=*on;                                     
+0094.19         endif;                                           
+0094.20      endif;                                              
+0095.00    endsr;                                                
