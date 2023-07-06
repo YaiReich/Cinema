@@ -1,0 +1,70 @@
+        *************** Beginning of data *************************************
+0001.00    dcl-f ticpf    disk keyed usage(*update : *output);                 
+0002.00    dcl-f showlf03 disk keyed usage(*input);                            
+0003.00    dcl-f subpf    disk keyed usage(*input);                            
+0004.00    dcl-f hallpf   disk keyed usage(*input);                            
+0005.00    dcl-f moviepf  disk keyed usage(*input);                            
+0006.00    dcl-f cardlf01 disk keyed usage(*update : *output);                 
+0007.00    dcl-f dshowtic workstn sfile(hlsfl:hrrn) sfile(cardsfl:crrn);       
+0008.00                                                                        
+0009.00    dcl-s hrrn packed(3);                                               
+0010.00    dcl-s crrn packed(3);                                               
+0011.00    dcl-s subidchar char(10);                                           
+0011.01    dcl-s shidchar  char(10);                                           
+0011.02    dcl-s countl packed(3);  //count lines                              
+0011.03    dcl-s countp packed(3);  //count selected chairs                    
+0012.00    dcl-s countcard packed(3); //count remainig in card                 
+0013.00    dcl-s countd packed(3);  //count used to delete in ds   
+0014.00    dcl-s countop packed(3);  //count to iterate op times   
+0015.00    dcl-s countr  packed(3);  //count reserved chairs       
+0016.00                                                            
+0017.00    dcl-ds date1;                                           
+0018.00      y1 char(4);                                           
+0018.01      m1 char(2);                                           
+0018.02      d1 char(2);                                           
+0019.00    end-ds;                                                 
+0020.00    dcl-ds date2;                                           
+0021.00      d2 char(2);                                           
+0021.01      s1 char(1) inz('/');                                  
+0022.00      m2 char(2);                                           
+0022.01      s2 char(1) inz('/');                                  
+0023.00      y2 char(4);                                           
+0024.00    end-ds;                                                 
+0024.01                      
+0025.00    dcl-ds lineu;                        
+0026.00       c1;                               
+0027.00       c2;                               
+0028.00       c3;                               
+0029.00       c4;                               
+0030.00       c5;                               
+0031.00       c6;                               
+0032.00       c7;                               
+0033.00       c8;                               
+0034.00       c9;                               
+0035.00       c10;                              
+0036.00      linearr like(c1) dim(10) pos(1);   
+0037.00    end-ds;                              
+0037.01                                         
+0038.00    dcl-ds tickets;                      
+0039.00       l1 char(2);   
+0040.00       p1 char(2); 
+0040.01       l2 char(2); 
+0040.02       p2 char(2); 
+0040.03       l3 char(2); 
+0040.04       p3 char(2); 
+0040.05       l4 char(2); 
+0040.06       p4 char(2); 
+0040.07       l5 char(2); 
+0040.08       p5 char(2); 
+0040.09       l6 char(2); 
+0040.10       p6 char(2); 
+0040.11       l7 char(2); 
+0040.12       p7 char(2); 
+0040.13       l8 char(2); 
+0040.14       p8 char(2); 
+0040.15       l9 char(2); 
+0040.16       p9 char(2);                     
+0040.17       l10 char(2);                    
+0040.18       p10 char(2);                    
+0049.00       ticarr like(l1) dim(20) pos(1); 
+0050.00    end-ds;                            
