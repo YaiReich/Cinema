@@ -1,0 +1,106 @@
+        *************** Beginning of data ************************************* 
+0000.10      A*%%TS  SD  20230703  090600  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A                                      CF09(09 'MOVIES')           
+0000.60      A                                      CF10(10 'DATES')            
+0000.70      A          R TOP                                                   
+0000.80      A*%%TS  SD  20230628  104405  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.90      A                                  1 33'SEARCH FOR SHOWS'          
+0001.00      A                                      DSPATR(UL)                  
+0001.01      A                                      DSPATR(RI)                  
+0001.10      A          R BOT                                                   
+0001.20      A*%%TS  SD  20230612  120113  JBLTD11     REL-V7R5M0  5770-WDS     
+0001.30      A                                      OVERLAY                     
+0001.40      A                                 21  2'-------------------------- 
+0001.50      A                                      --------------------------- 
+0001.60      A                                      ---------'                
+0001.70      A                                 22  4'F3-EXIT'                 
+0001.80      A  51                             23  4'5-SHOW HALL'             
+0001.90      A                                 22 14'F9-MOVIES  F10-DATES'    
+0002.00      A          R STARTPAGE                                           
+0002.10      A*%%TS  SD  20230628  105000  JBLTD10     REL-V7R5M0  5770-WDS   
+0002.20      A                                      OVERLAY                   
+0002.30      A                                  3 23'HELLO'                   
+0002.40      A            SUBNAME       20A  O  3 30                          
+0002.50      A                                  5 23'MOVIE:'                  
+0002.60      A            SELMV         30A  B  5 30DSPATR(PR)                
+0002.70      A                                  7 23'DATE:'                   
+0002.80      A            SELD          10A  B  7 30DSPATR(PR)                
+0002.90      A  44                                  ERRMSG('NO AVAILABLE DATES
+0003.00      A                                       MOVIE' 44)      
+0003.10      A            ERROR44        1A  H                              
+0003.20      A                                                              
+0003.30      A          R SHOWSFLR                  SFL                     
+0003.40      A*%%TS  SD  20230612  104331  JBLTD11     REL-V7R5M0  5770-WDS 
+0003.50      A            SHSTRHR        2S 0O 12 19                        
+0003.60      A            SHENDHR        2S 0O 12 24                        
+0003.70      A            HLNAME        15A  O 12 41                        
+0003.80      A                                 12 22'-'                     
+0003.90      A            OP             1   I 12 11                        
+0004.00      A          R SHOWCTL                   SFLCTL(SHOWSFLR)        
+0004.10      A*%%TS  SD  20230612  104331  JBLTD11     REL-V7R5M0  5770-WDS 
+0004.20      A                                      SFLSIZ(0021)            
+0004.30      A                                      SFLPAG(0008)            
+0004.40      A                                      OVERLAY                 
+0004.50      A  31                                  SFLDSP                  
+0004.60      A  32                                  SFLDSPCTL       
+0004.70      A  34                                  SFLCLR                  
+0004.80      A                                 11 19'HOURS'                 
+0004.90      A                                      DSPATR(UL)              
+0005.00      A                                 11 41'HALL NAME'             
+0005.10      A                                      DSPATR(UL)              
+0005.20      A                                 11 11'OP'                    
+0005.30      A                                      DSPATR(UL)              
+0005.40      A          R MVSFL                     SFL                     
+0005.50      A*%%TS  SD  20230703  090600  JBLTD10     REL-V7R5M0  5770-WDS 
+0005.60      A            OP             1A  B  7  2                        
+0005.70      A            MVID          10  0O  7  5                        
+0005.80      A            MVNAME        30A  O  7 18                        
+0005.90      A            MVHOURS        1  0O  7 52                        
+0006.00      A          R MOVIECTL                  SFLCTL(MVSFL)           
+0006.10      A                                      CA12(12 'CANCEL')       
+0006.20      A                                      CF04(04 'COMMIT')    
+0006.30      A                                      SFLSIZ(0099)     
+0006.40      A                                      SFLPAG(0008)     
+0006.50      A                                      WINDOW(3 7 16 55)
+0006.60      A                                      OVERLAY          
+0006.70      A  31                                  SFLDSP           
+0006.80      A  32                                  SFLDSPCTL        
+0006.90      A  34                                  SFLCLR           
+0007.00      A            POS            4S 0H      SFLRCDNBR        
+0007.10      A                                  6  2'OP'             
+0007.20      A                                      DSPATR(UL)       
+0007.30      A                                  6  5'ID'             
+0007.40      A                                      DSPATR(UL)       
+0007.50      A                                  6 18'NAME'           
+0007.60      A                                      DSPATR(UL)       
+0007.70      A                                  6 50'HOURS'          
+0007.80      A                                      DSPATR(UL)     
+0007.90      A                                  2 15'ENTER Y TO CHOOSE A MOVIE'
+0008.00      A                                      DSPATR(UL)                 
+0008.10      A                                  4 14'ENTER TO CONNFIRM OR F12-CANCEL'
+0008.20      A          R DTSFL                     SFL                        
+0008.30      A            OP             1A  B  8  2                           
+0008.40      A            DATE          10A  O  8  9                           
+0008.50      A          R DATECTL                   SFLCTL(DTSFL)              
+0008.60      A*%%TS  SD  20230612  084041  JBLTD11     REL-V7R5M0  5770-WDS    
+0008.70      A                                      CF04(04 'COMMIT')          
+0008.80      A                                      CA12(12 'CANCEL')          
+0008.90      A                                      SFLSIZ(0099)               
+0009.00      A                                      SFLPAG(0008)               
+0009.10      A                                      WINDOW(3 7 16 23)          
+0009.20      A                                      OVERLAY                    
+0009.30      A  31                                  SFLDSP                     
+0009.40      A  32                                  SFLDSPCTL         
+0009.50      A  34                                  SFLCLR                     
+0009.60      A            POS            4S 0H      SFLRCDNBR                  
+0009.70      A                                  7  2'OP'                       
+0009.80      A                                      DSPATR(UL)                 
+0009.90      A                                  7  9'DATE'                     
+0010.00      A                                      DSPATR(UL)                 
+0010.10      A                                  2  4'ENTER TO CONNFIRM'        
+0010.11      A                                  3  4'OR F12-CANCEL'            
+0010.20      A                                      DSPATR(UL)                 
+        ****************** End of data ****************************************
