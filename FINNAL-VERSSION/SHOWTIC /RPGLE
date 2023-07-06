@@ -139,7 +139,7 @@
 0088.17     *in31=*on; 
 0089.00    endsr;   
 0090.00 
- //THIS SR FILL THE SFL LINE WITH 'O' 
+// THIS SR FILL THE SFL LINE WITH 'O' 
 0091.00    begsr inzline;          
 0091.01       c1='O';              
 0091.02       c2='O';              
@@ -175,3 +175,4 @@
 0094.19         endif;                                           
 0094.20      endif;                                              
 0095.00    endsr;                                                
+// THIS SR IS EXECUTED WHEN SELECTING A CHAIR, AND CHECKS IF THE GIVEN VALUES ARE VALID                                 
