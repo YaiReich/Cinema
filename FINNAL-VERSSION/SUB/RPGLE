@@ -13,7 +13,7 @@
 0012.00   ID PACKED(10) CONST;                                           
 0013.00   END-PR;                                                        
 0013.01                                                                  
-0013.02   DCL-PR RSEARCHSH EXTPGM;   
+0013.02   DCL-PR RSEARCH EXTPGM;   
 0013.03   ID PACKED(10) CONST;            
 0013.04   END-PR;                         
 0014.00                                   
@@ -236,7 +236,7 @@ and then performs an extended-format operation to display or update a screen for
 0216.00   ENDSR;   
 0217.00                         
 0217.02   BEGSR SENDSHOW;       
-0217.03      RSEARCHSH(SUBID);  
+0217.03      RSEARCH(SUBID);  
 0217.04   ENDSR;                
 0217.05       
 0218.00   BEGSR PREFIXSFL;                            
