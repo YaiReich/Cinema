@@ -115,3 +115,22 @@
 0084.00         endif;                   
 0085.00      endif;                      
 0086.00    endsr;                        
+0087.00
+0088.00    begsr fillsfl;                                                      
+0088.01     *in32=on;                                                          
+0088.02     write hallctl;                                                     
+0088.03     hrrn=0;                                                            
+0088.04     for countl = 1 by 1 to hllines; //hllines=Several rows in the hall 
+0088.05       exsr inzline;                                                    
+0088.06       hrrn+=1;                                                         
+0088.07       line = countl;      //countl= count lines                        
+0088.08       setll (showid:countl) rtic;                                      
+0088.09       reade (showid:countl) rtic;                                      
+0088.10       dow not(%eof(ticpf));                                            
+0088.11          linearr(ticchair) = 'R';                                      
+0088.12          reade (showid:countl) rtic;                                   
+0088.14       enddo;                                                           
+0088.15       write hlsfl;                                                     
+0088.16     endfor;                                                            
+0088.17     *in31=*on; 
+0089.00    endsr;   
