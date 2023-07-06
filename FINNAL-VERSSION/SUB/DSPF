@@ -1,0 +1,177 @@
+*************** Beginning of data ************************************* 
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A                                      CA12(12 'BACK')             
+0000.60      A          R TOP                                                   
+0000.70      A*%%TS  SD  20230704  090128  JBLTD11     REL-V7R5M0  5770-WDS     
+0000.80      A                                  1 29'SUBSCRIBERS MANAGEMENT'    
+0000.90      A                                      DSPATR(RI)                  
+0001.00      A                                      DSPATR(UL)                  
+0001.10      A          R BOT                                                   
+0001.20      A*%%TS  SD  20230702  193414  JBLTD11     REL-V7R5M0  5770-WDS     
+0001.30      A                                      OVERLAY                     
+0001.40      A                                 20  2'-------------------------- 
+0001.50      A                                      --------------------------- 
+0001.60      A                                      --------'           
+0001.70      A                                 21  3'F3-EXIT'                  
+0001.80      A  50                             21 15'F6-NEW'                   
+0001.90      A  50                             21 27'F8-MORE/LESS'             
+0002.00      A  50                             23  3'2-UPDATE'                 
+0002.10      A  50                             23 15'4-CHANGE STATUS'          
+0002.20      A  50                             23 33'7-SUB CARDS   9-SEARCH SHOW'
+0002.30      A N50                             21 12'F4-COMMIT'                
+0002.40      A N50 52                          21 23'F8-RESET PASSWORD'        
+0002.50      A N50 52                          21 42'F9-PREFIXES'              
+0002.60      A N50 52                          21 55'F12-BACK'                 
+0002.70      A N50 54                          21 24'F12-BACK'                 
+0002.80      A N50 56                          21 23'F9-PREFIXES'              
+0002.90      A N50 56                          21 36'F12-BACK'                 
+0003.00      A          R SFLR                      SFL                        
+0003.10      A*%%TS  SD  20230704  090128  JBLTD11     REL-V7R5M0  5770-WDS    
+0003.20      A            OP             1A  B  7  2        
+0003.30      A            SUBID     R        O  7  6REFFLD(RSUB/SUBID SUBD10/SU 
+0003.40      A            SUBSTAT   R        O  7 21REFFLD(RSUB/SUBSTAT SUBD10/ 
+0003.50      A                                                                  
+0003.60      A            SUBNAME   R        O  7 28REFFLD(RSUB/SUBNAME SUBD10/ 
+0003.70      A                                                                  
+0003.80      A            SUBTEL    R        O  7 49REFFLD(RSUB/SUBTEL SUBD10/S 
+0003.90      A                                  8  6'LAST DIGITS OF CC:  '      
+0004.00      A            SUBCC4    R        O  8 28REFFLD(RSUB/SUBCC4 SUBD10/S 
+0004.10      A            SUBEMAIL  R        O  8 49REFFLD(RSUB/SUBEMAIL SUBD10 
+0004.20      A                                                                  
+0004.30      A                                  8 42'EMAIL:'                    
+0004.40      A          R SFLCTL                    SFLCTL(SFLR)                
+0004.50      A*%%TS  SD  20230627  144307  JBLTD11     REL-V7R5M0  5770-WDS     
+0004.60      A                                      CF06(06 'ADD')              
+0004.70      A                                      PAGEDOWN(72)                
+0004.80      A                                      OVERLAY                 
+0004.90      A  31                                  SFLDSP                  
+0005.00      A  32                                  SFLDSPCTL               
+0005.10      A  34                                  SFLCLR                  
+0005.20      A  33                                  SFLEND                  
+0005.30      A  08                                  SFLDROP(CF08)           
+0005.40      A                                      SFLSIZ(0099)            
+0005.50      A                                      SFLPAG(0006)            
+0005.60      A            POS            4S 0H      SFLRCDNBR               
+0005.70      A                                  3 20'SEARCH BY PHONE:'      
+0005.80      A            PFX            3S 0I  3 39                        
+0005.90      A                                  3 43'-'                     
+0006.00      A            TEL            7S 0I  3 46                        
+0006.10      A                                  6  2'OP'                    
+0006.20      A                                      DSPATR(UL)              
+0006.30      A                                  6  6'ID'                    
+0006.40      A                                      DSPATR(UL)      
+0006.50      A                                  6 19'STATUS'                   
+0006.60      A                                      DSPATR(UL)                 
+0006.70      A                                  6 28'NAME'                     
+0006.80      A                                      DSPATR(UL)                 
+0006.90      A                                  6 49'TELEPHONE'                
+0007.00      A                                      DSPATR(UL)                 
+0007.10      A                                  3 44'-'                        
+0007.20      A          R ADDSCRN                                              
+0007.30      A*%%TS  SD  20230610  084831  JBLTD13     REL-V7R5M0  5770-WDS    
+0007.40      A                                      CF04(04 'COMMIT')          
+0007.50      A                                      CF09(09 'PREFIXES')        
+0007.60      A                                      OVERLAY                    
+0007.70      A                                  3  4'ADD SUBSRIBER:'           
+0007.80      A                                      DSPATR(UL)                 
+0007.90      A                                  5  4'NAME:'                    
+0008.00      A            SUBNAME   R        B  5 23REFFLD(RSUB/SUBNAME SUBD10/
+0008.10      A                                                                  
+0008.20      A  45                                  ERRMSG('MUST HAVE A NAME' 4 
+0008.30      A                                  7  4'TEL PREFIX:'               
+0008.40      A            SPREFIX        3A  B  7 23DSPATR(PR)                  
+0008.50      A  46                                  ERRMSG('MUST HAVE A PREFIX' 
+0008.60      A                                  9  4'TELEPHONE:'                
+0008.70      A            TELEPHONE      7S 0I  9 23                            
+0008.80      A  47                                  ERRMSG('MUST HAVE A 9 DIGIT 
+0008.90      A                                       47)                        
+0009.00      A                                 11  4'EMAIL:'                    
+0009.10      A            SUBEMAIL  R        B 11 23REFFLD(RSUB/SUBEMAIL PROJEC 
+0009.20      A                                      PF)                         
+0009.30      A  48                                  ERRMSG('EMAIL NOT VALID' 48 
+0009.40      A                                 13  4'LAST 4 DIGITS:'            
+0009.50      A            SUBCC4    R        B 13 23REFFLD(RSUB/SUBCC4 SUBD10/S 
+0009.60      A  49                                  ERRMSG('MUST HAVE LAST 4 DI 
+0009.70      A                                      CREDIT CARD' 49)            
+0009.80      A          R UPDATESCRN                                            
+0009.90      A*%%TS  SD  20230607  091007  JBLTD11     REL-V7R5M0  5770-WDS     
+0010.00      A                                      CF04(04 'COMMIT')           
+0010.10      A                                      CF08(08 'RESET')            
+0010.20      A                                      CF09(09 'PREFIXES')         
+0010.30      A                                      OVERLAY                     
+0010.40      A                                  3  4'UPDATE SUBSRIBER:'         
+0010.50      A                                      DSPATR(UL)                  
+0010.60      A                                  5  4'ID:'                       
+0010.70      A            SUBID     R        O  5 23REFFLD(RSUB/SUBID SUBD10/SU 
+0010.80      A                                  7  4'NAME:'                     
+0010.90      A            SUBNAME   R        B  7 23REFFLD(RSUB/SUBNAME SUBD10/ 
+0011.00                                                                         
+0011.10      A  45                                  ERRMSG('MUST HAVE A NAME' 4 
+0011.20      A                                  9  4'TEL PREFIX:'  
+0011.30      A            SPREFIX        3A  B  9 23DSPATR(PR)                  
+0011.40      A  46                                  ERRMSG('MUST HAVE A PREFIX' 
+0011.50      A                                 11  4'TELEPHONE:'                
+0011.60      A            TELEPHONE      7S 0B 11 23                            
+0011.70      A  47                                  ERRMSG('MUST HAVE A 9 DIGIT 
+0011.80      A                                              PHONE' 47)          
+0011.90      A                                 13  4'EMAIL:'                    
+0012.00      A            SUBEMAIL  R        B 13 23REFFLD(RSUB/SUBEMAIL SUBD10 
+0012.10      A                                                                  
+0012.20      A  48                                  ERRMSG('EMAIL NOT VALID' 48 
+0012.30      A                                 15  4'LAST 4 DIGITS:'            
+0012.40      A            SUBCC4    R        B 15 23REFFLD(RSUB/SUBCC4 +        
+0012.50                                                    SUBD10/SUBPF)        
+0012.60      A  49                                  ERRMSG('MUST HAVE LAST 4 DI 
+0012.70      A                                              CREDIT CARD' 49)    
+0012.80      A          R CHGSTATUS                      
+0012.90      A*%%TS  SD  20230607  092725  JBLTD11     REL-V7R5M0  5770-WDS     
+0013.00      A                                      CF04(04 'COMMIT')           
+0013.10      A*                                     CA12(12 'BACK')             
+0013.20      A                                      OVERLAY                     
+0013.30      A                                  3  4'CHANGE STATUS'             
+0013.40      A                                      DSPATR(UL)                  
+0013.50      A                                  5  4'ID:'                       
+0013.60      A            SUBID     R        O  5 23REFFLD(RSUB/SUBID SUBD10/SU 
+0013.70      A  44                                  ERRMSG('SUBSRIBER NOT FOUND 
+0013.80      A                                  7  4'NAME:'                     
+0013.90      A            SUBNAME   R        O  7 23REFFLD(RSUB/SUBNAME SUBD10/ 
+0014.00      A                                                                  
+0014.10      A                                  9  4'STATUS:'                   
+0014.20      A            SUBSTAT   R        O  9 23REFFLD(RSUB/SUBSTAT SUBD10/ 
+0014.30      A                                                                  
+0014.40      A                                 11  4'TELEPHONE:'       
+0014.50      A            SUBTEL    R        O 11 23REFFLD(RSUB/SUBTEL SUBD10/S 
+0014.60      A                                 13  4'EMAIL:'                    
+0014.70      A            SUBEMAIL  R        O 13 23REFFLD(RSUB/SUBEMAIL SUBD10 
+0014.80      A                                                                  
+0014.90      A                                 15  4'LAST 4 DIGITS:'            
+0015.00      A            SUBCC4    R        O 15 23REFFLD(RSUB/SUBCC4 SUBD10/S 
+0015.10      A          R PFXSFL                    SFL                         
+0015.20      A*%%TS  SD  20230702  095909  JBLTD11     REL-V7R5M0  5770-WDS     
+0015.30      A            OP             1A  B  9  5                            
+0015.40      A            PREFIX    R        O  9  9REFFLD(RPREFIX/PREFIX SUBD1 
+0015.50      A                                      PREFIX)                     
+0015.60      A          R PFXCTL                    SFLCTL(PFXSFL)              
+0015.70      A*%%TS  SD  20230702  095909  JBLTD11     REL-V7R5M0  5770-WDS     
+0015.80      A                                      CF04(04 'COMMIT')           
+0015.90      A                                      SFLSIZ(0099)                
+0016.00      A                                      SFLPAG(0006)      
+0016.10      A                                      WINDOW(3 7 15 20)      
+0016.20      A                                      OVERLAY                
+0016.30      A  31                                  SFLDSP                 
+0016.40      A  32                                  SFLDSPCTL              
+0016.50      A  34                                  SFLCLR                 
+0016.60      A  33                                  SFLEND                 
+0016.70      A            POS            4S 0H      SFLRCDNBR              
+0016.80      A                                  2  2'ENTER Y TO CHOOSE'    
+0016.90      A                                  8  5'OP'                   
+0017.00      A                                      DSPATR(UL)             
+0017.10      A                                  8  9'PREFIX'               
+0017.20      A                                      DSPATR(UL)             
+0017.30      A                                  4  6'F4-COMMIT'            
+0017.40      A                                  6  6'F12-CANCEL'           
+0017.50      A          R WINPASS                                          
+0017.60      A                                      WINDOW(7 7 3 23)      
+0017.70      A                                  2  3'PASSWORD RESETED'         
+        ****************** End of data ****************************************
