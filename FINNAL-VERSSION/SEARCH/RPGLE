@@ -1,0 +1,183 @@
+        *************** Beginning of data *************************************
+0001.00    dcl-f dsearch workstn sfile(mvsfl:mrrn) sfile(dtsfl:drrn)           
+0002.00                                            sfile(showsflr:srrn);       
+0003.00    dcl-f subpf    disk keyed usage(*input);                            
+0003.01    dcl-f moviepf       keyed;                                          
+0003.02    dcl-f hallpf        keyed;                                          
+0003.03    dcl-f showlf02      keyed;                                          
+0003.04                                                                        
+0004.00    dcl-pi *n;                                                          
+0005.00      subid packed(10);                                                 
+0006.00    end-pi;                                                             
+0006.01                                                                        
+0006.02    dcl-pr rshowtic extpgm;                                             
+0006.03      subidp packed(10) const;                                          
+0006.04      showidp packed(10) const;                                         
+0006.05    end-pr;                                                             
+0007.00                                                       
+0007.01    dcl-s selmvid packed(10);    //selected movie id   
+0007.02    dcl-s selshdate packed(8);  //selected date        
+0007.04    dcl-s curdat packed(8);                            
+0007.05    dcl-s mrrn packed(3);                              
+0007.06    dcl-s drrn packed(3);                              
+0007.07    dcl-s srrn packed(3);                              
+0007.08                                                       
+0007.09    dcl-ds date1;                                      
+0007.10      y1 char(4);                                      
+0007.11      m1 char(2);                                      
+0007.12      d1 char(2);                                      
+0007.13    end-ds;                                            
+0007.14    dcl-ds date2;                                      
+0007.15      d2 char(2);                                      
+0007.16      z1 char(1) inz('/');                             
+0007.17      m2 char(2);                                      
+0007.18      z2 char(1) inz('/');                                         
+0007.19      y2 char(4);                                                  
+0007.20    end-ds;                                                        
+0007.31                                                                   
+0008.00    chain subid rsub;                                              
+0008.01    curdat = %dec(%date());       // Today  = Current system date  
+0009.00    dow not(*in03);                                                
+0010.00       chain (selmvid:selshdate) rshow;                            
+0011.00       if %found;                                                  
+0012.00          exsr dspiffound;                                         
+0013.00       else;                                                       
+0014.00          exsr dspifnotfound;                                      
+0015.00       endif;                                                      
+0016.00       if *in09;                                                   
+0017.00          exsr showmovies;                                         
+0018.00       endif;   
+0019.00       if *in10;              
+0020.00          exsr showdates;     
+0021.00       endif;                 
+0022.00    enddo;                    
+0023.00    *inlr=*on;                
+0024.00                              
+0025.00    begsr dspiffound;         
+0025.01      write top;              
+0025.02      *in51=*on;              
+0025.03      write bot;              
+0025.04      write startpage;        
+0025.05      exsr showshows;         
+0025.06      exfmt showctl;          
+0025.07      exsr tipul;             
+0026.00    endsr;                    
+0027.00        0028.00    begsr dspifnotfound;     
+0028.01      if not(*in44);         
+0028.02         write top;          
+0028.03      endif;                 
+0028.04      *in51=*off;            
+0028.05      write bot;             
+0028.06      exfmt startpage;       
+0029.00    endsr;                   
+0029.01                             
+0030.00    begsr showmovies;        
+0030.01      *in34=*on;             
+0030.02      write moviectl;        
+0030.03      *in34=*off;            
+0030.04      mrrn=0;                
+0030.05      setll *loval rmovie;   
+0030.06      read rmovie;   
+0030.07      dow not(%eof(moviepf)) and not(%error);  
+0030.08          op=*blanks;                          
+0030.09          mrrn+=1;                             
+0030.10          write mvsfl;                         
+0030.11          read rmovie;                         
+0030.12      enddo;                                   
+0030.13      if mrrn > 0;                             
+0030.14          *in32=*on;                           
+0030.15          *in31=*on;                           
+0030.16          pos=1;                               
+0030.17          exsr choosemovie;                    
+0030.18      endif;                                   
+0031.00    endsr;                                     
+0031.01                                               
+0031.02    begsr choosemovie;                         
+0031.03      dou op='Y' or *in12;        
+0031.04        exfmt moviectl;                
+0031.05        readc mvsfl;                   
+0031.06      enddo;                           
+0031.07      if not(*in12);                   
+0031.08         selmv = mvname;               
+0031.09         selmvid = mvid;               
+0031.10         selshdate = 0;                
+0031.11         seld = *blanks;               
+0031.14      endif;                           
+0031.17    endsr;                             
+0031.18                                       
+0032.00    begsr showdates;                   
+0032.01      *in34=*on;                       
+0032.02      write datectl;                   
+0032.03      *in34=*off;                      
+0032.04      drrn=0;      
+0032.05      setll (selmvid:curdat) showlf02;         
+0032.06      reade selmvid showlf02;                  
+0032.07      dow not(%eof(showlf02)) and not(%error); 
+0032.08          op=*blanks;                          
+0032.09          drrn+=1;                             
+0032.10          exsr datemove;                       
+0032.11          write dtsfl;                         
+0032.12          reade selmvid showlf02;              
+0032.13      enddo;                                   
+0032.14      if drrn > 0;                             
+0032.15          *in31=*on;                           
+0032.16          *in32=*on;                           
+0032.17          pos=1;                               
+0032.18          exsr choosedate;                     
+0032.19      else;                                    
+0032.20          *in44=*on;             
+0032.21      endif;                     
+0033.00    endsr;                       
+0034.00                                 
+0034.01    begsr choosedate;            
+0034.02      dou op='Y' or *in12;       
+0034.03        exfmt datectl;           
+0034.04        readc dtsfl;             
+0034.05      enddo;                     
+0034.06      if not(*in12);             
+0034.07        seld = date;             
+0034.08        selshdate = shdate;      
+0034.12      endif;                     
+0034.14    endsr;                       
+0034.15                                 
+0034.16    begsr showshows;             
+0034.17      *in34=*on;      
+0034.18      write showctl;                               
+0034.19      *in34=*off;                                  
+0034.20      srrn=0;                                      
+0034.21      setll (selmvid:selshdate) showlf02;          
+0034.22      reade (selmvid:selshdate) showlf02;          
+0034.23         dow not(%eof(showlf02)) and not(%error);  
+0034.24            chain shhlid rhall;                    
+0034.25            if %found;                             
+0034.26               op=*blanks;                         
+0034.27               srrn+=1;                            
+0034.28               write showsflr;                     
+0034.29            endif;                                 
+0034.30            reade (selmvid:selshdate) showlf02;    
+0034.31         enddo;                                    
+0034.32         if srrn > 0;                              
+0034.33             *in31=*on;               
+0034.34             *in32=*on;                        
+0034.35             pos=1;                            
+0034.36         endif;                                
+0034.37    endsr;                                     
+0034.38                                               
+0035.00    begsr datemove;                            
+0036.00        date1 = %editc(shdate:'X');            
+0037.00        y2=y1;                                 
+0038.00        m2=m1;                                 
+0039.00        d2=d1;                                 
+0040.00        date = date2;                          
+0041.00    endsr;                                     
+0041.01                                               
+0042.00    begsr tipul;                               
+0043.00      readc showsflr;                          
+0044.00      dow not (%eof(dsearch)) and not(%error); 
+0045.00         if op='5';                                                      
+0046.00            rshowtic(subid:shid);                                        
+0047.00         endif;                                                          
+0047.01         readc showsflr;                                                 
+0047.02      enddo;                                                             
+0048.00    endsr;                                                               
+        ****************** End of data **************************************** 
