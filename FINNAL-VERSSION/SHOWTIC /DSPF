@@ -1,0 +1,125 @@
+        *************** Beginning of data ************************************* 
+0000.10      A*%%TS  SD  20230702  125831  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A          R TOP                                                   
+0000.60      A*%%TS  SD  20230702  125434  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.70      A                                  1 33'SELECT SEATS'              
+0000.80      A                                      DSPATR(UL)                  
+0000.90      A                                  3  4'SUB NAME:'                 
+0001.00      A            SUBNAME   R        O  3 16REFFLD(RSUB/SUBNAME SUBD10/SUBPD)
+0001.10      A                                  5  4'MOVIE NAME:'               
+0001.20      A            MVNAME    R        O  5 16REFFLD(RMOVIE/MVNAME SUBD10/MOVIEPF) 
+0001.30      A                                  3 48'HALL NAME:'                
+0001.40      A            HLNAME    R        O  3 60REFFLD(RHALL/HLNAME SUBD10/HALLPF) 
+0001.50      A                                  5 48'TIME:'                     
+0001.60      A            DATE          10A  O  5 54    
+0001.70      A            SHATRHR        2S 0O  5 67                           
+0001.80      A                                  5 70'-'                        
+0001.90      A            SHENDHR        2S 0O  5 72                           
+0002.00      A          R BOT                                                  
+0002.10      A*%%TS  SD  20230702  125831  JBLTD10     REL-V7R5M0  5770-WDS    
+0002.20      A                                      OVERLAY                    
+0002.30      A                                 21  2'--------------------------
+0002.40      A                                      ---------------------------
+0002.50      A                                      ---------'                 
+0003.00      A                                 22  4'F3-EXIT'                  
+0004.00      A                                 22 14'F10-PAY'                  
+0005.00      A          R HLSFL                     SFL                        
+0006.00      A*%%TS  SD  20230614  123440  JBLTD11     REL-V7R5M0  5770-WDS    
+0007.00      A            LINE           2Y 0O 10  6DSPATR(UL)                 
+0008.00      A                                      EDTCDE(Z)                  
+0009.00      A            C1             1A  O 10 10    
+0010.00      A            C2             1A  O 10 13                        
+0011.00      A            C3             1A  O 10 16                        
+0012.00      A            C4             1A  O 10 19                        
+0013.00      A            C5             1A  O 10 22                        
+0014.00      A            C6             1A  O 10 25                        
+0015.00      A            C7             1A  O 10 28                        
+0016.00      A            C8             1A  O 10 31                        
+0017.00      A            C9             1A  O 10 34                        
+0018.00      A            C10            1A  O 10 37                        
+0019.00      A          R HALLCTL                   SFLCTL(HLSFL)           
+0020.00      A*%%TS  SD  20230704  094532  JBLTD11     REL-V7R5M0  5770-WDS 
+0021.00      A                                      SFLSIZ(0060)            
+0022.00      A                                      SFLPAG(0010)            
+0023.00      A                                      CF10(10 'PAY')          
+0024.00      A                                      OVERLAY                 
+0025.00      A  31                                  SFLDSP
+0026.00      A  32                                  SFLDSPCTL   
+0027.00      A  34                                  SFLCLR      
+0028.00      A                                  9  6'L'         
+0029.00      A                                      DSPATR(UL)  
+0030.00      A                                  9 10'1'         
+0031.00      A                                      DSPATR(UL)  
+0032.00      A                                  9 13'2'         
+0033.00      A                                      DSPATR(UL)  
+0034.00      A                                  9 16'3'         
+0035.00      A                                      DSPATR(UL)  
+0036.00      A                                  9 19'4'         
+0037.00      A                                      DSPATR(UL)  
+0038.00      A                                  9 22'5'         
+0039.00      A                                      DSPATR(UL)  
+0040.00      A                                  9 25'6'         
+0041.00      A                                      DSPATR(UL)  
+0042.00      A                                  9 28'7'                         
+0043.00      A                                      DSPATR(UL)                  
+0044.00      A                                  9 31'8'                         
+0045.00      A                                      DSPATR(UL)                  
+0046.00      A                                  9 34'9'                         
+0047.00      A                                      DSPATR(UL)                  
+0048.00      A                                  9 37'10'                        
+0049.00      A                                      DSPATR(UL)                  
+0050.00      A                                  7  6'LINE:'                     
+0051.00      A            SELLN          2S 0I  7 12                            
+0052.00      A  46                                  ERRMSG('CANT SELECT THE CHAIR' 46) 
+0053.00      A  47                                  ERRMSG('CHAIR NOT FOUND' 47) 
+0054.00      A                                      RANGE(1 10)                 
+0055.00      A                                  7 26'POSITION:'                 
+0056.00      A            SELPOS         2S 0I  7 36RANGE(1 10)                 
+0057.00      A                                  7 44'CANCEL (Y):'  
+0058.00      A            CANCEL         1A  I  7 56                            
+0059.00      A  44                                  ERRMSG('CHAIR IS NOT SELECTED' 44) 
+0060.00      A  45                                  ERRMSG('ENTER Y TO CANCEL' 45) 
+0061.00      A            FLD001         1A  B  7 19DSPATR(ND)                  
+0062.00      A                                      DSPATR(PR)                  
+0063.00      A  48                                  ERRMSG('NO ACTIVE CARDS' 48) 
+0064.00      A  49                                  ERRMSG('CANT SELECT MORE THAN 10 CHAIRS' 49) 
+0065.00      A                                      AIRS' 49)                   
+0066.00      A          R CARDSFL                   SFL                         
+0067.00      A*%%TS  SD  20230614  084058  JBLTD11     REL-V7R5M0  5770-WDS     
+0068.00      A            OP             2S 0O  7  2                            
+0069.00      A  40                                  DSPATR(ND)                  
+0070.00      A            CRDID     R        O  7 26REFFLD(RCARD/CRDID SUBD10/CARDPF) 
+0072.00      A            BALANCE        2S 0O  7  6                            
+0073.00      A            CRDQTY    R        O  7 11REFFLD(RCARD/CRDQTY SUBD10/CARDPF) 
+0075.00      A                                  7 14'-'       
+0076.00      A            CRDUSED   R        O  7 16REFFLD(RCARD/CRDUSED SUBD10/CARDPF)  
+0078.00      A                                  7 19')'                         
+0079.00      A            CRDSUM    R        O  7 41REFFLD(RCARD/CRDSUM SUBD10/CARDPF)
+0081.00      A                                  7  9'('                         
+0082.00      A          R CARDCTL                   SFLCTL(CARDSFL)             
+0083.00      A*%%TS  SD  20230614  083624  JBLTD11     REL-V7R5M0  5770-WDS     
+0084.00      A                                      CA12(12 'CANCEL')           
+0085.00      A                                      CF04(04 'COMMIT')           
+0086.00      A                                      SFLSIZ(0099)                
+0087.00      A                                      SFLPAG(0006)                
+0088.00      A                                      WINDOW(1 10 13 50)          
+0089.00      A                                      OVERLAY                     
+0090.00      A  31                                  SFLDSP                      
+0091.00      A  32                                  SFLDSPCTL                   
+0092.00      A  34                                  SFLCLR                      
+0093.00      A  33                                  SFLEND   
+0094.00      A            POS            4S 0H      SFLRCDNBR                  
+0095.00      A                                  6  2'OP'                       
+0096.00      A                                      DSPATR(UL)                 
+0097.00      A                                  6 26'CARD ID'                  
+0098.00      A                                      DSPATR(UL)                 
+0099.00      A                                  6  6'BALANCE'                  
+0100.00      A                                      DSPATR(UL)                 
+0101.00      A                                  6 41'PRICE'                    
+0102.00      A                                      DSPATR(UL)                 
+0103.00      A                                  2 17'ENTER Y TO CHOOSE'        
+0104.00      A                                  4 15'F4-COMMIT   F12-CANCEL'   
+        ****************** End of data ****************************************
