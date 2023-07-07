@@ -16,7 +16,8 @@
 0012.00    dcl-s countcard packed(3); //count remainig in card                 
 0013.00    dcl-s countd packed(3);  //count used to delete in ds   
 0014.00    dcl-s countop packed(3);  //count to iterate op times   
-0015.00    dcl-s countr  packed(3);  //count reserved chairs       
+0015.00    dcl-s countr  packed(3);  //count reserved chairs  
+0015.01    dcl-s idx packed(2); 
 0016.00                                                            
 0017.00    dcl-ds date1;                                           
 0018.00      y1 char(4);                                           
@@ -141,16 +142,9 @@
 0090.00 
 // THIS SR FILL THE SFL LINE WITH 'O' 
 0091.00    begsr inzline;          
-0091.01       c1='O';              
-0091.02       c2='O';              
-0091.03       c3='O';              
-0091.04       c4='O';              
-0091.05       c5='O';              
-0091.06       c6='O';              
-0091.07       c7='O';              
-0091.08       c8='O';              
-0091.09       c9='O';              
-0091.10       c10='O';             
+0091.02      for idx = 1 to %elem(linearr);
+0091.03        linearr(idx) = 'O';         
+0091.04      endfor;                                  
 0092.00    endsr;  
 0093.00
 // THIS SR IS EXECUTED WHEN SELECTING A CHAIR, AND CHECKS IF THE GIVEN VALUES ARE VALID         
