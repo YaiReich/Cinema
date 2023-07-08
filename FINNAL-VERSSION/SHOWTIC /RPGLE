@@ -195,3 +195,32 @@
 0100.07         *in44=*on;               
 0100.08      endif;                      
 0101.00    endsr;                        
+0102.00                                
+//THIS SFL DISPLAYS THE CARD SFL, AND IF THE USER COMMITED, IT WILL RESERVE THE CHAIRS HE SELECTED FOR HIM                           
+0103.00   begsr fillcardsfl;                  
+0104.00     *in34=*on;                        
+0105.00     write cardctl;                    
+0106.00     *in34=*off;                       
+0107.00     crrn=0;                           
+0108.00     setll subid rcard;                
+0109.00     reade subid rcard;                
+0110.00     countcard = countp;               
+0111.00     dow not(%eof(cardlf01));          
+0112.00        if crdsts = 'A';               
+0113.00            crrn+=1;                   
+0114.00            balance = crdqty-crdused;  
+0115.00            exsr docountcard;          
+0116.00            write cardsfl;    
+0117.00            *in40 = *off;       
+0118.00        endif;                  
+0119.00        reade subid rcard;      
+0120.00    enddo;                      
+0121.00    if crrn > 0;                
+0122.00       *in31=*on;               
+0123.00       *in32=*on;               
+0124.00       *in33=*on;               
+0125.00       pos=1;                   
+0126.00    else;                       
+0127.00       *in48=*on;               
+0128.00    endif;                      
+0129.00   endsr;                       
