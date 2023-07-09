@@ -35,7 +35,7 @@
 0038.00      EXFMT SFLCTL;    
 0039.00      *IN50=*OFF;      
 0040.00      IF *IN06;        
-0041.00         EXSR ADD1;    
+0041.00         EXSR ADDNEWSUB;    
 0042.00         *IN61=*ON;    
 0043.00      ELSE;            
 0044.00         EXSR TIPUL;   
@@ -144,12 +144,12 @@ the loop will exit, and the program flow will continue after the DOW loop.
 0133.00     ENDDO;                  
 0134.00   ENDSR;   
 0135.00                                                          
-0136.00   BEGSR ADD1;                                            
+0136.00   BEGSR ADDNEWSUB;                                            
 0136.01      *IN56 = *ON;                                        
 0138.00      WRITE BOT;                                          
 0139.00      EXSR EMPTY;                                         
-0139.01      EXFMT ADDSCRN;                                      
-0139.03      DOW NOT(*IN03) AND NOT(*IN04) AND NOT(*IN12);       
+0139.03      DOU NOT(*IN03) AND NOT(*IN04) AND NOT(*IN12);  
+0139.04      EXFMT ADDSCRN;                                      
 0145.00         IF *IN04;                                        
 0146.00            EXSR CHECKFIELDS;                             
 0147.00            IF *IN45 OR *IN46 OR *IN47 OR *IN48 OR *IN49; 
@@ -165,7 +165,6 @@ the loop will exit, and the program flow will continue after the DOW loop.
 0156.01         IF *IN09;           
 0156.02            EXSR PREFIXSFL;  
 0156.03         ENDIF;              
-0156.04         EXFMT ADDSCRN;      
 0157.00      ENDDO;                 
 0157.01      *IN56 = *OFF;          
 0160.00   ENDSR;  
