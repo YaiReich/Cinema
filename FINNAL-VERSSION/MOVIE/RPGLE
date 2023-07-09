@@ -43,3 +43,13 @@
 0004.57 C                   ENDIF                                               
 0004.58 C                   ENDSR                                               
 0005.00 C*                                                                      
+0005.01 C     TIPUL         BEGSR                                               
+0005.02 C                   READC     SFLR                                 9999 
+0005.03 C     *IN99         DOWEQ     *OFF                                      
+0005.04 C     OP            IFEQ      '4'                                       
+0005.05 C                   EXSR      DELETEMOVIE                               
+0005.06 C                   ENDIF                                               
+0005.07 C                   READC     SFLR                                 9999 
+0005.08 C                   ENDDO                                               
+0005.13 C                   ENDSR                                               
+0005.14 C*                                                                      
