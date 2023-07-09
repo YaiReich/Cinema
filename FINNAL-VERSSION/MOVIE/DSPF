@@ -26,8 +26,7 @@
 0002.50      A            OP             1A  B  5  3                           
 0002.60      A            MVID      R        O  5  7REFFLD(RMOVIE/MVID SUBD10/MOVIEPF)
 0002.70      A            MVNAME    R        O  5 19REFFLD(RMOVIE/MVNAME SUBD10/MOVIEPF)
-0002.80      A            MVHOURS   R        O  5 52REFFLD(RMOVIE/MVHOURS SUBD10/MOVIEPF)
-0002.90      A                                                         
+0002.80      A            MVHOURS   R        O  5 52REFFLD(RMOVIE/MVHOURS SUBD10/MOVIEPF)      
 0003.00      A******************************************************           
 0003.10      A          R SFLCTL                    SFLCTL(SFLR)               
 0003.20      A                                      SFLSIZ(0099)               
@@ -57,12 +56,9 @@
 0005.50      A                                      DSPATR(UL)                  
 0005.60      A                                  5  4'NAME:'                     
 0005.70      A            MVNAME    R        B  5 12REFFLD(RMOVIE/MVNAME SUBD10/MOVIEPF) 
-0005.71      A  45                                  ERRMSG('ERROR NO NAME WAS GIVEN' 45) 
 0005.80      A                                  7  4'HOURS:'                    
 0005.90      A            MVHOURS   R        B  7 12REFFLD(RMOVIE/MVHOURS SUBD10/MOVIEPF) 
-0006.00      A                                      
-0006.10      A  46                                  ERRMSG('ERROR NO HOURES WRE GIVEN'- 
-0006.11      A                                              46)                 
+0006.10      A  24                                  ERRMSG('ERROR VALID' 24) 
 0006.20      A****************************************************************  
 0006.30      A          R DLTSCRN                                               
 0006.40      A*%%TS  SD  20230615  105907  JBLTD10     REL-V7R5M0  5770-WDS     
@@ -75,8 +71,12 @@
 0007.30      A            MVNAME    R        O  7 11REFFLD(RMOVIE/MVNAME SUBD10/MOVIEPF) 
 0007.50      A                                  9  4'HOURS:'                    
 0007.70      A            MVHOURS   R        O  9 11REFFLD(RMOVIE/MVHOURS SUBD10/MOVIEPF) 
-0007.80      A                                                              
 0008.00      A                                  5  4'ID:'                       
 0008.20      A            MVID      R        O  5 11REFFLD(RMOVIE/MVID SUBD10/MOVIEPF) 
-0008.30      A  44                                  ERRMSG('MOVIE HAS SHOW' 44) 
-    ****************** End of data ***************************************
+0007.80      A  25                                  ERRMSG('MOVIE HAS SHOW' 25) 
+0007.90      A          R WINPASS                                               
+0008.00      A*%%TS  SD  20230709  192359  JBLTD10     REL-V7R5M0  5770-WDS     
+0008.10      A                                      WINDOW(9 13 8 20)           
+0008.20      A                                  2  3'CANT DELETE MOVIE'         
+0008.30      A                                  3  5'WITH SHOWS!'               
+        ****************** End of data **************************************** 
