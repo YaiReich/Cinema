@@ -19,13 +19,13 @@
 0001.80      A N50                             21 15'F4-COMMIT'                 
 0001.90      A N50                             21 30'F12-CANCEL'                
 0002.00      A          R SFLR                      SFL                         
-0002.10      A            OP             1A  B  7  2                            
-0002.20      A            HLID      R        O  7  6REFFLD(RHALL/HLID +         
+0002.10      A            OP             1A  B  5  2                            
+0002.20      A            HLID      R        O  5  6REFFLD(RHALL/HLID +         
 0002.30      A                                             SUBD10/HALLPF)       
-0002.40      A            HLNAME    R        O  7 19REFFLD(RHALL/HLNAME +       
+0002.40      A            HLNAME    R        O  5 19REFFLD(RHALL/HLNAME +       
 0002.50      A                                             SUBD10/HALLPF)       
-0002.60      A            HLLINES   R        O  7 37REFFLD(RHALL/HLLINES SUBD10/HALLPF)       
-0002.80      A            HLCHAIRS  R        O  7 44REFFLD(RHALL/HLCHAIRS SUBD10/HALLPF)       
+0002.60      A            HLLINES   R        O  5 37REFFLD(RHALL/HLLINES SUBD10/HALLPF)       
+0002.80      A            HLCHAIRS  R        O  5 44REFFLD(RHALL/HLCHAIRS SUBD10/HALLPF)       
 0003.00      A          R SFLCTL                    SFLCTL(SFLR)                
 0003.10      A*%%TS  SD  20230611  154101  JBLTD11     REL-V7R5M0  5770-WDS     
 0003.20      A                                      SFLSIZ(0099)
@@ -35,17 +35,17 @@
 0003.60      A  31                                  SFLDSP            
 0003.70      A  32                                  SFLDSPCTL         
 0003.80      A  34                                  SFLCLR            
-0003.90      A  33                                  SFLEND            
+0003.90      A  33                                  SFLEND(*MORE)            
 0004.00      A            POS            4S 0H      SFLRCDNBR         
-0004.10      A                                  6  2'OP'              
+0004.10      A                                  5  2'OP'              
 0004.20      A                                      DSPATR(UL)        
-0004.30      A                                  6  6'ID'              
+0004.30      A                                  5  6'ID'              
 0004.40      A                                      DSPATR(UL)        
-0004.50      A                                  6 19'NAME'            
+0004.50      A                                  5 19'NAME'            
 0004.60      A                                      DSPATR(UL)        
-0004.70      A                                  6 37'LINES'           
+0004.70      A                                  5 37'LINES'           
 0004.80      A                                      DSPATR(UL)   
-0004.90      A                                  6 41'CHAIRS'                    
+0004.90      A                                  5 41'CHAIRS'                    
 0005.00      A                                      DSPATR(UL)                  
 0005.10      A          R ADDSCRN                                               
 0005.30      A                                      CF04(04 'COMMIT')           
