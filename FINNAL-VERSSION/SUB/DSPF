@@ -49,7 +49,6 @@
 0005.00      A  32                                  SFLDSPCTL               
 0005.10      A  34                                  SFLCLR                  
 0005.20      A  33                                  SFLEND                  
-0005.30      A  08                                  SFLDROP(CF08)           
 0005.40      A                                      SFLSIZ(0099)            
 0005.50      A                                      SFLPAG(0006)            
 0005.60      A            POS            4S 0H      SFLRCDNBR               
@@ -154,10 +153,9 @@
 0015.50      A                                      PREFIX)                     
 0015.60      A          R PFXCTL                    SFLCTL(PFXSFL)              
 0015.70      A*%%TS  SD  20230702  095909  JBLTD11     REL-V7R5M0  5770-WDS     
-0015.80      A                                      CF04(04 'COMMIT')           
 0015.90      A                                      SFLSIZ(0099)                
 0016.00      A                                      SFLPAG(0006)      
-0016.10      A                                      WINDOW(3 7 15 20)      
+0016.10      A                                      WINDOW(3 51 15 20)      
 0016.20      A                                      OVERLAY                
 0016.30      A  31                                  SFLDSP                 
 0016.40      A  32                                  SFLDSPCTL              
@@ -165,12 +163,11 @@
 0016.60      A  33                                  SFLEND                 
 0016.70      A            POS            4S 0H      SFLRCDNBR              
 0016.80      A                                  2  2'ENTER Y TO CHOOSE'    
-0016.90      A                                  8  5'OP'                   
+0016.90      A                                  5  5'OP'                   
 0017.00      A                                      DSPATR(UL)             
-0017.10      A                                  8  9'PREFIX'               
+0017.10      A                                  5  9'PREFIX'               
 0017.20      A                                      DSPATR(UL)             
-0017.30      A                                  4  6'F4-COMMIT'            
-0017.40      A                                  6  6'F12-CANCEL'           
+0017.40      A                                  3  2'OR F12 TO CANCEL'           
 0017.50      A          R WINPASS                                          
 0017.60      A                                      WINDOW(7 7 3 23)      
 0017.70      A                                  2  3'PASSWORD RESETED'         
