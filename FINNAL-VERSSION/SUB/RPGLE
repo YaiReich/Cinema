@@ -261,17 +261,13 @@ and then performs an extended-format operation to display or update a screen for
 0242.00   ENDSR; 
 0242.01
 0242.03   BEGSR CHOOSEPFX;                           
-0242.04      DOU *IN04 OR *IN12;                     
+0242.04      DOU OP = 'Y' OR *IN12;                     
 0242.05         EXFMT PFXCTL;                        
-0242.06         READC PFXSFL;                        
-0242.07         IF *IN04;                            
-0242.08            IF OP = 'Y';                      
-0242.10               SPREFIX=%EDITC(PREFIX:'X');    
-0242.13            ELSE;                             
-0242.14               *IN04 = *OFF;                  
-0242.15            ENDIF;                            
-0242.16         ENDIF;                               
-0242.17      ENDDO;                                  
+0242.06         READC PFXSFL;  
+0242.07      ENDDO;                                  
+0242.08      IF OP = 'Y';                      
+0242.10          SPREFIX=%EDITC(PREFIX:'X');                    
+0242.15      ENDIF;                
 0242.20   ENDSR;   
 0243.00                                                         
 0244.00   BEGSR CHECKFIELDS;                                    
@@ -298,7 +294,8 @@ and then performs an extended-format operation to display or update a screen for
 0265.00      SUBID = SUBNUM +1;       
 0266.00      SUBNUM = SUBID;          
 0267.00      UPDATE RSUBNUM;          
-0268.00   ENDSR;      
+0268.00   ENDSR;  
+0269.00
 0270.00   BEGSR EMPTY;                                                          
 0271.00      SUBNAME=*BLANKS;                                                   
 0272.00      SUBSTAT=*BLANKS;                                                   
