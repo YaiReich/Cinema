@@ -1,0 +1,82 @@
+        *************** Beginning of data ************************************* 
+0000.10      A*%%TS  SD  20230709  141021  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A                                      CF06(06 'ADD')              
+0000.60      A          R TOP                                                   
+0000.70      A*%%TS  SD  20230709  135850  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.80      A                                  1 32'MOVIES MANAGEMENT'         
+0000.90      A                                      DSPATR(UL)                  
+0001.00      A                                      DSPATR(RI)                  
+0001.10      A          R BOT                                                   
+0001.20      A*%%TS  SD  20230709  141021  JBLTD10     REL-V7R5M0  5770-WDS     
+0001.30      A                                      OVERLAY                     
+0001.40      A                                 20  4'-------------------------- 
+0001.50      A                                      --------------------------- 
+0001.60      A                                      --'                         
+0001.70      A                                 21  5'F3 - EXIT'                
+0001.80      A  35                             21 16'F6-ADD NEW MOVIE'         
+0001.90      A N35                             21 16'F4-CONFIRM'               
+0002.00      A N35                             21 29'F12-CANCEL'               
+0002.10      A  35                             23  5'4-DELETE'                 
+0002.20      A*****************************************************            
+0002.30      A          R SFLR                      SFL                        
+0002.40      A*%%TS  SD  20230614  202249  JBLTD10     REL-V7R5M0  5770-WDS    
+0002.50      A            OP             1A  B  5  3                           
+0002.60      A            MVID      R        O  5  7REFFLD(RMOVIE/MVID SUBD10/MOVIEPF)
+0002.70      A            MVNAME    R        O  5 19REFFLD(RMOVIE/MVNAME SUBD10/MOVIEPF)
+0002.80      A            MVHOURS   R        O  5 52REFFLD(RMOVIE/MVHOURS SUBD10/MOVIEPF)
+0002.90      A                                                         
+0003.00      A******************************************************           
+0003.10      A          R SFLCTL                    SFLCTL(SFLR)               
+0003.20      A                                      SFLSIZ(0099)               
+0003.30      A                                      SFLPAG(0006)     
+0003.31      A                                      PAGEDOWN(72)     
+0003.40      A                                      OVERLAY          
+0003.50      A  31                                  SFLDSP           
+0003.60      A  32                                  SFLDSPCTL        
+0003.70      A  34                                  SFLCLR           
+0003.80      A  33                                  SFLEND(*MORE)    
+0003.90      A            POS            4S 0H      SFLRCDNBR        
+0004.00      A                                  4  3'OP'             
+0004.10      A                                      DSPATR(UL)       
+0004.20      A                                  4  7'ID'             
+0004.30      A                                      DSPATR(UL)       
+0004.40      A                                  4 19'MOVIE NAME'     
+0004.50      A                                      DSPATR(UL)       
+0004.60      A                                  4 50'HOURS'          
+0004.70      A                                      DSPATR(UL)  
+0004.80      A********************************************************          
+0004.90      A          R ADDSCRN                                               
+0005.00      A*%%TS  SD  20230707  154047  JBLTD10     REL-V7R5M0  5770-WDS     
+0005.10      A                                      CF04(04 'CONFIRM')          
+0005.20      A                                      CA12(12 'BACK')             
+0005.30      A                                      OVERLAY                     
+0005.40      A                                  3  4'ADD MOVIE:'                
+0005.50      A                                      DSPATR(UL)                  
+0005.60      A                                  5  4'NAME:'                     
+0005.70      A            MVNAME    R        B  5 12REFFLD(RMOVIE/MVNAME SUBD10/MOVIEPF) 
+0005.71      A  45                                  ERRMSG('ERROR NO NAME WAS GIVEN' 45) 
+0005.80      A                                  7  4'HOURS:'                    
+0005.90      A            MVHOURS   R        B  7 12REFFLD(RMOVIE/MVHOURS SUBD10/MOVIEPF) 
+0006.00      A                                      
+0006.10      A  46                                  ERRMSG('ERROR NO HOURES WRE GIVEN'- 
+0006.11      A                                              46)                 
+0006.20      A****************************************************************  
+0006.30      A          R DLTSCRN                                               
+0006.40      A*%%TS  SD  20230615  105907  JBLTD10     REL-V7R5M0  5770-WDS     
+0006.50      A                                      CF04(04 'COMMIT')           
+0006.60      A                                      CA12(12 'BACK')             
+0006.70      A                                      OVERLAY                     
+0006.80      A                                  3  4'DELETE MOVIE:'             
+0006.90      A                                      DSPATR(UL)                  
+0007.10      A                                  7  4'NAME:'                     
+0007.30      A            MVNAME    R        O  7 11REFFLD(RMOVIE/MVNAME SUBD10/MOVIEPF) 
+0007.50      A                                  9  4'HOURS:'                    
+0007.70      A            MVHOURS   R        O  9 11REFFLD(RMOVIE/MVHOURS SUBD10/MOVIEPF) 
+0007.80      A                                                              
+0008.00      A                                  5  4'ID:'                       
+0008.20      A            MVID      R        O  5 11REFFLD(RMOVIE/MVID SUBD10/MOVIEPF) 
+0008.30      A  44                                  ERRMSG('MOVIE HAS SHOW' 44) 
+    ****************** End of data ***************************************
