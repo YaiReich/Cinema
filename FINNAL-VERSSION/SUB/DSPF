@@ -48,7 +48,7 @@
 0004.90      A  31                                  SFLDSP                  
 0005.00      A  32                                  SFLDSPCTL               
 0005.10      A  34                                  SFLCLR                  
-0005.20      A  33                                  SFLEND                  
+0005.20      A  33                                  SFLEND(*MORE)                  
 0005.40      A                                      SFLSIZ(0099)            
 0005.50      A                                      SFLPAG(0006)            
 0005.60      A            POS            4S 0H      SFLRCDNBR               
