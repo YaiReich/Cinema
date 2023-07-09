@@ -53,3 +53,52 @@
 0005.08 C                   ENDDO                                               
 0005.13 C                   ENDSR                                               
 0005.14 C*                                                                      
+0006.00 C     ADDMOVIE      BEGSR                                           
+0006.03 C                   WRITE     BOT                                   
+0006.04 C                   EXSR      CLEAN                                 
+0006.06 C     *IN04         DOWEQ     *OFF                                  
+0006.07 C     *IN03         ANDEQ     *OFF                                  
+0006.08 C     *IN12         ANDEQ     *OFF                                  
+0006.09 C                   EXFMT     ADDSCRN                               
+0006.10 C   04              DO                                              
+0006.11 C     MVNAME        IFNE      *BLANKS                               
+0006.16 C     MVHOURS       ANDNE     0                                     
+0006.25 C                   EXSR      UPDTBMVNUM                            
+0006.26 C                   WRITE     RMOVIE                                
+0006.27 C                   ELSE                                            
+0006.28 C                   SETON                                        24 
+0006.29 C                   SETOFF                                       04 
+0006.30 C                   ENDIF                                           
+0006.31 C                   ENDDO                                      
+0006.32 C                   ENDDO                                             
+0006.33 C                   SETOFF                                       0412 
+0006.34 C                   ENDSR                                             
+0006.35 C*                                                                    
+0006.36 C     UPDTBMVNUM    BEGSR                                             
+0006.37 C     *START        SETLL     TBMVNUM                                 
+0006.38 C                   READ      TBMVNUM                                 
+0006.39 C                   ADD       1             MVNUM                     
+0006.40 C                   Z-ADD     MVNUM         MVID                      
+0006.41 C                   UPDATE    RMVNUM                                  
+0006.42 C                   ENDSR                                             
+0007.01 C*                                                                    
+0007.02 C     DELETEMOVIE   BEGSR                                             
+0007.06 C                   WRITE     BOT                                     
+0007.07 C                   EXFMT     DLTSCRN                                 
+0007.08 C   04              DO             
+0007.09 C     MVID          SETLL     RSHOW                                  25 
+0007.10 C     *IN25         IFEQ      *ON                                       
+0007.11 C                   EXFMT     WINPASS                                   
+0007.12 C                   ELSE                                                
+0007.13 C  N25MVID          CHAIN     RMOVIE                             2525   
+0007.14 C  N25              DELETE    RMOVIE                                    
+0007.15 C                   ENDIF                                               
+0007.16 C                   ENDDO                                               
+0007.17 C                   ENDSR                                               
+0008.00 C*                                                                      
+0009.00 C     CLEAN         BEGSR                                               
+0010.00 C                   MOVE      *BLANKS       MVNAME                      
+0011.00 C                   Z-ADD     0             MVHOURS                     
+0012.00 C                   Z-ADD     0             MVID                        
+0013.00 C                   ENDSR                                               
+        ****************** End of data **************************************** 
