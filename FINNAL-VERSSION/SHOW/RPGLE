@@ -1,43 +1,44 @@
-        *************** Beginning of data ************************************
-0000.01 FSHOWLF01  UF A E           K DISK                                    
-0000.02 FHALLPF    IF   E           K DISK                                    
-0000.03 FMOVIEPF   IF   E           K DISK                                    
-0001.00 FDSHOW     CF   E             WORKSTN                                 
-0001.02 F                                     SFILE(SHOWSFL:SRRN)             
-0001.03 F                                     SFILE(HLSFL:HRRN)               
-0001.04 F                                     SFILE(DTSFL:DRRN)               
-0001.05 DDATE1            DS                                                  
-0001.06 DY1                              4  0                                 
-0001.07 DM1                              2  0                                 
-0001.08 DD1                              2  0                                 
-0001.09 DDATE2            DS                                                  
-0001.10 DY2                              4  0                                 
-0001.11 DS1                              1    INZ('/')                        
-0001.12 DM2                              2  0                                 
-0001.13 DS2                              1    INZ('/')                        
-0001.14 DD2                              2  0                                 
-0001.15 DSELHLID          S             10  0                                 
-0001.16 DSELSHDATE        S              8  0                                 
-0002.00 C*                                                                    
-0002.01 C                   WRITE     TOP                                     
-0002.02 C     *IN03         DOWEQ     *OFF                                    
-0002.03 C                   WRITE     BOT                                     
-0002.04 C     SHOWKLIST     CHAIN     RSHOW                              9999 
-0002.05 C     *IN99         IFEQ      *OFF                                    
-0002.06 C                   WRITE     STARTPAGE                               
-0002.07 C                   EXSR      SHOWSHOWS                               
-0002.08 C                   EXFMT     SHOWCTL                                 
-0002.09 C                   ELSE                                              
-0002.10 C                   EXFMT     STARTPAGE                               
-0002.11 C                   ENDIF                                             
-0002.12 C   09              DO                                                
-0002.13 C                   EXSR      SHOWHALLS  
-0002.14 C                   ENDDO                                              
-0002.15 C   10              DO                                                 
-0002.16 C                   EXSR      SHOWDATES                                
-0002.17 C                   ENDDO                                              
-0002.18 C                   ENDDO                                              
-0002.19 C                   SETON                                        LR    
+        *************** Beginning of data *************************************
+0000.01 FSHOWLF01  UF A E           K DISK                                     
+0000.02 FHALLPF    IF   E           K DISK                                     
+0000.03 FMOVIEPF   IF   E           K DISK                                     
+0001.00 FDSHOW     CF   E             WORKSTN                                  
+0001.02 F                                     SFILE(SHOWSFL:SRRN)              
+0001.03 F                                     SFILE(HLSFL:HRRN)                
+0001.04 F                                     SFILE(DTSFL:DRRN)                
+0001.05 DDATE1            DS                                                   
+0001.06 DY1                              4  0                                  
+0001.07 DM1                              2  0                                  
+0001.08 DD1                              2  0                                  
+0001.09 DDATE2            DS                                                   
+0001.10 DY2                              4  0                                  
+0001.11 DS1                              1    INZ('/')                         
+0001.12 DM2                              2  0                                  
+0001.13 DS2                              1    INZ('/')  
+0001.14 DD2                              2  0                                
+0001.15 D*                                                                   
+0001.16 DSELHLID          S             10  0                                
+0001.17 DSELSHDATE        S              8  0                                
+0002.00 C*                                                                   
+0002.01 C                   WRITE     TOP                                    
+0002.02 C     *IN03         DOWEQ     *OFF                                   
+0002.03 C                   WRITE     BOT                                    
+0002.04 C     SHOWKLIST     CHAIN     RSHOW                              9999
+0002.05 C     *IN99         IFEQ      *OFF                                   
+0002.06 C                   WRITE     STARTPAGE                              
+0002.07 C                   EXSR      SHOWSHOWS                              
+0002.08 C                   EXFMT     SHOWCTL                                
+0002.09 C                   ELSE                                             
+0002.12 C                   EXFMT     STARTPAGE                              
+0002.13 C                   ENDIF                 
+0002.14 C   09              DO                                                  
+0002.15 C                   EXSR      SHOWHALLS                                 
+0002.16 C                   ENDDO                                               
+0002.17 C   10              DO                                                  
+0002.18 C                   EXSR      SHOWDATES                                 
+0002.19 C                   ENDDO                                               
+0002.20 C                   ENDDO                                               
+0003.00 C                   SETON                                        LR     
 0003.01 C*                                                                      
 0003.02 C     SHOWHALLS     BEGSR                                               
 0003.03 C                   SETON                                        3234   
@@ -60,25 +61,25 @@
 0003.20 C                   SETOFF                                       31     
 0003.21 C                   ENDIF                                               
 0003.22 C                   ENDSR                                               
-0003.23 C*                                                                  
-0003.24 C     SELECTHALL    BEGSR                                           
-0003.25 C     OP            DOUEQ     'Y'                                   
-0003.26 C     *IN12         OREQ      *ON                                   
-0003.27 C                   EXFMT     HALLCTL                               
-0003.28 C                   READC     HLSFL                                 
-0003.29 C                   ENDDO                                           
-0003.31 C     *IN12         IFEQ      *OFF                                  
-0003.32 C                   MOVE      HLNAME        SELHL                   
-0003.33 C                   Z-ADD     HLID          SELHLID                 
-0003.34 C                   Z-ADD     0             SELSHDATE               
-0003.35 C                   MOVE      *BLANKS       SELD                    
-0003.36 C                   ENDIF                                           
-0003.42 C                   ENDSR                                               
-0003.43 C*                                                                      
-0003.44 C     SHOWDATES     BEGSR                                               
-0003.45 C                   SETON                                        3234   
-0003.46 C                   WRITE     DATECTL                                   
-0003.47 C                   SETOFF                                       34     
+0003.23 C*                                                                      
+0003.24 C     SELECTHALL    BEGSR                                               
+0003.25 C     OP            DOUEQ     'Y'                                       
+0003.26 C     *IN12         OREQ      *ON                                      
+0003.27 C                   EXFMT     HALLCTL                                  
+0003.28 C                   READC     HLSFL                                    
+0003.29 C                   ENDDO                                              
+0003.30 C     *IN12         IFEQ      *OFF                                     
+0003.32 C                   MOVE      HLNAME        SELHL                      
+0003.33 C                   Z-ADD     HLID          SELHLID                    
+0003.34 C                   Z-ADD     0             SELSHDATE                  
+0003.35 C                   MOVE      *BLANKS       SELD                       
+0003.36 C                   ENDIF                                              
+0003.42 C                   ENDSR                                              
+0003.43 C*                                                                     
+0003.44 C     SHOWDATES     BEGSR                                              
+0003.45 C                   SETON                                        3234  
+0003.46 C                   WRITE     DATECTL                                  
+0003.47 C                   SETOFF                                       34    
 0003.48 C                   Z-ADD     0             DRRN              4 0       
 0003.49 C     SELHLID       SETLL     RSHOW                              9999   
 0003.50 C     SELHLID       READE     RSHOW                                9999 
@@ -94,8 +95,54 @@
 0003.60 C     DRRN          IFGT      0                                         
 0003.61 C                   SETON                                        3133   
 0003.62 C                   Z-ADD     1             POS                         
-0003.63 C                   EXSR      SELECTD                                   
-0003.64 C                   ELSE                                                
-0003.65 C                   SETOFF                                       31     
-0003.66 C                   ENDIF                                               
-0003.67 C                   ENDSR                                               
+0003.63 C                   EXSR      SELECTD                              
+0003.64 C                   ELSE                                              
+0003.65 C                   SETOFF                                       31   
+0003.66 C                   ENDIF                                             
+0003.67 C                   ENDSR                                             
+0003.68 C*                                                                    
+0003.69 C     SELECTD       BEGSR                                             
+0003.70 C     OP            DOUEQ     'Y'                                     
+0003.71 C     *IN12         OREQ      *ON                                     
+0003.72 C                   EXFMT     DATECTL                                 
+0003.73 C                   READC     DTSFL                                   
+0003.74 C                   ENDDO                                             
+0003.75 C     *IN12         IFEQ      *OFF                                    
+0003.76 C                   MOVE      DATE          SELD                      
+0003.77 C                   Z-ADD     SHDATE        SELSHDATE                 
+0003.80 C                   ENDIF                                             
+0003.84 C                   ENDSR                                    
+0004.00 C*                                                                      
+0005.00 C     SHOWSHOWS     BEGSR                                               
+0006.00 C                   SETON                                        3234   
+0007.00 C                   WRITE     SHOWCTL                                   
+0008.00 C                   SETOFF                                       34     
+0009.00 C                   Z-ADD     0             SRRN              4 0       
+0010.00 C     SHOWKLIST     SETLL     RSHOW                              9999   
+0011.00 C     SHOWKLIST     READE     RSHOW                                9999 
+0012.00 C     *IN99         DOWEQ     *OFF                                      
+0013.00 C                   MOVE      *BLANKS       OP                          
+0014.00 C                   ADD       1             SRRN                        
+0014.01 C     SHMVID        CHAIN     RMOVIE                             9898   
+0015.00 C                   WRITE     SHOWSFL                                   
+0016.00 C     SHOWKLIST     READE     RSHOW                                9999 
+0017.00 C                   ENDDO                                               
+0018.00 C     SRRN          IFGT      0                                         
+0019.00 C                   SETON                                        3133  
+0020.00 C                   Z-ADD     1             POS                        
+0020.01 C                   ELSE                                               
+0020.02 C                   SETOFF                                       31    
+0021.00 C                   ENDIF                                              
+0022.00 C                   ENDSR                                              
+0022.01 C     DATEMOVE      BEGSR                                              
+0022.02 C                   MOVE      Y1            Y2                         
+0022.03 C                   MOVE      M1            M2                         
+0022.04 C                   MOVE      D1            D2                         
+0022.05 C                   ENDSR                                              
+0023.00 C*                                                                     
+0024.00 C     *INZSR        BEGSR                                              
+0025.00 C     SHOWKLIST     KLIST                                              
+0026.00 C                   KFLD                    SELHLID                    
+0027.00 C                   KFLD                    SELSHDATE               
+0028.00 C                   ENDSR                                              
+        ****************** End of data ****************************************
