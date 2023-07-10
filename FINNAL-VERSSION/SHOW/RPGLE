@@ -1,0 +1,40 @@
+        *************** Beginning of data ************************************
+0000.01 FSHOWLF01  UF A E           K DISK                                    
+0000.02 FHALLPF    IF   E           K DISK                                    
+0000.03 FMOVIEPF   IF   E           K DISK                                    
+0001.00 FDSHOW     CF   E             WORKSTN                                 
+0001.02 F                                     SFILE(SHOWSFL:SRRN)             
+0001.03 F                                     SFILE(HLSFL:HRRN)               
+0001.04 F                                     SFILE(DTSFL:DRRN)               
+0001.05 DDATE1            DS                                                  
+0001.06 DY1                              4  0                                 
+0001.07 DM1                              2  0                                 
+0001.08 DD1                              2  0                                 
+0001.09 DDATE2            DS                                                  
+0001.10 DY2                              4  0                                 
+0001.11 DS1                              1    INZ('/')                        
+0001.12 DM2                              2  0                                 
+0001.13 DS2                              1    INZ('/')                        
+0001.14 DD2                              2  0                                 
+0001.15 DSELHLID          S             10  0                                 
+0001.16 DSELSHDATE        S              8  0                                 
+0002.00 C*                                                                    
+0002.01 C                   WRITE     TOP                                     
+0002.02 C     *IN03         DOWEQ     *OFF                                    
+0002.03 C                   WRITE     BOT                                     
+0002.04 C     SHOWKLIST     CHAIN     RSHOW                              9999 
+0002.05 C     *IN99         IFEQ      *OFF                                    
+0002.06 C                   WRITE     STARTPAGE                               
+0002.07 C                   EXSR      SHOWSHOWS                               
+0002.08 C                   EXFMT     SHOWCTL                                 
+0002.09 C                   ELSE                                              
+0002.10 C                   EXFMT     STARTPAGE                               
+0002.11 C                   ENDIF                                             
+0002.12 C   09              DO                                                
+0002.13 C                   EXSR      SHOWHALLS  
+0002.14 C                   ENDDO                                              
+0002.15 C   10              DO                                                 
+0002.16 C                   EXSR      SHOWDATES                                
+0002.17 C                   ENDDO                                              
+0002.18 C                   ENDDO                                              
+0002.19 C                   SETON                                        LR    
