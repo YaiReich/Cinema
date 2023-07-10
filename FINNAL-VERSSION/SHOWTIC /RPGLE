@@ -11,8 +11,8 @@
 0010.00    dcl-s crrn packed(3);                                               
 0011.00    dcl-s subidchar char(10);                                           
 0011.01    dcl-s shidchar  char(10);                                           
-0011.02    dcl-s countl packed(3);  //count lines                              
-0011.03    dcl-s countp packed(3);  //count selected chairs                    
+0011.02    dcl-s linescounter packed(3);                             
+0011.03    dcl-s countSelectedChairs packed(3);                    
 0012.00    dcl-s countcard packed(3); //count remainig in card                 
 0013.00    dcl-s countd packed(3);  //count used to delete in ds   
 0014.00    dcl-s countop packed(3);  //count to iterate op times   
@@ -224,3 +224,10 @@
 0127.00       *in48=*on;               
 0128.00    endif;                      
 0129.00   endsr;                       
+
+              
+DCL-S COUNTP PACKED(3); //COUNT SELECTED CHAIRS       
+DCL-S COUNTCARD PACKED(3); //COUNT REMAINING IN CARD  
+DCL-S COUNTD PACKED(3); //COUNT USED TO DELETE IN DS  
+DCL-S COUNTOP PACKED(3); //COUNT TO ITERATE OP TIMES  
+DCL-S COUNTR  PACKED(3); //COUNT RESERVED CHAIRS      
