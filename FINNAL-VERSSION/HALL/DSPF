@@ -1,0 +1,88 @@
+        *************** Beginning of data ************************************* 
+0000.10      A*%%TS  SD  20230710  085923  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.20      A*%%EC                                                             
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A                                      CF06(06 'ADD')              
+0000.60      A          R TOP                                                   
+0000.70      A*%%TS  SD  20230709  135930  JBLTD10     REL-V7R5M0  5770-WDS     
+0000.80      A                                  1 29'HALLS MANAGEMENT'          
+0000.90      A                                      DSPATR(UL)                  
+0001.00      A                                      DSPATR(RI)                  
+0001.10      A          R BOT                                                   
+0001.20      A                                      OVERLAY                     
+0001.30      A                                 20  2'-------------------------- 
+0001.40      A                                      --------------------------- 
+0001.50      A                                      --------'                   
+0001.60      A                                 21  5'F3-EXIT'               
+0001.70      A  35                             21 16'F6-ADD NEW HALL'           
+0001.80      A  35                             23  5'4-DELETE'                  
+0001.90      A N35                             21 16'F4-CONFIRM'                
+0002.00      A N35                             21 29'F12-CANCEL'                
+0002.10      A          R SFLR                      SFL                         
+0002.20      A*%%TS  SD  20230616  124511  JBLTD10     REL-V7R5M0  5770-WDS     
+0002.30      A            OP             1A  B  5  2                            
+0002.40      A            HLID      R        O  5  6REFFLD(RHALL/HLID SUBD10/HALLPF) 
+0002.50      A            HLNAME    R        O  5 19REFFLD(RHALL/HLNAME SUBD10/HALLPF) 
+0002.60      A            HLLINES   R        O  5 37REFFLD(RHALL/HLLINES SUBD10/HALLPF)
+0002.70      A            HLCHAIRS  R        O  5 44REFFLD(RHALL/HLCHAIRS SUBD10/HALLPF) 
+0002.80      A          R SFLCTL                    SFLCTL(SFLR)                
+0002.90      A*%%TS  SD  20230710  085923  JBLTD10     REL-V7R5M0  5770-WDS     
+0003.00      A                                      SFLSIZ(0099)                
+0003.10      A                                      SFLPAG(0006)                
+0003.20      A                                      PAGEDOWN(72)         
+0003.30      A                                      OVERLAY           
+0003.40      A  31                                  SFLDSP            
+0003.50      A  32                                  SFLDSPCTL         
+0003.60      A  34                                  SFLCLR            
+0003.70      A  33                                  SFLEND(*MORE)     
+0003.80      A            POS            4S 0H      SFLRCDNBR         
+0003.90      A                                  4  2'OP'              
+0004.00      A                                      DSPATR(UL)        
+0004.10      A                                  4  6'ID'              
+0004.20      A                                      DSPATR(UL)        
+0004.30      A                                  4 19'HALL NAME'       
+0004.40      A                                      DSPATR(UL)        
+0004.50      A                                  4 37'LINES'           
+0004.60      A                                      DSPATR(UL)        
+0004.70      A                                  4 44'CHAIRS'          
+0004.80      A                                      DSPATR(UL)        
+0004.90      A          R ADDSCRN                                               
+0005.00      A*%%TS  SD  20230710  085923  JBLTD10     REL-V7R5M0  5770-WDS     
+0005.10      A                                      CF04(04 'CONFIRM')          
+0005.20      A                                      CA12(12 'BACK')             
+0005.30      A                                      OVERLAY                     
+0005.40      A                                  4  5'ADD HALL:'                 
+0005.50      A                                      DSPATR(UL)                  
+0005.60      A                                  6  5'HALL NAME:'                
+0005.70      A            HLNAME    R        B  6 16REFFLD(RHALL/HLNAME SUBD10/HALLPF) 
+0005.80      A  45                                  ERRMSG('NO NAME WAS GIVEN' 45)  
+0005.90      A                                  8  5'LINES....:'                
+0006.00      A            HLLINES   R        B  8 16REFFLD(RHALL/HLLINES SUBD10/HALLPF) 
+0006.10      A                                      RANGE(1 30)                 
+0006.20      A                                 10  5'CHAIRS...:'                
+0006.30      A            HLCHAIRS  R        B 10 16REFFLD(RHALL/HLCHAIRS SUBD10/HALLPF) 
+0006.40      A                                      RANGE(1 60)                
+0006.50      A          R DLTSCRN                                               
+0006.60      A*%%TS  SD  20230710  085923  JBLTD10     REL-V7R5M0  5770-WDS     
+0006.70      A                                      CF04(04 'CONFIRM')          
+0006.80      A                                      CA12(12 'BACK')             
+0006.90      A                                      OVERLAY                     
+0007.00      A                                  4  5'DELETE HALL:'              
+0007.10      A                                      DSPATR(UL)                  
+0007.20      A                                  6  5'ID.......:' 
+0007.30      A            HLID      R        O  6 16REFFLD(RHALL/HLID SUBD10/HALLPF)
+0007.40      A  44                                  ERRMSG('THERE ARE SHOWS FOR THIS HA- 
+0007.50      A                                      LL' 44)                     
+0007.60      A                                  8  5'HALL NAME:'                
+0007.70      A            HLNAME    R        O  8 16REFFLD(RHALL/HLNAME SUBD10/HALLPF) 
+0007.80      A                                 10  5'LINES....:'                
+0007.90      A            HLLINES   R        O 10 16REFFLD(RHALL/HLLINES SUBD10/HALLPF) 
+0008.00      A                                 12  5'CHAIRS...:'                
+0008.10      A            HLCHAIRS  R        O 12 16REFFLD(RHALL/HLCHAIRS SUBD10/HALLPF) 
+0009.00      A          R WINPASS                                               
+0010.00      A*%%TS  SD  20230709  192359  JBLTD10     REL-V7R5M0  5770-WDS     
+0011.00      A                                      WINDOW(9 13 8 20)           
+0012.00      A                                  2  3'CANT DELETE HALL'          
+0013.00      A                                  3  5'WITH SHOWS!'               
+        ****************** End of data **************************************** 
