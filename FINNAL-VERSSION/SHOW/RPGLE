@@ -73,3 +73,29 @@
 0003.34 C                   Z-ADD     0             SELSHDATE               
 0003.35 C                   MOVE      *BLANKS       SELD                    
 0003.36 C                   ENDIF                                           
+0003.42 C                   ENDSR                                               
+0003.43 C*                                                                      
+0003.44 C     SHOWDATES     BEGSR                                               
+0003.45 C                   SETON                                        3234   
+0003.46 C                   WRITE     DATECTL                                   
+0003.47 C                   SETOFF                                       34     
+0003.48 C                   Z-ADD     0             DRRN              4 0       
+0003.49 C     SELHLID       SETLL     RSHOW                              9999   
+0003.50 C     SELHLID       READE     RSHOW                                9999 
+0003.51 C     *IN99         DOWEQ     *OFF                                      
+0003.52 C                   MOVE      *BLANKS       OP                          
+0003.53 C                   MOVE      SHDATE        DATE1                       
+0003.54 C                   EXSR      DATEMOVE                                  
+0003.55 C                   MOVE      DATE2         DATE                        
+0003.56 C                   ADD       1             DRRN                        
+0003.57 C                   WRITE     DTSFL                                     
+0003.58 C     SELHLID       READE     RHALL                                9999 
+0003.59 C                   ENDDO                                               
+0003.60 C     DRRN          IFGT      0                                         
+0003.61 C                   SETON                                        3133   
+0003.62 C                   Z-ADD     1             POS                         
+0003.63 C                   EXSR      SELECTD                                   
+0003.64 C                   ELSE                                                
+0003.65 C                   SETOFF                                       31     
+0003.66 C                   ENDIF                                               
+0003.67 C                   ENDSR                                               
