@@ -102,3 +102,16 @@
 0012.00 C                   Z-ADD     0             MVID                        
 0013.00 C                   ENDSR                                               
         ****************** End of data **************************************** 
+    INDICATORS:                                
+    F3- EXIT                                   
+    F4- COMMIT                                 
+    F6- ADD                                    
+    F12- CANCEL/BACK   
+    24- ERROR: NO MOVIE NAME + NO MOVIE HOURS 
+    25- ERROR: CAN'T DELETE MOVIE WITH SHOWS
+    31- DISPALY SFL                            
+    32- DISPALY SFLCTL                         
+    33- DISPALY SFL END                        
+    34- CLEAR SFL    
+    35- DISPLAY BOT WITH COMMANDS FOR THE MAIN PAGE
+   
