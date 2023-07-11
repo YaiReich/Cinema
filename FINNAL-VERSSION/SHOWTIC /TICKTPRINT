@@ -1,0 +1,38 @@
+        *************** Beginning of data *************************************
+0001.00      A          R TOP                                                  
+0002.00      A                                  1 10'TICKETS'                  
+0003.00      A                                  2 10'-----------------'        
+0004.00      A          R TICKET                                               
+0005.00      A                                     5'SUB NAME:'                
+0006.00      A                                      SPACEB(1)                  
+0007.00      A            SUBNAME   R             +2REFFLD(RSUB/SUBNAME +      
+0008.00      A                                         SUBD10/SUBPF)           
+0009.00      A                                     5'MOVIE:'                   
+0010.00      A                                      SPACEB(1)                  
+0011.00      A            MVNAME    R             +2REFFLD(RMOVIE/MVNAME +     
+0012.00      A                                         SUBD10/MOVIEPF)         
+0013.00      A                                     5'HALL:'                    
+0014.00      A                                      SPACEB(1)                  
+0015.00      A            HLNAME    R             +2REFFLD(RHALL/HLNAME +      
+0016.00      A                                         SUBD10/HALLPF)      
+0017.00      A                                     5'DATE:'                   
+0018.00      A                                      SPACEB(1)                 
+0019.00      A            DATE          10        +2                          
+0020.00      A                                     5'TIME:'                   
+0021.00      A                                      SPACEB(1)                 
+0022.00      A            SHSTRHR   R             +2REFFLD(RSHOW/SHSTRHR +    
+0023.00      A                                         SUBD10/SHOWPF)         
+0024.00      A                                    +1'-'                       
+0025.00      A            SHENDHR   R             +1REFFLD(RSHOW/SHENDHR +    
+0026.00      A                                         SUBD10/SHOWPF)         
+0027.00      A                                     5'LINE:'                   
+0028.00      A                                      SPACEB(1)                 
+0029.00      A            LINE           2        +2                          
+0030.00      A                                     5'POSITION:'               
+0031.00      A                                      SPACEB(1)                 
+0032.00      A            POSITION       2        +2          
+0033.00      A          R PGEND                                                 
+0034.00      A                                 11 10'-----------------'         
+        ****************** End of data **************************************** 
+
+ PRTF FOR TICKETS 
