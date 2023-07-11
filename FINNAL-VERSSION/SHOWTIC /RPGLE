@@ -278,7 +278,24 @@
 0181.00         ticcrdid = crdid;              
 0182.00         exsr reservechairs;            
 0183.00      endif;                            
-0184.00   endsr;                               
+0184.00   endsr;    
+0185.00
+0189.00   begsr reservechairs;                                         
+0190.00      for countop = 1 by 1 to op;                               
+0191.00         ticlin = %dec(ticarr(countReservedChairs):2:0);        
+0192.00         ticchair = %dec(ticarr(countReservedChairs + 1):2:0);  
+0193.00         write rtic;                                            
+0194.00         if not %error;                                         
+0195.00            chain ticlin hlsfl;                                 
+0196.00            if %found;                                          
+0197.00               linearr(ticchair) = 'R';                         
+0198.00               update hlsfl;                                    
+0199.00            endif;                                              
+0200.00         endif;                                                 
+0201.00         countReservedChairs += 2;                              
+0202.00      endfor;                                                   
+0203.00   endsr;                                                       
+//THIS SR ADDS THE SELECTED CHAIRS TO TICPF AND UPDATES THE SFL WE CANT USE READC BECAUSE EACH TIME A CHAIR IS SELCTED, THE SFL UPDATES. SO USING READC WILL GIVE EOF.               
 
 
 
