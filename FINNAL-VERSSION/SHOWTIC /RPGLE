@@ -224,7 +224,23 @@
 0127.00       *in48=*on;               
 0128.00    endif;                      
 0129.00   endsr;                       
-
+0129.01                
+//THIS SR CALCULATES HOW MANY TICKETS TO USE IN THIS CARD                                      
+0130.00   begsr docountcard;                    
+0131.00       if countcard = 0;                 
+0132.00          *in40 = *on;                   
+0133.00          op = 0;                        
+0134.00       else;                             
+0135.00          if balance >= countcard;       
+0136.00             op = countcard;             
+0137.00             countcard = 0;              
+0138.00          else;                          
+0139.00             op = balance;               
+0140.00             countcard -= op;            
+0141.00          endif;                         
+0142.00       endif;                            
+0143.00   endsr;                                
+0144.00                                         
               
 DCL-S COUNTP PACKED(3); //COUNT SELECTED CHAIRS       
 DCL-S COUNTCARD PACKED(3); //COUNT REMAINING IN CARD  
