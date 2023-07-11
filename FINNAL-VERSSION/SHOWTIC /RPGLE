@@ -295,13 +295,36 @@
 0201.00         countReservedChairs += 2;                              
 0202.00      endfor;                                                   
 0203.00   endsr;                                                       
+
 //THIS SR ADDS THE SELECTED CHAIRS TO TICPF AND UPDATES THE SFL WE CANT USE READC BECAUSE EACH TIME A CHAIR IS SELCTED, THE SFL UPDATES. SO USING READC WILL GIVE EOF.               
+0207.00   begsr dltpurchase;                                              
+0208.00      countd = 1;                                                  
+0209.00      //LOOKUP FUNCTION IS GOOD ONLY FOR ONE VALUES, BUT 2 VALUES ARE NEEDED: THE LINE AND THE POSITION                      
+0211.00      dow not(ticarr(countd)=%char(selln))                         
+0212.00                  and not(ticarr(countd+1)=%char(selpos));         
+0213.00         countd += 2;                                              
+0214.00      enddo;                                                       
+0215.00      ticarr(countd) = *blanks;                                    
+0216.00      ticarr(COUNTD+1) = *blanks;                                  
+0217.00      countd += 2;                                                 
+0218.00      //MOVE EVERY TICKETS AFTER THE DELETED ONE A TICKET BEFORE   
+0219.00      dow not(ticarr(countd) = *blanks) and not(countd = 21);  
+0220.00         ticarr(countd-2) = ticarr(countd);                    
+0221.00         ticarr(countd-1) = ticarr(countd+1);                  
+0222.00         ticarr(countd) = *blanks;                             
+0223.00         ticarr(countd+1) = *blanks;                           
+0224.00         countd += 2;                                          
+0225.00      enddo;                                                   
+0226.00   endsr;       
+0227.00                                                                        
+0228.00   begsr datemove;                                                      
+0229.00     date1 = %editc(shdate:'X');                                        
+0230.00     y2=y1;                                                             
+0231.00     m2=m1;                                                             
+0232.00     d2=d1;                                                             
+0233.00     date = date2;                                                      
+0234.00   endsr;                                                               
+        ****************** End of data ****************************************
 
 
 
-
-DCL-S COUNTP PACKED(3); //COUNT SELECTED CHAIRS       
-DCL-S COUNTCARD PACKED(3); //COUNT REMAINING IN CARD  
-DCL-S COUNTD PACKED(3); //COUNT USED TO DELETE IN DS  
-DCL-S COUNTOP PACKED(3); //COUNT TO ITERATE OP TIMES  
-DCL-S COUNTR  PACKED(3); //COUNT RESERVED CHAIRS      
