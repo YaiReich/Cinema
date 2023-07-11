@@ -1,0 +1,51 @@
+        *************** Beginning of data *************************************
+0001.00              PGM        PARM(&SUBID &SHOWID &TICKETS)                  
+0002.00              DCL        VAR(&SUBID) TYPE(*CHAR) LEN(10)                
+0003.00              DCL        VAR(&SHOWID) TYPE(*CHAR) LEN(10)               
+0004.00              DCL VAR(&TICKETS) TYPE(*CHAR) LEN(40)                     
+0005.00              DCL VAR(&L1) TYPE(*CHAR) STG(*DEFINED) +                  
+0006.00                        LEN(2)    DEFVAR(&TICKETS 1)                    
+0007.00              DCL VAR(&P1) TYPE(*CHAR) STG(*DEFINED) +                  
+0008.00                        LEN(2)    DEFVAR(&TICKETS 3)                    
+0009.00              DCL VAR(&L2) TYPE(*CHAR) STG(*DEFINED) +                  
+0010.00                        LEN(2)    DEFVAR(&TICKETS 5)                    
+0011.00              DCL VAR(&P2) TYPE(*CHAR) STG(*DEFINED) +                  
+0012.00                        LEN(2)    DEFVAR(&TICKETS 7)                    
+0013.00              DCL VAR(&L3) TYPE(*CHAR) STG(*DEFINED) +                  
+0014.00                        LEN(2)    DEFVAR(&TICKETS 9)                    
+0015.00              DCL VAR(&P3) TYPE(*CHAR) STG(*DEFINED) +                  
+0016.00                        LEN(2)    DEFVAR(&TICKETS 11) 
+0017.00              DCL VAR(&L4) TYPE(*CHAR) STG(*DEFINED) +  
+0018.00                        LEN(2)    DEFVAR(&TICKETS 13)   
+0019.00              DCL VAR(&P4) TYPE(*CHAR) STG(*DEFINED) +  
+0020.00                        LEN(2)    DEFVAR(&TICKETS 15)   
+0021.00              DCL VAR(&L5) TYPE(*CHAR) STG(*DEFINED) +  
+0022.00                        LEN(2)    DEFVAR(&TICKETS 17)   
+0023.00              DCL VAR(&P5) TYPE(*CHAR) STG(*DEFINED) +  
+0024.00                        LEN(2)    DEFVAR(&TICKETS 19)   
+0025.00              DCL VAR(&L6) TYPE(*CHAR) STG(*DEFINED) +  
+0026.00                        LEN(2)    DEFVAR(&TICKETS 21)   
+0027.00              DCL VAR(&P6) TYPE(*CHAR) STG(*DEFINED) +  
+0028.00                        LEN(2)    DEFVAR(&TICKETS 23)   
+0029.00              DCL VAR(&L7) TYPE(*CHAR) STG(*DEFINED) +  
+0030.00                        LEN(2)    DEFVAR(&TICKETS 25)   
+0031.00              DCL VAR(&P7) TYPE(*CHAR) STG(*DEFINED) +  
+0032.00                        LEN(2)    DEFVAR(&TICKETS 27)   
+0033.00              DCL VAR(&L8) TYPE(*CHAR)  STG(*DEFINED) +                  
+0034.00                        LEN(2)    DEFVAR(&TICKETS 29)                    
+0035.00              DCL VAR(&P8) TYPE(*CHAR) STG(*DEFINED) +                   
+0036.00                        LEN(2)    DEFVAR(&TICKETS 31)                    
+0037.00              DCL VAR(&L9) TYPE(*CHAR) STG(*DEFINED) +                   
+0038.00                        LEN(2)    DEFVAR(&TICKETS 33)                    
+0039.00              DCL VAR(&P9) TYPE(*CHAR) STG(*DEFINED) +                   
+0040.00                        LEN(2)    DEFVAR(&TICKETS 35)                    
+0041.00              DCL VAR(&L10) TYPE(*CHAR) STG(*DEFINED) +                  
+0042.00                        LEN(2)    DEFVAR(&TICKETS 37)                    
+0043.00              DCL VAR(&P10) TYPE(*CHAR) STG(*DEFINED) +                  
+0044.00                        LEN(2)    DEFVAR(&TICKETS 39)                    
+0045.00              SBMJOB     CMD(CALL PGM(RPRINT) PARM((&SUBID) (&SHOWID) +  
+0046.00                         (&TICKETS)))                                    
+0051.00              ENDPGM                                                     
+        ****************** End of data **************************************** 
+
+ CL FOR PRINTING TICKETS  
