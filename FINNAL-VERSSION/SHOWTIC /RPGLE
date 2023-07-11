@@ -241,7 +241,48 @@
 0142.00       endif;                            
 0143.00   endsr;                                
 0144.00                                         
-              
+//THIS SFL DISPLAYS THE CARD SFL, AND IF THE USER COMMITED, IT WILL RESERVE THE CHAIRS HE SELECTED FOR HIM                            
+0147.00   begsr buyticket;                                      
+0148.00      exsr fillcardsfl;                                  
+0149.00      if *in48 = *off;                                   
+0150.00         exfmt cardctl;                                  
+0151.00         if *in04;                                       
+0152.00            countReservedChairs = 1;                     
+0153.00            linescounter = 1;                            
+0154.00            chain linescounter cardsfl;                  
+0155.00            dow linescounter <= crrn and not(op=0);      
+0156.00               if %found;                                
+0157.00                  chain (subid:crdid) rcard;             
+0158.00                  if %found;                             
+0159.00                     exsr updatecard;                    
+0160.00                  endif;                                 
+0161.00               endif;                                    
+0162.00               linescounter += 1;                        
+0163.00               chain linescounter cardsfl;         
+0164.00            enddo;                                     
+0165.00            printcl(subidchar:shidchar:tickets);       
+0166.00         endif;                                        
+0167.00      endif;                                           
+0168.00   endsr;                                              
+
+ //THIS SR UPDATES THE CARRD IN THE PF ACCORDING TO THE AMOUNT THAT WAS USED IN IT                                                    
+0172.00   begsr updatecard;                    
+0173.00      crdused += countSelectedChairs;   
+0174.00      if crdused = crdqty;              
+0175.00         crdsts = 'C';                  
+0176.00      endif;                            
+0177.00      update rcard;                     
+0178.00      if not %error;                    
+0179.00         ticshid = showid;              
+0180.00         ticsubid = subid;              
+0181.00         ticcrdid = crdid;              
+0182.00         exsr reservechairs;            
+0183.00      endif;                            
+0184.00   endsr;                               
+
+
+
+
 DCL-S COUNTP PACKED(3); //COUNT SELECTED CHAIRS       
 DCL-S COUNTCARD PACKED(3); //COUNT REMAINING IN CARD  
 DCL-S COUNTD PACKED(3); //COUNT USED TO DELETE IN DS  
