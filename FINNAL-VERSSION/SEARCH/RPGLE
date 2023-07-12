@@ -1,7 +1,10 @@
         *************** Beginning of data *************************************
 0001.00    dcl-f dsearch workstn sfile(mvsfl:mrrn) sfile(dtsfl:drrn)           
 0002.00                                            sfile(showsflr:srrn);       
-              
+0003.00    dcl-f subpf    disk keyed usage(*input);                            
+0003.01    dcl-f moviepf       keyed;                                          
+0003.02    dcl-f hallpf        keyed;                                          
+0003.03    dcl-f showlf02      keyed;                                          
 0003.04                                                                        
 0004.00    dcl-pi *n;                                                          
 0005.00      subid packed(10);                                                 
