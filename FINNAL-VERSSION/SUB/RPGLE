@@ -13,9 +13,7 @@
 0012.00   ID PACKED(10) CONST;                                           
 0013.00   END-PR;                                                        
 0013.01                                                                  
-0013.02   DCL-PR RSEARCH EXTPGM;   
-0013.03   ID PACKED(10) CONST;            
-0013.04   END-PR;                         
+      
 0014.00                                   
 0015.00   *IN61=*ON;                      
 0017.00   DOW NOT(*IN03);                 
