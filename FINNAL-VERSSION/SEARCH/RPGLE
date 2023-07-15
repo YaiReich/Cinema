@@ -171,13 +171,4 @@
 0040.00        date = date2;                          
 0041.00    endsr;                                     
 0041.01                                               
-0042.00    begsr tipul;                               
-0043.00      readc showsflr;                          
-0044.00      dow not (%eof(dsearch)) and not(%error); 
-0045.00         if op='5';                                                      
-0046.00            rshowtic(subid:shid);                                        
-0047.00         endif;                                                          
-0047.01         readc showsflr;                                                 
-0047.02      enddo;                                                             
-0048.00    endsr;                                                               
-        ****************** End of data **************************************** 
+
