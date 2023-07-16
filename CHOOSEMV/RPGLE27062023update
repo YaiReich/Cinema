@@ -23,7 +23,24 @@
 0016.12          y2 char(4);                
 0016.13   end-ds;                           
 0016.14                                     
-
+0016.15   curdat = %dec(%date());           
+0016.17   dow not(*in03);                   
+0016.18     write top;                      
+0016.19     write bot;                      
+0016.20     if shdate<>0 and selmv<>*blanks;
+0016.21       write main;                   
+0016.22       exsr showshows;               
+0016.23     else;                           
+0016.24       exfmt main;         
+0016.25     endif;                
+0016.26     select;               
+0016.27     when *in04;           
+0016.28       exsr optmovie;      
+0016.29     when *in05;           
+0016.30       exsr optdate;       
+0016.33     endsl;                
+0021.00   enddo;                  
+0022.00   *inlr=*on;              
 0023.00                           
 0038.00   begsr optmovie;         
 0038.01    if not(selmv =*blanks);
