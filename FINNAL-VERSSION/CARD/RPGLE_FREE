@@ -6,10 +6,7 @@
 0005.00   dcl-f tbcrdnum disk usage(*update: *output);                        
 0006.00   dcl-f dcard    workstn sfile(allsflr:arrn) sfile(onesflr:orrn);     
 0006.01                                                                       
-0007.00   dcl-s arrn packed(3);                                               
-0008.00   dcl-s orrn packed(3);                                               
-0009.00   dcl-s count packed(3);                                              
-0010.00   dcl-s tel char(11);                                                 
+                                    
 0010.01                                                                       
 0011.00   dcl-ds date1;                                                       
 0012.00      y1 char(4);                                                      
