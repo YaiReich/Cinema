@@ -1,5 +1,7 @@
 *************** Beginning of data ************************************* 
-
+0000.30      A                                      DSPSIZ(24 80 *DS3)          
+0000.40      A                                      CA03(03 'EXIT')             
+0000.50      A                                      CA12(12 'BACK')             
 0000.60      A          R TOP                                                   
 0000.70      A*%%TS  SD  20230704  090128  JBLTD11     REL-V7R5M0  5770-WDS     
 0000.80      A                                  1 29'SUBSCRIBERS MANAGEMENT'    
