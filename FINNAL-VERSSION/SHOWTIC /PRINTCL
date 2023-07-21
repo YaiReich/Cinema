@@ -1,7 +1,5 @@
         *************** Beginning of data *************************************
-0001.00              PGM        PARM(&SUBID &SHOWID &TICKETS)                  
-0002.00              DCL        VAR(&SUBID) TYPE(*CHAR) LEN(10)                
-0003.00              DCL        VAR(&SHOWID) TYPE(*CHAR) LEN(10)               
+              
 0004.00              DCL VAR(&TICKETS) TYPE(*CHAR) LEN(40)                     
 0005.00              DCL VAR(&L1) TYPE(*CHAR) STG(*DEFINED) +                  
 0006.00                        LEN(2)    DEFVAR(&TICKETS 1)                    
