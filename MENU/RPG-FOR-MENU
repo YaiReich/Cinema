@@ -15,7 +15,13 @@
 0014.00 C     SENDSUB       BEGSR                                          
 0015.00 C                   CALL      'RSUB'                               
 0016.00 C                   ENDSR                                          
-0017.00 C*                                                                     
+0017.00 C*                
+0022.00 C*                                                                     
+0023.00 C     *INZSR        BEGSR                                              
+0024.00 C     SENDP         PLIST                                              
+0025.00 C                   PARM                    ID               10 0      
+0026.00 C                   ENDSR                                              
+        ****************** End of data ****************************************
 0018.00 C     SENDCARD      BEGSR                                              
 0019.00 C                   Z-ADD     0             ID                         
 0020.00 C                   CALL      'RCARD'       SENDP                      
