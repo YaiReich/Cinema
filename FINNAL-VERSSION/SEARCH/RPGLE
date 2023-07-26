@@ -22,18 +22,7 @@
 0007.06    dcl-s drrn packed(3);                              
 0007.07    dcl-s srrn packed(3);                              
 0007.08                                                       
-0007.09    dcl-ds date1;                                      
-0007.10      y1 char(4);                                      
-0007.11      m1 char(2);                                      
-0007.12      d1 char(2);                                      
-0007.13    end-ds;                                            
-0007.14    dcl-ds date2;                                      
-0007.15      d2 char(2);                                      
-0007.16      z1 char(1) inz('/');                             
-0007.17      m2 char(2);                                      
-0007.18      z2 char(1) inz('/');                                         
-0007.19      y2 char(4);                                                  
-0007.20    end-ds;                                                        
+                                            
 0007.31                                                                   
 0008.00    chain subid rsub;                                              
 0008.01    curdat = %dec(%date());       // Today  = Current system date  
