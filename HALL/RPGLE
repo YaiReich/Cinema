@@ -89,9 +89,4 @@
 0007.13 C                   ENDDO                                               
 0007.15 C                   ENDSR                                               
 0008.00 C*                                                                      
-0009.00 C     CLEAN         BEGSR                                               
-0010.00 C                   MOVE      *BLANKS       HLNAME                      
-0011.00 C                   Z-ADD     0             HLLINES                     
-0012.00 C                   Z-ADD     0             HLCHAIRS                    
-0013.00 C                   ENDSR                                               
-        ****************** End of data **************************************** 
+
