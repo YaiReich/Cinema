@@ -49,8 +49,9 @@
 0005.06 C                   ENDIF                              
 0005.07 C                   READC     SFLR                                 9999 
 0005.08 C                   ENDDO                                               
-0005.13 C                   ENDSR                                               
-0005.14 C*                                                                      
+0005.13 C                   ENDSR             
+0005.14 C*                                   
+
 0006.00 C     ADD           BEGSR                                               
 0006.02 C                   WRITE     TOP                                       
 0006.03 C                   WRITE     BOT                                       
@@ -87,7 +88,8 @@
 0007.11 C  N44HLID          CHAIN     RHALL                              4444   
 0007.12 C  N44              DELETE    RHALL                                     
 0007.13 C                   ENDDO                                               
-0007.15 C                   ENDSR                                               
+0007.15 C                   ENDSR             
+
 0008.00 C*                                                                      
 0009.00 C     CLEAN         BEGSR                                               
 0010.00 C                   MOVE      *BLANKS       HLNAME                      
