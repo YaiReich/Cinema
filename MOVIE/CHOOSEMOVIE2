@@ -10,7 +10,8 @@
 0016.07       exsr optmovie;                                                  
 0016.08     endif;                                                            
 0021.00   enddo;                                                              
-0022.00   *inlr=*on;                                                          
+0022.00   *inlr=*on;    
+
 0023.00                                                                       
 0038.00   begsr optmovie;                                                     
 0038.01    *in34=*on;                                                         
@@ -26,7 +27,8 @@
 0038.11      write movsfl;        
 0038.12      read rmovie;         
 0038.13    enddo;                 
-0038.14                           
+0038.14             
+
 0038.15    if rrn > 0;            
 0038.16      *in31=*on;           
 0038.17      *in33=*on;           
