@@ -3,6 +3,7 @@
 0001.02 FTBHLNUM   UF   E             DISK                                  
 0002.00 FDHALL     CF   E             WORKSTN                               
 0003.00 F                                     SFILE(SFLR:RRN)
+
 0005.02 C*    INDICATORS:                                       
 0005.03 C*    F3- EXIT                                          
 0005.04 C*    F4- COMMIT                                        
@@ -16,6 +17,7 @@
 0005.12 C*    45- ERROR: NO HALL NAME                           
 0005.13 C*    50- DISPLAY BOT WITH COMMANDS FOR THE MAIN PAGE   
 0004.00 C*                                       
+
 0004.01 C                   WRITE     TOP                                   
 0004.02 C     *IN03         DOWEQ     *OFF                                  
 0004.03 C                   SETON                                        50 
@@ -32,6 +34,7 @@
 0004.27 C                   ENDDO                                           
 0004.36 C                   SETON                                        LR 
 0004.37 C*                       
+
  THIS SR FILLS THE SFL WITH ALL THE HALLS IN THE PF 
 0004.38 C     FILLSFL       BEGSR                                               
 0004.39 C                   SETON                                        34     
