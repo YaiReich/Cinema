@@ -41,7 +41,7 @@
 0016.33     endif;                
 0021.00   enddo;                  
 0022.00   *inlr=*on;              
-0023.00                           
+0023.00           
 0038.00   begsr optmovie;         
 0038.01    if not(selmv =*blanks);
 0038.03      mvdate=*blanks;      
@@ -59,7 +59,7 @@
 0038.16      write movsfl;         
 0038.17      read rmovie;          
 0038.18    enddo;                  
-0038.19                            
+0038.19          
 0038.20    if mrrn > 0;            
 0038.21      *in31=*on;            
 0038.22      *in33=*on;            
@@ -68,7 +68,7 @@
 0038.25      clear *all rmovie;        
 0038.26      if not(*in12);            
 0038.29        readc movsfl;           
-0038.30                                
+0038.30              
 0038.31        dow not(%eof(choosemv));
 0038.33           if op='Y';           
 0038.34             selmv = mvname;    
@@ -82,7 +82,7 @@
 0038.45      endif;                     
 0038.48    endif;                       
 0038.49   endsr;                        
-0038.50                                 
+0038.50              
 0039.00   begsr optdate;                
 0040.00    *in34=*on;                   
 0041.00    *in32=*on;                   
@@ -98,7 +98,7 @@
 0050.00      write datesfl;         
 0051.00      reade mvid showlf02;   
 0052.00    enddo;                   
-0053.00                             
+0053.00           
 0054.00    if drrn > 0;             
 0055.00      *in31=*on;             
 0056.00      *in33=*on;             
